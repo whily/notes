@@ -14,7 +14,7 @@ Type following at terminal.
 
 Install following CLI packages by typing *brew install package*
 
-    curl, imagemagick, sbcl, sbt, scala, sqlite, wget, zsh
+    curl, imagemagick, sbcl, sbt, scala, wget, zsh
 
 Install following GUI packages by typing *brew cask install package*
 
