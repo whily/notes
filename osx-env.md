@@ -18,4 +18,4 @@ Install following CLI packages by typing *brew install package*
 
 Install following GUI packages by typing *brew cask install package*
 
-    alfred, android-studio, dash, emacs, google-chrome, iterm2, java, launchrocket, mou, mplayerx
+    alfred, android-studio, dash, emacs, gimp, google-chrome, inkscape, iterm2, java, launchrocket, mou, mplayerx, xquartz (for inkscape)
