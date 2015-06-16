@@ -13,7 +13,9 @@ Type following at terminal.
     
 
 Install following CLI packages by typing *brew install package*
+
     curl, imagemagick, sqlite, wget, zsh
 
 Install following GUI packages by typing *brew cask install package*
+
     alfred, android-studio, dash, emacs, google-chrome, iterm2, launchrocket, mou, mplayerx
