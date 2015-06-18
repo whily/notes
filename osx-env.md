@@ -18,10 +18,10 @@ Install following CLI packages by typing *brew install package*
 
 Install following GUI packages by typing *brew cask install package*
 
-    alfred android-file-transfer android-studio audacity dash emacs
-    gimp google-chrome inkscape iterm2 java launchrocket
-    mou mplayerx neteasemusic racket sogouinput the-unarchiver
-    virtualbox xee xquartz
+    alfred amethyst android-file-transfer android-studio audacity blender dash emacs
+    evernote gimp google-chrome inkscape iterm2 java launchrocket
+    mou mplayerx neteasemusic racket skim sogouinput the-unarchiver thunder
+    virtualbox vox xee xquartz
 
 ### zsh configuration
 
@@ -30,6 +30,14 @@ Install oh-my-zsh (which changes default shell to zsh as well):
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 Edit *~/.zshrc* to change plugin settings.
+
+Get font for Powerline from [here](https://github.com/supermarin/powerline-fonts/blob/bfcb152306902c09b62be6e4a5eec7763e46d62d/Monaco/Monaco%20for%20Powerline.otf)
+
+Install the fonts to *Macintosh HD | Library | Fonts* and select the font in iIerm2.
+
+### python
+
+    brew install python
 
 ### Miscellaneous configuration
 
