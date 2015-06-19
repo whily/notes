@@ -24,7 +24,9 @@ Install following GUI packages by typing *brew cask install package*
     blender caffeine dash disk-inventory-x emacs evernote filezilla firefox genymotion gimp goagentx google-chrome
     inkscape intellij-idea-ce iterm2 java launchrocket libreoffice
     lighttable mou mpv neteasemusic racket skim sogouinput the-unarchiver thunder
-    transmission virtualbox vox xee xquartz youdao
+    transmission virtualbox vox xee xquartz xscreensaver youdao
+
+To use proxy, prefix brew command with *https_proxy=192.168.xxx.yyy:abcd brew install...*
 
 ### zsh configuration
 
