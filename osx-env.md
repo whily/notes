@@ -16,15 +16,15 @@ Type following at terminal.
 
 Install following CLI packages by typing *brew install package*
 
-    autojump cconv curl ffmpeg imagemagick sbcl sbt scala wget zsh
+    android-sdk autojump cconv curl ffmpeg imagemagick sbcl sbt scala wget zsh
 
 Install following GUI packages by typing *brew cask install package*
 
-    alfred aliwangwang amethyst appcleaner android-file-transfer android-studio audacity
-    blender dash emacs evernote filezilla firefox genymotion gimp google-chrome
-    inkscape iterm2 java launchrocket
-    light-table mou mplayerx neteasemusic racket skim sogouinput the-unarchiver thunder
-    virtualbox vox xee xquartz
+    adobe-air alfred aliwangwang amethyst appcleaner android-file-transfer android-studio audacity
+    blender caffeine dash disk-inventory-x emacs evernote filezilla firefox genymotion gimp goagentx google-chrome
+    inkscape intellij-idea-ce iterm2 java launchrocket libreoffice
+    lighttable mou mpv neteasemusic racket skim sogouinput the-unarchiver thunder
+    transmission virtualbox vox xee xquartz youdao
 
 ### zsh configuration
 
