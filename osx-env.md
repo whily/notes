@@ -16,7 +16,7 @@ Type following at terminal.
 
 Install following CLI packages by typing *brew install package*
 
-    android-sdk autojump cconv curl ffmpeg imagemagick sbcl sbt scala wget zsh
+    android-sdk autojump cconv curl ffmpeg gpg imagemagick sbcl sbt scala wget zsh
 
 Install following GUI packages by typing *brew cask install package*
 
