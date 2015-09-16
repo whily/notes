@@ -12,11 +12,11 @@ Type following at terminal.
 
     $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     $ brew install caskroom/cask/brew-cask
-    
+
 
 Install following CLI packages by typing *brew install package*
 
-    android-sdk autojump cconv curl ffmpeg gpg imagemagick pbrt sbcl sbt scala wget zsh
+    android-sdk autojump cconv curl ffmpeg gpg imagemagick pbrt qemu sbcl sbt scala wget zsh homebrew/x11/bochs
 
 Install following GUI packages by typing *brew cask install package*
 
