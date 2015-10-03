@@ -1,8 +1,8 @@
-Notes of step by step instructions of tuning OSX into a developer-friendly environment.
+Notes of step by step instructions of tuning OS X into a developer-friendly environment.
 
 ### Install Xcode
 
-Xcode can be installed from App Store, by with the following fast
+Xcode can be installed from App Store, or with the following fast
 trick: type *gcc* at terminal, and select *Get Xcode* from the popup
 dialog.
 
