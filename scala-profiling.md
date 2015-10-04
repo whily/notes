@@ -23,3 +23,7 @@ then view the trace file, e.g.
      traceview dmtrace.trace
 
 ### Profiling Java library with VisualVM
+
+VisualVM is bundled with JDK and can be launched with command `jvisualvm`.
+For profiling, simply select the JVM program (e.g. sbt), in the Profiler page,
+check "Settings" and select the class to be profiled (e.g. ignore the java classes).
