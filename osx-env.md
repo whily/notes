@@ -68,6 +68,13 @@ Add following content to .zshrc. Modify path to powerline-shell.
 
     brew install python
 
+### LaTeX
+
+For MacTex, the recommended approach to modify ~/.zprofile does not
+work for me. So I have to add the path `/Library/TeX/texbin`
+explicitly to both .zshrc and .bashrc (seems that Emacs shell still
+uses bash).
+
 ### Miscellaneous configuration
 
 As an Emacs user, exchanging *Control* and *Caps Lock* modifiers in
