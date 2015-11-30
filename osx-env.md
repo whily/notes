@@ -73,7 +73,12 @@ Add following content to .zshrc. Modify path to powerline-shell.
 For MacTex, the recommended approach to modify ~/.zprofile does not
 work for me. So I have to add the path `/Library/TeX/texbin`
 explicitly to both .zshrc and .bashrc (seems that Emacs shell still
-uses bash).
+uses bash). As MacTex looks up local sty files in directory
+`~/Library/texmf`, creating a symbolic link is needed for consistency
+with linux:
+
+    cd ~/Library
+    ln -s ~/texmf .
 
 ### Miscellaneous configuration
 
