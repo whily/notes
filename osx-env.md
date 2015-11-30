@@ -17,7 +17,7 @@ Type following at terminal.
 Install following CLI packages by typing *brew install package*
 
     android-sdk autojump cconv curl ffmpeg gpg imagemagick nasm pbrt qemu sbcl sbt scala wget zsh
-    homebrew/x11/bochs homebrew/dupes/gdb
+    homebrew/x11/bochs homebrew/dupes/gdb homebrew/science/maxima
 
 Install following GUI packages by typing *brew cask install package*
 
