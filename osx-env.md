@@ -19,6 +19,10 @@ Install following CLI packages by typing *brew install package*
     android-sdk autojump cconv curl ffmpeg gpg imagemagick nasm pbrt qemu sbcl sbt scala wget zsh
     homebrew/x11/bochs homebrew/dupes/gdb homebrew/science/maxima homebrew/science/gap
 
+GAP is installed with additional packages by using following command:
+
+    $ brew install homebrew/science/gap --with-InstPackages
+
 Install following GUI packages by typing *brew cask install package*
 
     adobe-air alfred aliwangwang amethyst appcleaner android-file-transfer android-studio audacity
