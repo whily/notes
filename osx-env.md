@@ -89,6 +89,9 @@ with linux:
 As an Emacs user, exchanging *Control* and *Caps Lock* modifiers in
 *System Preferences | Keyboard*.
 
+Align mouse scroll direction to Windows fashion in *System Preferences
+| Mouse*, by unchecking *Scroll direction: natural*.
+
 Enable SSH server by selection *System Prferences | Sharing | Remote
 Login*. Computer name can be also changed in the same dialog.
 
