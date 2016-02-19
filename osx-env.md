@@ -97,3 +97,9 @@ Login*. Computer name can be also changed in the same dialog.
 
 VNC settings can be manges in *System Preferences | Sharing | Screen
 Sharing*.
+
+To utilize services from Lantern in terminal, type the following to enable the proxy:
+
+    export https_proxy="http://localhost:8787"
+
+Packages from App Store: Blue Planet.
