@@ -28,7 +28,7 @@ Install following GUI packages by typing *brew cask install package*
     adobe-air alfred aliwangwang amethyst appcleaner android-file-transfer android-studio audacity
     blender caffeine dash disk-inventory-x emacs evernote filezilla firefox genymotion gimp goagentx google-chrome
     inkscape intellij-idea-ce iterm2 java launchrocket libreoffice
-    lighttable mactex mou mpv neteasemusic racket sketchup skim sogouinput the-unarchiver
+    lighttable mactex mou mpv neteasemusic racket sketchup skim sogouinput stellarium the-unarchiver
     transmission virtualbox vox xee xquartz xscreensaver youdao
 
 To use proxy, prefix brew command with *https_proxy=192.168.xxx.yyy:abcd brew install...*
