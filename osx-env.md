@@ -16,7 +16,7 @@ Type following at terminal.
 
 Install following CLI packages by typing *brew install package*
 
-    android-sdk autojump boost cconv coq curl ffmpeg gpg imagemagick nasm pbrt qemu sbcl sbt scala wget zsh
+    android-sdk autojump automake boost cconv coq curl ffmpeg gpg imagemagick nasm pbrt qemu sbcl sbt scala wget zsh
     homebrew/x11/bochs homebrew/dupes/gdb homebrew/science/maxima homebrew/science/gap
 
 GAP is installed with additional packages by using following command:
