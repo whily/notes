@@ -16,7 +16,8 @@ Type following at terminal.
 
 Install following CLI packages by typing *brew install package*
 
-    android-sdk ant autojump automake boost cconv coq curl ffmpeg gpg imagemagick nasm pbrt qemu sbcl sbt scala wget zsh
+    android-sdk ant autojump automake boost cconv coq curl ffmpeg gpg imagemagick nasm pbrt qemu
+    sbcl sbt scala wget zsh
     homebrew/x11/bochs homebrew/dupes/gdb homebrew/science/maxima homebrew/science/gap
 
 GAP is installed with additional packages by using following command:
@@ -30,6 +31,9 @@ Install following GUI packages by typing *brew cask install package*
     inkscape intellij-idea-ce iterm2 java launchrocket libreoffice
     lighttable mactex mou mpv neteasemusic racket sketchup skim sogouinput stellarium the-unarchiver
     virtualbox vox xnviewmp xquartz xscreensaver youdao
+
+Some games:
+    homebrew/homebrew-games/fuego homebrew/homebrew-games/go-gui
 
 To use proxy, prefix brew command with *https_proxy=192.168.xxx.yyy:abcd brew install...*
 
