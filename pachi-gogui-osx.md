@@ -46,15 +46,29 @@ Download Pachi from github. Modify Makefile:
 5. Add lib path (for boost) after INCLUDES line above.
    SYS_LDFLAGS+=-L/usr/local/lib
 6. Download DCNN file http://physik.de/CNNlast.tar.gz, and extract to Pachi's directory.
+7. Download the following spatial patterns files and extract to Pachi's directory.
+   http://pachi.or.cz/pat/gogod-handikgspachi-iter/patterns.prob.xz
+   http://pachi.or.cz/pat/gogod-handikgspachi-iter/patterns.spat.xz
 
 ### Install GoGui
 
-1. Just download it. In lib directory, run `java -jar gogui.jar` to start the GUI.
+1. Edit go-gui recipe:
+
+       brew edit homebrew/homebrew-games/go-gui
+
+   Change the Java dependency line to (seems some issues to install Java 1.6):
+
+       depends_on :java => "1.8"
+
+   Then install it.
+
+       brew install homebrew/homebrew-games/go-gui
 
 2. In dialog `Program | New Program`
    * For `Command`, supply the path to pachi.
-     I set following parameters for Pachi: `-t=1200 threads=2,maximize_score`,
-     with `maximize_score` making Pachi behaving more like human.
+     I set following parameters for Pachi: `-t _1200 threads=2,max_tree_size=2048,maximize_score`,
+     with `maximize_score` making Pachi behaving more like human,
+     and 2048 corresponding to 2 GiB memory consumption.
    * For `Working directory`, point to the directory containing Pachi.
 
 Finally, enjoy a new game with DCNN enabled Pachi.
