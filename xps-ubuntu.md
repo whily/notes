@@ -71,26 +71,33 @@ For `Device for boot loader installation`, select the UEFI partition `/dev/nvme0
 
    Following hardware components work out of box: Bluetooth, WiFi.
 
--- To avoid small fonts in Grub, add `GRUB_GFXMODE=1024x768` to `/etc/default/grub`, and run the following:
+* To avoid small fonts in Grub, add `GRUB_GFXMODE=1024x768` to `/etc/default/grub`, and run the following:
 
     sudo update-grub
 
--- Make hidpi looks OK: on the system setting for Displays, modify the `Scale for menu and title bars` to around 2.
+* Make hidpi looks OK
 
--- To enable palm detection, add the following command to startup applications.
-   xinput set-prop 13 "Synaptics Palm Detection" 1 && xinput set-prop 13 "Synaptics Palm Dimensions" 5, 5
+** On the system setting for Displays, modify the `Scale for menu and title bars` to around 3.
+** Run `xrandr --dpi 288` once.
+** Add `export QT_DEVICE_PIXEL_RATIO=2` in `.bashrc`.
 
--- Display driver: from the applications menu, select "Preferences|Additional drivers",
-   and select to use the "NVIDIA binary driver - version 367.57 from nvidia-367 (privative, tested)".
-   Then apply changes. Install nvidia-prime, then run nvidia-settings and select either NVIDIA GPU       (Performance Mode) or Intel (Power Saving Mode).
+* To enable palm detection, add the following command to startup applications.
+  Add `Palm Detection` with command `xinput set-prop 13 "Synaptics Palm Detection" 1`,
+  and `Palm Dimensions` with command `xinput set-prop 13 "Synaptics Palm Dimensions" 5, 5`.
+
+* Display driver: from the applications menu, select "Preferences|Additional drivers",
+  and select to use the "NVIDIA binary driver - version 367.57 from nvidia-367 (privative, tested)".
+  Then apply changes. Install `nvidia-prime`, then run `nvidia-settings` and   select either NVIDIA GPU (Performance Mode) or Intel (Power Saving  Mode).
 
 ## For reference only
 
-- Windows 10 Clean install guide in: 	        https://www.reddit.com/r/Dell/comments/3sr1jh/windows_10_clean_install_guide/
+- Windows 10 Clean install guide in:
+  https://www.reddit.com/r/Dell/comments/3sr1jh/windows_10_clean_install_guide/
 
 - Replace SSD drive (needs to confirm SSD is PCIe drive):
   http://www.laptopmag.com/articles/upgrade-dell-xps-13-ssd
 
 - Memory upgrade: DDR4-2133, Maximum 32GB.
 
-- May need te replace Dell 1830 wireless card with Intel 8260 if there is issue with former. So far, wireless cards works fine in both Windows and Ubuntu.
+- May need te replace Dell 1830 wireless card with Intel 8260 if there is issue with former.
+  So far, wireless cards works fine in both Windows and Ubuntu.
