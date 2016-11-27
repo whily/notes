@@ -1,4 +1,10 @@
-Notes of step by step instructions of installing Ubuntu 16.10 on XPS 15 9550. The steps are mainly based on https://ubuntuforums.org/showthread.php?t=2317843, with minor modifications. Many parts below can be find from the relevant URLs. The motivation to duplicate these is for self-containess. XPS specific configuration/installation in Windows and Ubuntu is also included.
+Notes of step by step instructions of installing Ubuntu 16.10 on XPS
+15 9550. The steps are mainly based on
+https://ubuntuforums.org/showthread.php?t=2317843, with minor
+modifications. Many parts below can be find from the relevant
+URLs. The motivation to duplicate these is for self-containess. XPS
+specific configuration/installation in Windows and Ubuntu is also
+included.
 
 ## Create bootable USB disk for Ubuntu
 
@@ -17,11 +23,18 @@ Use Rufus to create bootable USB disk according to the link: https://www.ubuntu.
 
 Uninstall trial version of McAfee. Make sure UAC, Windows Defender, and Windows Firewall is turned on.
 
+As Linux assumes hardware clock is UTC, it is also necessary to change Windows to do so, by add the following into Registry.
+
+    Windows Registry Editor Version 5.00
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
+    "RealTimeIsUniversal"=dword:00000001
+
 ### Maintaineance
 
 For Dell software, install Dell Command Update, and remove other stuff like (Dell Product Registration, Dell Dock Update, Dell Update).
 
-### Configuraion change in Windows
+### Configuration change in Windows
 
 1. Repartition SSD, Shrink C drive by 74 GB for Linux. There is no need to create partitions.
 
@@ -53,7 +66,8 @@ Apply changes and save everything, and finally "Exit", to reboot.
 
 ## Back to Windows
 
-Windows will show up in Safe mode. Press `Win + W` to search for *Administrative Tools*, and then select *System Configuration*.
+Windows will show up in Safe mode. Press `Win + W` to search for *Administrative Tools*,
+and then select *System Configuration*.
 
 Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 
@@ -61,11 +75,15 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 
 1. Insert Ubuntu USB stick, reboot, Press F12 and select USB flash disk to boot.
 
-3. Enter ubuntu and select `Install Ubuntu` in the Grub Menu. In the screen of "Installation type" select `Something else`. The following post give more explanation: https://askubuntu.com/questions/343268/how-to-use-manual-partitioning-during-installation/343370#343370
+3. Enter ubuntu and select `Install Ubuntu` in the Grub Menu. In the screen of "Installation type",
+   select `Something else`. The following post give more explanation:
+   https://askubuntu.com/questions/343268/how-to-use-manual-partitioning-during-installation/343370#343370
 
-Partitioned the unused disk space (created from windows) in root (EXT4, Primary partition) and 8 GB SWAP (as swap area, also primary partition).
+   Partitioned the unused disk space (created from windows) in root (EXT4, Primary partition)
+   and 8 GB SWAP (as swap area, also primary partition).
 
-For `Device for boot loader installation`, select the UEFI partition `/dev/nvme0n1p1 Windows Boot Manager`. Not sure whether it matters.
+   For `Device for boot loader installation`, select the UEFI partition
+   `/dev/nvme0n1p1 Windows Boot Manager`. Not sure whether it matters.
 
 4. Settings
 
@@ -79,15 +97,18 @@ For `Device for boot loader installation`, select the UEFI partition `/dev/nvme0
 
 ** On the system setting for Displays, modify the `Scale for menu and title bars` to around 3.
 ** Run `xrandr --dpi 288` once.
-** Add `export QT_DEVICE_PIXEL_RATIO=2` in `.bashrc`.
+** Add `export QT_DEVICE_PIXEL_RATIO=3` in `.bashrc`.
 
 * To enable palm detection, add the following command to startup applications.
   Add `Palm Detection` with command `xinput set-prop 13 "Synaptics Palm Detection" 1`,
   and `Palm Dimensions` with command `xinput set-prop 13 "Synaptics Palm Dimensions" 5, 5`.
+  Disable touchpad whiling typing can be done by add file `/etc/modprobe.d/synaptics.conf`
+  with the following line `blacklist i2c-designware-platform`.
 
 * Display driver: from the applications menu, select "Preferences|Additional drivers",
   and select to use the "NVIDIA binary driver - version 367.57 from nvidia-367 (privative, tested)".
-  Then apply changes. Install `nvidia-prime`, then run `nvidia-settings` and   select either NVIDIA GPU (Performance Mode) or Intel (Power Saving  Mode).
+  Then apply changes. Install `nvidia-prime`, then run `nvidia-settings` and
+  select either NVIDIA GPU (Performance Mode) or Intel (Power Saving  Mode).
 
 ## For reference only
 
