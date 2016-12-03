@@ -24,10 +24,10 @@ quick way is to type `pinyin` in the search box to filter the results).
 
 ### Software to install
 
-    audacity autojump blender bochs chromium-browser cconv coq
-    deluge emacs ffmpeg gap gimp git git-el gnupg gthumb imagemagick inkscape
-    maxima markdown nasm powerline qeum racket sbcl scala smplayer texlive-full
-    tmux virtualbox xscreensaver zeal zsh
+    audacity autojump blender bochs chromium-browser cconv coq deluge
+    emacs ffmpeg gap gimp git git-el gnupg gthumb imagemagick inkscape
+    maxima markdown nasm powerline qeum racket sbcl scala smplayer
+    texlive-full tmux virtualbox xscreensaver zeal zsh
 
 Some software tips in:
    http://www.tecmint.com/things-to-do-after-installing-ubuntu-15-04-desktop/
@@ -147,3 +147,5 @@ Add following content to .zshrc. Modify path to powerline-shell.
 
   In `Startup Application`, add `Swap Ctrl and Capslock` with the following command:
   `bash -c "sleep 5 && setxkbmap -option ctrl:swapcaps"`.
+
+* Use `Disk Usage Analyzer` to visually check the usage statistics.
