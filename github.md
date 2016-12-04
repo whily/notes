@@ -1,5 +1,9 @@
 Notes for Github/git.
 
+### SSH keys
+
+Just follow[Github's guide on SSH](https://help.github.com/articles/generating-an-ssh-key/).
+
 ### Markdown
 
 #### HTML code
