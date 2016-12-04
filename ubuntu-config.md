@@ -148,4 +148,8 @@ Add following content to .zshrc. Modify path to powerline-shell.
   In `Startup Application`, add `Swap Ctrl and Capslock` with the following command:
   `bash -c "sleep 5 && setxkbmap -option ctrl:swapcaps"`.
 
+  Above approach seems to fail randomly. Another approach is to
+  install package `gnome-tweak-tool`, then select `Typing | Ctrl
+  key position | Swap Ctrl and Caps Lock`.
+
 * Use `Disk Usage Analyzer` to visually check the usage statistics.
