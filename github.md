@@ -2,7 +2,10 @@ Notes for Github/git.
 
 ### SSH keys
 
-Just follow[Github's guide on SSH](https://help.github.com/articles/generating-an-ssh-key/).
+Just
+follow[Github's guide on SSH](https://help.github.com/articles/generating-an-ssh-key/).
+Then
+[change the remote's URL from https to ssh](https://help.github.com/articles/changing-a-remote-s-url/).
 
 ### Markdown
 
