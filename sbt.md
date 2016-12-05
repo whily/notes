@@ -7,3 +7,11 @@ to ensure that the repositories configured in `~/.sbit/repositories`
 is used, add the following `-Dsbt.override.build.repos=true` when
 invoking `sbt` script. This is mainly needed when downloading packages
 due to e.g. bumping scala/sbt versions.
+
+### Ensime
+
+After installing Ensime for Emacs, and [setting up in sbt as per user
+configuration](http://ensime.github.io/build_tools/sbt/), for each
+project, run `sbt` with target `ensimeConfig` to generate `.ensime`,
+then open any file of the project in Emacs, and type `M-x ensime` to
+start Ensime.
