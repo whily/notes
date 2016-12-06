@@ -55,7 +55,7 @@ http://askubuntu.com/questions/318246/complete-installation-guide-for-android-sd
     sudo apt install libgl1-mesa-dev:i386
 
     # Install openjdk
-    sudo apt install openjdk-8-jdk
+    sudo apt install openjdk-8-jdk openjdk-8-source
 
     # Make sure jdk8 is selected by checking: `file /etc/alternativiesjava`.
     # If pointing to jdk9 (Scala 2.11.8 cannot run in jdk9), then run the following:
