@@ -118,7 +118,7 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 - Replace SSD drive (needs to confirm SSD is PCIe drive):
   http://www.laptopmag.com/articles/upgrade-dell-xps-13-ssd
 
-- Memory upgrade: DDR4-2133, Maximum 32GB.
+- Memory upgrade: DDR4-2133 or 2400, Maximum 32GB.
 
 - May need te replace Dell 1830 wireless card with Intel 8260 if there is issue with former.
   So far, wireless cards works fine in both Windows and Ubuntu.
