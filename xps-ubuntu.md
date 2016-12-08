@@ -97,7 +97,9 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 
 ** On the system setting for Displays, modify the `Scale for menu and title bars` to around 3.
 ** Run `xrandr --dpi 288` once.
-** Add `export QT_DEVICE_PIXEL_RATIO=3` in `.bashrc`.
+** Add `QT_AUTO_SCREEN_SCALE_FACTOR=1` in `.bashrc` or `.zshrc` based
+   on [QT doc](http://doc.qt.io/qt-5/highdpi.html)
+   and [Arch Linux doc](https://wiki.archlinux.org/index.php/HiDPI).
 
 * To enable palm detection, add the following command to startup applications.
   Add `Palm Detection` with command `xinput set-prop 13 "Synaptics Palm Detection" 1`,
