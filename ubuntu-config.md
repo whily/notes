@@ -141,6 +141,16 @@ Add following content to .zshrc. Modify path to powerline-shell.
         source /usr/share/powerline/bindings/zsh/powerline.zsh
     fi
 
+### Install Albert
+
+Follow
+[Albert's wiki page](https://github.com/ManuelSchneid3r/albert/wiki/User-guide#how-to-install-albert),
+perform the following:
+
+    sudo add-apt-repository ppa:nilarimogard/webupd8
+    sudo apt update
+    sudo apt install albert
+
 ### Configuration tweaks
 
 * Swap Ctrl and Capslock.
@@ -153,3 +163,5 @@ Add following content to .zshrc. Modify path to powerline-shell.
   key position | Swap Ctrl and Caps Lock`.
 
 * Use `Disk Usage Analyzer` to visually check the usage statistics.
+
+* For wallpapers, try [Wallhaven Alpha](http://alpha.wallhaven.cc).
