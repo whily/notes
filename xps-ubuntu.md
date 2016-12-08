@@ -122,3 +122,5 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 
 - May need te replace Dell 1830 wireless card with Intel 8260 if there is issue with former.
   So far, wireless cards works fine in both Windows and Ubuntu.
+
+- To upgrade XPS 15, screwdrivers for Philips PH0 and Torx T5 are needed.
