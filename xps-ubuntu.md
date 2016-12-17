@@ -32,7 +32,12 @@ As Linux assumes hardware clock is UTC, it is also necessary to change Windows t
 
 ### Maintaineance
 
-For Dell software, install Dell Command Update, and remove other stuff like (Dell Product Registration, Dell Dock Update, Dell Update).
+For Dell software, install Dell Command Update, and remove other stuff
+like (Dell Product Registration, Dell Dock Update, Dell Update).
+
+Optional install of `Dell Command | Power Manager`. For `Battery
+Settings`, select `Custom`, and then customize (e.g. use the default
+setting of 50% to 55% if primarily used on AC power).
 
 ### Configuration change in Windows
 
