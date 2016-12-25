@@ -24,8 +24,8 @@ quick way is to type `pinyin` in the search box to filter the results).
 
 ### Software to install
 
-    audacity autojump blender bochs chromium-browser cconv coq deluge
-    emacs ffmpeg gap gimp git git-el gnupg gthumb imagemagick inkscape
+    aria2 audacity autojump blender bochs chromium-browser cconv coq deluge
+    emacs ffmpeg gap gimp git git-el gnupg gthumb htop imagemagick inkscape
     maxima markdown nasm powerline qeum racket sbcl scala smplayer
     texlive-full tmux virtualbox xscreensaver zeal zsh
 
