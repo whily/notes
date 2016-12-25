@@ -20,3 +20,8 @@ Run `Command Prompt (Admin)`, and then type the following:
 
 Replace `"c:\battery.html"` above to preferred file location/name.
 Then view the file.
+
+#### Chrome extension
+
+Install `Enhanced Steam` by following instructions in github (using
+Devloper Mode to install local unpacked extension).
