@@ -165,3 +165,8 @@ perform the following:
 * Use `Disk Usage Analyzer` to visually check the usage statistics.
 
 * For wallpapers, try [Wallhaven Alpha](http://alpha.wallhaven.cc).
+
+* To move Unity launcher to the bottome, type the following in
+  terminal:
+
+   gsettings set com.canonical.Unity.Launcher launcher-position Bottom
