@@ -43,8 +43,14 @@ setting of 50% to 55% if primarily used on AC power).
 
 1. Repartition SSD, Shrink C drive by 74 GB for Linux. There is no need to create partitions.
 
-2. Use `Win + S` to search *Power Options*, select *Choose what the power buttons do* in the left panel.
-   In the right panel, for *Shutdown settings*, uncheck *Turn on fast startup (recommended)*, as well as       *Hibernate*.
+2. Use `Win + S` to search *Power Options*, select *Choose what the
+   power buttons do* in the left panel. In the right panel, for
+   *Shutdown settings*, uncheck *Turn on fast startup (recommended)*,
+   as well as *Hibernate*. Also type the following command (as
+   Administrator) to disable hibernation thus eliminate
+   `hiberfil.sys`.
+
+    powercfg -h off
 
 3. Create a Windows Recovery Media on USB flash drive according to
    [this](https://www.reddit.com/r/Dell/comments/3sr1jh/windows_10_clean_install_guide/).
