@@ -24,9 +24,10 @@ quick way is to type `pinyin` in the search box to filter the results).
 
 ### Software to install
 
-    aria2 audacity autojump blender bochs chromium-browser cconv coq deluge
+    aria2 audacity autojump blender bochs chromium-browser cconv coq
+    darktable deluge
     emacs ffmpeg gap gimp git git-el gnupg gthumb htop imagemagick inkscape
-    maxima markdown nasm powerline qeum racket sbcl scala smplayer
+    maxima markdown nasm powerline qeum racket redshift sbcl scala smplayer
     texlive-full tmux virtualbox xscreensaver zeal zsh
 
 Some software tips in:
@@ -77,6 +78,18 @@ http://askubuntu.com/questions/318246/complete-installation-guide-for-android-sd
     sudo apt-get install libc6:i386 libstdc++6:i386
     # aapt
     sudo apt-get install zlib1g:i386
+
+#### Numix icon theme
+
+Follow the steps below:
+
+    sudo add-apt-repository ppa:numix/ppa
+    sudo apt update
+    sudo apt install numix-gtk-theme numix-icon-theme-circle
+    sudo apt install unity-tweak-tool
+
+Launch `Unity Tweak Tool`, and then change `Theme` to `Numix` and
+`Icons to `Numix-circle-light`.
 
 ### Update software and related commands.
 
