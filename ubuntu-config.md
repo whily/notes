@@ -25,10 +25,10 @@ quick way is to type `pinyin` in the search box to filter the results).
 ### Software to install
 
     aria2 audacity autojump blender bochs chromium-browser cconv
-    cmatrix coq darktable deluge
+    coq darktable deluge
     emacs ffmpeg gap gimp git git-el gnupg gthumb htop imagemagick inkscape
     maxima markdown nasm powerline qeum qgis racket redshift sbcl scala smplayer
-    texlive-full tlp tmux virtualbox xscreensaver zeal zsh
+    texlive-full tlp tmux virtualbox xscreensaver xscreensaver-gl zeal zsh
 
 Some software tips in:
    http://www.tecmint.com/things-to-do-after-installing-ubuntu-15-04-desktop/
