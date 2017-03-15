@@ -47,7 +47,7 @@ Install sbt according to http://www.scala-sbt.org/0.13/docs/Installing-sbt-on-Li
     sudo apt-get update
     sudo apt-get install sbt
 
-#### Android SDK installation
+#### Android SDK and IntelliJ IDEA installation
 
 Install Android SDK according to
 http://askubuntu.com/questions/318246/complete-installation-guide-for-android-sdk-adt-bundle-on-ubuntu
@@ -78,6 +78,30 @@ http://askubuntu.com/questions/318246/complete-installation-guide-for-android-sd
     sudo apt-get install libc6:i386 libstdc++6:i386
     # aapt
     sudo apt-get install zlib1g:i386
+
+Install IntelliJ IDEA Community edition
+
+    # Download tar.gz (no JDK) from http://www.jetbrains.com/idea/download/
+
+    # Extract the tar.gz file.
+    tar xzvf ideaIC-2016.3.5-no-jdk.tar.gz
+
+    # Run idea.sh
+    cd bin
+    ./idea.sh
+
+    # In the installation, select both "Create Desktop Entry" and
+    "Create Command-Line Launcher".
+
+    # For default plugins, enable the following:
+    # Enable all for Build tools, Test tools,
+    # Disable UI designer and Plugin Devkit
+    # Version control tools: Git, Github
+    # Other tools: Bytecode Viewer, Terminal, YAML
+
+    # Download and install Scala plugin.
+
+    # Post-installation, change keymap to Emacs.
 
 #### Numix icon theme
 
