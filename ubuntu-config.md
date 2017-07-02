@@ -27,7 +27,7 @@ quick way is to type `pinyin` in the search box to filter the results).
     aria2 audacity autojump blender bochs chromium-browser cconv
     coq darktable deluge
     emacs ffmpeg gap gimp git git-el gnupg gthumb htop imagemagick inkscape
-    maxima markdown nasm powerline qeum qgis racket redshift sbcl scala smplayer
+    maxima markdown nasm powerline python-pip qeum qgis racket redshift sbcl scala smplayer
     texlive-full tlp tmux virtualbox xscreensaver xscreensaver-gl zeal zsh
 
 Some software tips in:
