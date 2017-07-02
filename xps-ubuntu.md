@@ -106,7 +106,7 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 
 * Make hidpi looks OK
 
-** On the system setting for Displays, modify the `Scale for menu and title bars` to around 3.
+** On the system setting for Displays, modify the `Scale for menu and title bars` to around 2.75.
 ** Run `xrandr --dpi 288` once.
 ** Add `QT_AUTO_SCREEN_SCALE_FACTOR=1` in `.bashrc` or `.zshrc` based
    on [QT doc](http://doc.qt.io/qt-5/highdpi.html)
