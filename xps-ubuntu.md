@@ -106,7 +106,12 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 
 * Make hidpi looks OK
 
-** On the system setting for Displays, modify the `Scale for menu and title bars` to around 2.75.
+** On the system setting for Displays, modify the `Scale for menu and
+title bars` to around 2.5.
+** Run GNOME Tweak Tool, set `Fonts | Scaling Factor` to 1.39, and
+`Windows | Windows Scaling` to 2.
+
+Following are not used but kept here as reference.
 ** Run `xrandr --dpi 288` once.
 ** Add `QT_AUTO_SCREEN_SCALE_FACTOR=1` in `.bashrc` or `.zshrc` based
    on [QT doc](http://doc.qt.io/qt-5/highdpi.html)
