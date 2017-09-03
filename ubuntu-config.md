@@ -188,6 +188,13 @@ perform the following:
     sudo apt update
     sudo apt install albert
 
+### Add darktable release repository
+
+Add darktable stable releases PPA according
+to [official link](http://www.darktable.org/install/#ubuntu)
+
+    sudo add-apt-repository ppa:pmjdebruijn/darktable-release
+
 ### Configuration tweaks
 
 * Swap Ctrl and Capslock.
