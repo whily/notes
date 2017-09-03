@@ -111,6 +111,9 @@ title bars` to around 2.5.
 ** Run GNOME Tweak Tool, set `Fonts | Scaling Factor` to 1.39, and
 `Windows | Windows Scaling` to 2.
 
+For IntelliJ IDEA, in `File | Settings | Appearance & Behavior |
+Appearance`, for `Override default fonts by`, select `Ubuntu` and 48.
+
 Following are not used but kept here as reference.
 ** Run `xrandr --dpi 288` once.
 ** Add `QT_AUTO_SCREEN_SCALE_FACTOR=1` in `.bashrc` or `.zshrc` based
