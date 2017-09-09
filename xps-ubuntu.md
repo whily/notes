@@ -114,6 +114,11 @@ title bars` to around 2.5.
 For IntelliJ IDEA, in `File | Settings | Appearance & Behavior |
 Appearance`, for `Override default fonts by`, select `Ubuntu` and 48.
 
+For GIMP, modify gtkrc file in the theme (default themes in
+`/usr/share/gimp/2.0/themes`, local themes in `~/.gimp-2.8/themes`.
+For `GimpToolPalette::tool-icon-size`, change the value to `dialog`.
+For `GimpEditor::button-icon-size`, change the value to `button`.
+
 Following are not used but kept here as reference.
 ** Run `xrandr --dpi 288` once.
 ** Add `QT_AUTO_SCREEN_SCALE_FACTOR=1` in `.bashrc` or `.zshrc` based
