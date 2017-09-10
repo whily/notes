@@ -115,9 +115,14 @@ For IntelliJ IDEA, in `File | Settings | Appearance & Behavior |
 Appearance`, for `Override default fonts by`, select `Ubuntu` and 48.
 
 For GIMP, modify gtkrc file in the theme (default themes in
-`/usr/share/gimp/2.0/themes`, local themes in `~/.gimp-2.8/themes`.
+`/usr/share/gimp/2.0/themes`, local themes in `~/.gimp-2.8/themes`).
 For `GimpToolPalette::tool-icon-size`, change the value to `dialog`.
 For `GimpEditor::button-icon-size`, change the value to `button`.
+
+For fcitx modify fcitx_skin.conf in the skin (default skins in
+`/usr/share/fcitx/skin`, local skins in
+`~/config/fcitx-qimpanel/skin`). Change the value for `FontSize` to 30
+(also change `MenuFontSize` to 25, but not sure whether this is useful).
 
 Following are not used but kept here as reference.
 ** Run `xrandr --dpi 288` once.
