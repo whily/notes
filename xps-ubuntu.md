@@ -107,8 +107,8 @@ Then go to the "Boot" tab and unselect "Safe mode boot". Accept and shutdown.
 * Make hidpi looks OK
 
 ** On the system setting for Displays, modify the `Scale for menu and
-title bars` to around 2.5.
-** Run GNOME Tweak Tool, set `Fonts | Scaling Factor` to 1.39, and
+title bars` to around 2.
+** Run GNOME Tweak Tool, set `Fonts | Scaling Factor` to 1.3, and
 `Windows | Windows Scaling` to 2.
 
 For IntelliJ IDEA, in `File | Settings | Appearance & Behavior |
