@@ -34,6 +34,15 @@ quick way is to type `pinyin` in the search box to filter the results).
 Some software tips in:
    http://www.tecmint.com/things-to-do-after-installing-ubuntu-15-04-desktop/
 
+### Remove LibreOffice
+
+Run commands in terminal (the first command should be run in bash
+instead of zsh):
+
+    sudo apt remove --purge libreoffice*
+    sudo apt clean
+    sudo apt autoremove
+
 #### Unity3D beta
 
 Install from following link:
