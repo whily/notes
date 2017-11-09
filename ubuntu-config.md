@@ -26,8 +26,8 @@ quick way is to type `pinyin` in the search box to filter the results).
 
     aria2 audacity autoconf autojump blender bochs chromium-browser cconv
     coq darktable deluge dispcalgui
-    emacs ffmpeg gap gimp gimp-help-en git git-el gnupg gthumb htop imagemagick
-    inkscape intltool libgimp2.0-dev liblensfun-bin
+    emacs ffmpeg gap gimp gimp-help-en git git-el gnupg gthumb htop
+    hugin imagemagick inkscape intltool libgimp2.0-dev liblensfun-bin
     maxima markdown nasm powerline python-pip qeum qgis racket redshift sbcl scala smplayer
     texlive-full tlp tmux virtualbox xscreensaver xscreensaver-gl zeal zsh
 
