@@ -159,7 +159,9 @@ Other options for `apt`:
 * `purge`: remove a package as well as configuration files.
 * `autoremove`: remove packages installed by other packages and are no longer needed.
 * `check`: diagnostic.
-* `autoclean`: removes .deb files for packages that are no longer installed in the system.
+* `autoclean`: removes .deb files for packages that are no longer
+  installed in the system. May resolve some issues (e.g. stalling of
+  apt processes).
 * `clean`: remove all packages files from the cache.
 * `changelog`: read the Changelog
 * `search`: list packages with the searched information.
