@@ -23,7 +23,7 @@ Use Rufus to create bootable USB disk according to the link: https://www.ubuntu.
 
 Uninstall trial version of McAfee. Make sure UAC, Windows Defender, and Windows Firewall is turned on.
 
-As Linux assumes hardware clock is UTC, it is also necessary to change Windows to do so, by add the following into Registry.
+As Linux assumes hardware clock is UTC, it is also necessary to change Windows to do so, by adding the following into Registry.
 
     Windows Registry Editor Version 5.00
 
@@ -130,10 +130,28 @@ Following are not used but kept here as reference.
    on [QT doc](http://doc.qt.io/qt-5/highdpi.html)
    and [Arch Linux doc](https://wiki.archlinux.org/index.php/HiDPI).
 
-* To enable palm detection, add the following command to startup applications.
+* To disable touchpad while typing, follow the solution
+  in [here](https://ubuntuforums.org/showthread.php?t=2316240), i.e.
+  adding the following entry in file
+  `/usr/share/X11/xorg.conf.d/51-synaptics-quirks.conf`
+
+    # Disable generic Synaptics device, as we're using
+    # "DLL0704:01 06CB:76AE Touchpad"
+    # Having multiple touchpad devices running confuses syndaemon
+    Section "InputClass"
+            Identifier "SynPS/2 Synaptics TouchPad"
+            MatchProduct "SynPS/2 Synaptics TouchPad"
+            MatchIsTouchpad "on"
+            MatchOS "Linux"
+            MatchDevicePath "/dev/input/event*"
+            Option "Ignore" "on"
+    EndSection
+
+  Following is not working in Ubuntu 17.10
+  Add the following command to startup applications.
   Add `Palm Detection` with command `xinput set-prop 13 "Synaptics Palm Detection" 1`,
   and `Palm Dimensions` with command `xinput set-prop 13 "Synaptics Palm Dimensions" 5, 5`.
-  Disable touchpad whiling typing can be done by add file `/etc/modprobe.d/synaptics.conf`
+  Disable touchpad whiling typing can be done by adding file `/etc/modprobe.d/synaptics.conf`
   with the following line `blacklist i2c-designware-platform`.
 
 * Display driver: from the applications menu, select "Preferences|Additional drivers",
