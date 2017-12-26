@@ -131,7 +131,7 @@ Following are not used but kept here as reference.
    and [Arch Linux doc](https://wiki.archlinux.org/index.php/HiDPI).
 
 * To disable touchpad while typing, follow the solution
-  in [here](https://ubuntuforums.org/showthread.php?t=2316240), i.e.
+  [here](https://ubuntuforums.org/showthread.php?t=2316240), i.e.
   adding the following entry in file
   `/usr/share/X11/xorg.conf.d/51-synaptics-quirks.conf`
 
@@ -147,7 +147,13 @@ Following are not used but kept here as reference.
             Option "Ignore" "on"
     EndSection
 
-  Following is not working in Ubuntu 17.10
+  Another approach is to completely disable the touchpad. Use `xinput`
+  to find out the device id for the touchpad e.g. the id corresponding
+  to `DLL06E4:01 06CB:7A13 Touchpad`, and suppose the id is 14. Then
+  disable the touchpad by `xinput --disable 14`.
+
+  Following is not working in Ubuntu 17.10:
+
   Add the following command to startup applications.
   Add `Palm Detection` with command `xinput set-prop 13 "Synaptics Palm Detection" 1`,
   and `Palm Dimensions` with command `xinput set-prop 13 "Synaptics Palm Dimensions" 5, 5`.
