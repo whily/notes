@@ -43,6 +43,12 @@ instead of zsh):
     sudo apt clean
     sudo apt autoremove
 
+### Remove unnecessary packages
+
+Run following commands:
+
+    sudo apt purge ubuntu-web-launchers
+
 #### Unity3D beta
 
 Install from following link:
@@ -162,7 +168,9 @@ Other options for `apt`:
 * `autoclean`: removes .deb files for packages that are no longer
   installed in the system. May resolve some issues (e.g. stalling of
   apt processes).
-* `clean`: remove all packages files from the cache.
+* `clean`: remove all packages files from the cache (this might be
+  dangerous since packages are not available when running dpkg to fix
+  issues in recovery mode. So use with extreme caution).
 * `changelog`: read the Changelog
 * `search`: list packages with the searched information.
 * `show`: show package information including version, size, dependency etc.
@@ -226,3 +234,42 @@ to [official link](http://www.darktable.org/install/#ubuntu)
   terminal:
 
    gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+
+### Python package
+
+Firstly install `virtualenv`
+
+    pip install virtualenv
+
+Setup a virtual python environment e.g. `fun`
+
+    virtualenv virtualenv/fun -p /usr/bin/python3
+    source virtualenv/fun/bin/activate
+
+Using pip to install following packages:
+
+* `autopep8` for PEP8 compliance
+* `flake8` for syntax checking
+* `jedi` for backend
+
+To deactivate a virtualenv, simply run
+
+    deactivate
+
+### GIS
+
+Python tool `elevation` to download DEM data.
+
+    pip install elevation
+
+    eio clip -o result.tif --bounds left bottom right top
+
+Using Gdaldem Hillshading
+
+    gdaldem hillshade input_dem.ext output_hillshade.ext -z 5 -s
+    111120 -az 315 -alt 60
+
+### Troubleshooting
+
+Sometimes Ubuntu cannot boot. One potential fix is to edit the boot
+option in Grub, changing the part with "quiet splash" to "text" (or nothing).
