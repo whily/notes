@@ -271,5 +271,23 @@ Using Gdaldem Hillshading
 
 ### Troubleshooting
 
-Sometimes Ubuntu cannot boot. One potential fix is to edit the boot
-option in Grub, changing the part with "quiet splash" to "text" (or nothing).
+Sometimes Ubuntu cannot boot. There are two ways to make remedies. 
+The first approach is to log into a terminal. Although the login screen
+is not avaible, sometimes it is still possible to open a terminal. This is
+the preferred approach since almost all services (including network) are available.
+Try to press `Ctrl+Alt+Fn` where `n` is 1 to 6 to open a terminal. If this does not work,
+press `Ctrl+Alt+F7` then press `Alt+Left Arrow` or `Alt+Right Arrow` to switch terminal.
+
+If terminals are not avaiable, another approach is to go to the Recovery mode in the Grub
+menu. There are more works to do here. Typically to make changes, the partition should be mounted
+as read and write. To do so, go to "Root" shell, then type `mount -o remount,rw /` to mount root partition
+read/write, and then type `mount --all` to mount other partitions.
+
+Now potential fixes to try:
+* Edit the boot option in Grub, changing the part with "quiet splash" to "text" (or nothing).
+* Switch between graphic cards: `sudo prime-select`
+* Use the latest nVidia drivers for Ubuntu 18.04:
+    
+    sudo add-apt-repository ppa:graphics-drivers/ppa
+    sudo apt update
+    sudo apt upgrade
