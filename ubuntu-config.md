@@ -271,7 +271,7 @@ Using Gdaldem Hillshading
 
 ### Troubleshooting
 
-Sometimes Ubuntu cannot boot. There are two ways to make remedies. 
+Sometimes Ubuntu cannot boot. There are two ways to make remedies.
 The first approach is to log into a terminal. Although the login screen
 is not avaible, sometimes it is still possible to open a terminal. This is
 the preferred approach since almost all services (including network) are available.
@@ -284,10 +284,13 @@ as read and write. To do so, go to "Root" shell, then type `mount -o remount,rw 
 read/write, and then type `mount --all` to mount other partitions.
 
 Now potential fixes to try:
-* Edit the boot option in Grub, changing the part with "quiet splash" to "text" (or nothing).
+* Edit the boot option in Grub, changing the part with "quiet splash"
+  to "text" or "nomodeset" (whose byproduct is a resonable-sized font
+  in HiDPI display) or nothing.
 * Switch between graphic cards: `sudo prime-select`
 * Use the latest nVidia drivers for Ubuntu 18.04:
-    
+
+
     sudo add-apt-repository ppa:graphics-drivers/ppa
     sudo apt update
     sudo apt upgrade
