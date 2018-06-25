@@ -135,9 +135,10 @@ Following are not used but kept here as reference.
   adding the following entry in file
   `/usr/share/X11/xorg.conf.d/51-synaptics-quirks.conf`
 
-    # Disable generic Synaptics device, as we're using
-    # "DLL0704:01 06CB:76AE Touchpad"
-    # Having multiple touchpad devices running confuses syndaemon
+   Disable generic Synaptics device, as we're using
+   "DLL0704:01 06CB:76AE Touchpad"
+   Having multiple touchpad devices running confuses syndaemon
+
     Section "InputClass"
             Identifier "SynPS/2 Synaptics TouchPad"
             MatchProduct "SynPS/2 Synaptics TouchPad"
@@ -167,15 +168,14 @@ Following are not used but kept here as reference.
 
 ## For reference only
 
-- Windows 10 Clean install guide in:
+- [ ] Windows 10 Clean install guide in:
   https://www.reddit.com/r/Dell/comments/3sr1jh/windows_10_clean_install_guide/
 
-- Replace SSD drive (needs to confirm SSD is PCIe drive):
+- [x] Replace SSD drive (M.2 PCIex4 NVMe drive):
   http://www.laptopmag.com/articles/upgrade-dell-xps-13-ssd
 
-- Memory upgrade: DDR4-2133 or 2400, Maximum 32GB.
+- [ ] Memory upgrade: DDR4-2133 or 2400, Maximum 32GB.
 
-- May need te replace Dell 1830 wireless card with Intel 8260 if there is issue with former.
-  So far, wireless cards works fine in both Windows and Ubuntu.
+- [x] Replace Dell 1830 wireless card with Intel 9260.
 
-- To upgrade XPS 15, screwdrivers for Philips PH0 and Torx T5 are needed.
+- [x] To upgrade XPS 15, screwdrivers for Philips PH0 and Torx T5 are needed.
