@@ -302,6 +302,9 @@ $ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #### Linux-lts kernel
 
+This step is optional. There are impacts to `bbswtich`, nvidia
+drivers, and VirtualBox.
+
 ``` shell
 $ sudo pacman -S linux-lts linux-lts-headers
 $ sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -331,6 +334,10 @@ containing `wheel` to enable running root commands from wheel group.
 Now login as regular user just created.
 
 #### Xorg and i3
+
+i3(wm) is a flexible tilting window manager. For details, please refer
+to the excellent [guide](https://i3wm.org/docs/userguide.html)
+and [reference card](https://i3wm.org/docs/refcard.html).
 
 ``` shell
 # Choose nvidia-340xx-utils and evdev.
@@ -400,10 +407,10 @@ configure the following in `~/.config/i3/config`.
 ``` ini
 # Lock the screen in 3 minutes.
 # Note -i argument for i3lock only loads PNG.
-exec --no-startup-id xautolock -time 3 -locker "i3lock -i ~/Pictures/0F52BA-0.8.png"
+exec --no-startup-id xautolock -time 3 -locker "i3lock -c 000000"
 
 # Lock the screen immediately.
-bindsym $mod+Shift+o exec "i3lock -i ~/Pictures/0F52BA-0.8.png"
+bindsym $mod+Shift+o exec "i3lock -c 000000"
 
 # Set DPMS standby/suspend/off to 5 minutes (there seems not
 # difference among standby/suspend/off for LCD.
@@ -697,7 +704,7 @@ make it work in current session
 
 ``` shell
 # 396 driver has issues, so stay with 390 driver for now.
-$ sudo pacman -S nvidia-390xx nvidia-390xx-utils
+$ sudo pacman -S nvidia-390xx nvidia-390xx-utils primus
 nvidia-390xx-settings bumblebee mesa
 $ sudo gpasswd -a your-usr-name bumblebee
 $ sudo systemctl enable bumblebeed
@@ -743,8 +750,13 @@ When Chinese is enabled, press `Ctrl+\`` for options, use arrow key to
 select `中/半/汉/`, and then select `漢字 -> 汉字` to change from
 Traditional Chinese to Simplified Chinese.
 
-Run `ibus-setup` to configure the font size as well as the direction
-(horizontal vs vertical) of candicate box.
+Run `ibus-setup` to configure the font and size (in my case, `Source
+Han Sans CN regular 16`) as well as the candidate orientation.
+(horizontal vs vertical). If you get an error "ModuleNotFoundError: No
+module named 'gi'", there is a conflict between `anaconda3` and
+`ibus-setup`. First in home directory, run `chmod 000 anaconda3` to
+disable anaconda. Then run `ibus-setup` for configuration. Afterwards,
+run `chmod 755 anaconda3` to enable anaconda again.
 
 #### Wallpaper
 
@@ -949,17 +961,19 @@ icons based on monitor size" (restart required)
 
 #### Programs
 
-File manager: pcmanfm-gtk3 (for Android phone access, install
-gvfs-mtp) ranger
+One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
+
+File manager: `pcmanfm-gtk3` (for Android phone access, install
+`gvfs-mtp`), and console based `ranger`
 
 Install following packages:
 
     acpi aria2 audacity autojump blender
-    bochs breeze-icons celestia chromium coq curl darktable deluge
+    bochs breeze-icons celestia chromium coq cmatrix curl darktable deluge
     displaycal emacs exiv2 ffmpeg frei0r-plugins gap gdb gimp gimp-help-en git
     gnupg htop hugin imagemagick inkscape intltool kdenlive lame lensfun maxima markdown
     nasm p7zip postgresql povray python-pip qeum qgis racket redshift sbcl sbt scala
-    scala-docs scala-sources smplayer sqlite stardict stellarium texlive-most
+    scala-docs scala-sources screenfetch smplayer sqlite stardict stellarium texlive-most
     tmux unzip unrar virtualbox wget xscreensaver zip
 
 Install following AUR packages:
@@ -976,6 +990,8 @@ https://wiki.archlinux.org/index.php/System_maintenance
   failed-service` where 'failed-service` is the problematic service
   name.
 * Check errors in journal by `journalctl -p 3 -xb`.
+
+#### Frequently used pacman commands
 
 ## Backup
 
@@ -1012,4 +1028,4 @@ If using gzip, just add `z` in tar options above.
 * Make bbswitch work (switch off Nvidia 960M if not used. this is also
   related to powertop warning).
 * Make redshift work
-* Run ibus-setup to change candidate box to horizontal and the font.
+* Key ring.
