@@ -959,6 +959,13 @@ For HiDPI, follow https://wiki.archlinux.org/index.php/HiDPI#Official_HiDPI_supp
 Basically, Steam -> Settings -> Interface -> check "Enlarge text and
 icons based on monitor size" (restart required)
 
+To run steam with primus, follow the approaches in https://support.steampowered.com/kb_article.php?ref=6316-GJKC-7437,
+i.e.:
+
+1. Select a game in the library, select the Properties, click the 1SET LAUNCH OPTIONS...1 button and specify `primusrun %command%` for the command line. Or
+
+2. Run `primusrun steam`, which is inefficient compared with the 1st method.
+
 #### Programs
 
 One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
