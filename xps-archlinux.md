@@ -746,7 +746,7 @@ Append following to `~/.config/i3/config` to make it auto start:
 
 Configuration according to https://www.jianshu.com/p/2624fad33fe4
 
-When Chinese is enabled, press `Ctrl+\`` for options, use arrow key to
+When Chinese is enabled, press ``Ctrl+` `` for options, use arrow key to
 select `中/半/汉/`, and then select `漢字 -> 汉字` to change from
 Traditional Chinese to Simplified Chinese.
 
