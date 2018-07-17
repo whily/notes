@@ -17,3 +17,7 @@ Then
 * Similarly, to literally show () after [], HTML code &amp;#40; can be
   used for the left parenthesis '(' (of course other special symbols
   can be substituted in this case).
+  
+* To include a literal backtick (`` ` ``) inside a backtick code block, one can use
+  multiple backticks as the beginning and closing delimiters, and add spaces if needed. 
+  For example, by using ``` ``this is a back tick ` `` ``` can result in ``this is a back tick ` ``. 
