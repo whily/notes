@@ -1073,7 +1073,5 @@ If using gzip, just add `z` in tar options above.
   the bottom of the bar, might be due to some font config)
 * Full disk encryption using LUKS:
   https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Simple_partition_layout_with_LUKS
-* Make bbswitch work (switch off Nvidia 960M if not used. this is also
-  related to powertop warning).
 * Make redshift work
 * Key ring.
