@@ -515,6 +515,8 @@ mode "$mode_system" {
 bindsym $mod+c mode "$mode_system"
 ```
 
+One reference: [correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
+
 #### Themes
 
 Refer to the guide: https://wiki.archlinux.org/index.php/GTK%2B
@@ -994,9 +996,48 @@ https://wiki.archlinux.org/index.php/System_maintenance
 
 * Check failed systemd service with `systemctl --failed`. For any
   failed service, check its status with `systemctl status
-  failed-service` where 'failed-service` is the problematic service
+  failed-service` where `failed-service` is the problematic service
   name.
 * Check errors in journal by `journalctl -p 3 -xb`.
+
+#### Pacman usage
+
+[Pacman wiki](https://wiki.archlinux.org/index.php/Pacman) and 
+[Pacman Rosetta](https://wiki.archlinux.org/index.php/Pacman/Rosetta)
+provide comprehensive information regarding the usage of pacman. 
+Below is a list of useful pacman commands:
+
+* `pacman -Syu`： update the system
+* `pacman -S package_name`: install package
+* `pacman -U /path/to/package/package_name-version.pkg.tar.xz`: install local package file
+* `pacman -Rsn package_name`: remove a package, its dependencies not required by other packages, and its 
+   configuration file (except "dotfiles")
+* `pacman -Qi package_name`': display local package information
+* `pacman -Si package_name`: display remote package information
+* `pacman -Ql package_name`: display files provided by local package
+* `pacman -Fl package_name`: display files provided by remote package
+* `pacman -Qo /path/to/file_name`: dispaly which package a file in the file system belongs to
+* `pacman -Qe` : list packages installed explicitly
+* `pacman -Qdt`: list all packages no longer required as dependencies (orphans)
+
+#### General upgrade guidelines
+
+See a related discussion in https://youtu.be/CWOELeGlwiM
+
+* Suscribe (RSS) or check Archlinux news.
+* Upgrade frequency is up to user. Some prefer to update frequently e.g. daily, while
+  some recommends a update frequency between two weeks to one month.
+* If there is manul intervention update, then update immediately to avoid handling multiple
+  interventions.
+* Never perform partial upgrade (i.e. always perform `pacman -Syu`).
+* If one want to avoid frequent updates of critical packages, one may edit `/etc/pacman.conf` 
+  and enable the line `IgnorePkg = ...`. For example, one may add following packages (depending
+  on which are actually installed and/or which are preferred not to be upgraded frequently) `linux
+  linux-headers linux-lts llinux-lts-headers virtualbox virtualbox-guest-iso virtualbox-host-modules
+  virtualbox-host-modules-lts`.
+ * Avoid clearing the pacman cache, since the cache files can be used to downgrade to previous version
+   with `pacman -U /var/cache/pacman/pkg/package_name-version.pkg.tar.xz`. If disk space is really critically low,
+   one may try disk usage analyzer tools e.g. `ncdu`.
 
 #### Frequently used pacman commands
 
