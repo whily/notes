@@ -352,6 +352,10 @@ sudo systemctl enable lightdm
 sudo systemctl start lightdm
 ```
 
+For configuration of lightdm-gtk-greeter, either
+edit `/etc/lightdm/lightdm-gtk-greeter.conf`(configure
+`font-name` etc.) or use `lightdm-gtk-greeter-settings`.
+
 Optionally, one can install `redshift`.
 
 ``` shell
@@ -441,7 +445,6 @@ Suppose it tells you:
 A  session-wrapper=/etc/lightdm/Xsession
 ```
 
-
 Then inject these 2 line above the end line `exec $@` of file `Xsession`, so that it looks like:
 
 ``` shell
@@ -455,7 +458,8 @@ exec $@
 where .Xresource contains the line `Xft.dpi: 200`.
 
 For greeting screen, edit `/etc/lightdm/lightdm-gtk-greeter.conf` by
-adding the line `xft-dpi=200`.
+adding the line `xft-dpi=200`. One may configure the variables like
+`font-name` of LightDM GTK greeter.
 
 Then restart to apply these settings:
 
@@ -981,7 +985,31 @@ i.e.:
 
 1. Select a game in the library, select the Properties, click the 1SET LAUNCH OPTIONS...1 button and specify `primusrun %command%` for the command line. Or
 
-2. Run `primusrun steam`, which is inefficient compared with the 1st method.
+2. Run `primusrun steam`, which is inefficient compared with the 1st
+   method.
+
+#### SSH key
+
+To add the SSH key to the SSH agent, run the following commands:
+
+``` shell
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+```
+
+To start SSH agent automatically, follow
+the
+[SSH agent guide](https://wiki.archlinux.org/index.php/SSH_keys#ssh-agent),
+by adding the below to `~/.zshrc` (or `~/.bashrc`):
+
+``` shell
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
+```
 
 #### Programs
 
@@ -1017,15 +1045,15 @@ https://wiki.archlinux.org/index.php/System_maintenance
 
 #### Pacman usage
 
-[Pacman wiki](https://wiki.archlinux.org/index.php/Pacman) and 
+[Pacman wiki](https://wiki.archlinux.org/index.php/Pacman) and
 [Pacman Rosetta](https://wiki.archlinux.org/index.php/Pacman/Rosetta)
-provide comprehensive information regarding the usage of pacman. 
+provide comprehensive information regarding the usage of pacman.
 Below is a list of useful pacman commands:
 
 * `pacman -Syu`： update the system
 * `pacman -S package_name`: install package
 * `pacman -U /path/to/package/package_name-version.pkg.tar.xz`: install local package file
-* `pacman -Rsn package_name`: remove a package, its dependencies not required by other packages, and its 
+* `pacman -Rsn package_name`: remove a package, its dependencies not required by other packages, and its
    configuration file (except "dotfiles")
 * `pacman -Qi package_name`': display local package information
 * `pacman -Si package_name`: display remote package information
@@ -1045,7 +1073,7 @@ See a related discussion in https://youtu.be/CWOELeGlwiM
 * If there is manul intervention update, then update immediately to avoid handling multiple
   interventions.
 * Never perform partial upgrade (i.e. always perform `pacman -Syu`).
-* If one want to avoid frequent updates of critical packages, one may edit `/etc/pacman.conf` 
+* If one want to avoid frequent updates of critical packages, one may edit `/etc/pacman.conf`
   and enable the line `IgnorePkg = ...`. For example, one may add following packages (depending
   on which are actually installed and/or which are preferred not to be upgraded frequently) `linux
   linux-headers linux-lts llinux-lts-headers virtualbox virtualbox-guest-iso virtualbox-host-modules
