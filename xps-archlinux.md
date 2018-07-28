@@ -347,7 +347,7 @@ sudo pacman -S i3
 
 # After start there will be a guidance choose win as default modifier.
 
-sudo pacman -S lightdm-gtk-greeter
+sudo pacman -S lightdm-gtk-greeter lightdm-gtk-greeter-settings
 sudo systemctl enable lightdm
 sudo systemctl start lightdm
 ```
@@ -565,6 +565,14 @@ your user, run `chsh -s /bin/zsh`.
 Install oh-my-zsh (which changes default shell to zsh as well):
 
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+To use
+[oh-my-zsh cheatsheet](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet),
+add the following line to .zshrc
+
+``` shell
+source  ~/.oh-my-zsh/templates/zshrc.zsh-template
+```
 
 Install packages powerline powerline-fonts.
 
@@ -803,9 +811,6 @@ suspended by TLP. Run `lsusb | grep Elan` to find the USB device ID.
 In my case, it is 04f3:21d5. Then add the ID into the line of
 `USB_WHITELIST` of tlp configuration file `/etc/default/tlp`.
 
-One may use `sensors` (in package `lm_sensors`) to view the system
-temperatures etc.
-
 [Powertop user guide](https://01.org/sites/default/files/page/powertop_users_guide_201412.pdf) is
 a nice read to understand principles of power management and
 powertop's usage. To run measurements of `powertop`, one may run
@@ -825,6 +830,16 @@ from [TLP FAQ](https://linrunner.de/en/tlp/docs/tlp-faq.html):
 * Autosuspend for USB device USB Receiver [Logitech]: generally USB
   input device should not be autosuspended. Autosuspend USB receiver
   causes frequent freezing of the mouse.
+
+#### CPU temperature monitoring
+
+Install packages `lm_sensors` and `thermald`. Run `sudo
+sensors-detect` to detect the sensors and enable the services. For me,
+I only allow the first detection and skip the remainning ones. One may
+use `sensors` to view the system temperatures etc.
+
+Run`systemctl enable --now thermald`.
+
 
 #### SSD TRIM
 
