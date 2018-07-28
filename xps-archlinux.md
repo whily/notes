@@ -455,7 +455,8 @@ xrdb -merge ~/.Xresources
 exec $@
 ```
 
-where .Xresource contains the line `Xft.dpi: 200`.
+where .Xresource contains the line `Xft.dpi: 200`. NOte that settings
+in `~/.Xresources` can be confirmed by checking the output of `xrdq -q`.
 
 For greeting screen, edit `/etc/lightdm/lightdm-gtk-greeter.conf` by
 adding the line `xft-dpi=200`. One may configure the variables like
@@ -1010,6 +1011,10 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)"
 fi
 ```
+
+#### Just for fun
+
+Install `fortune-mod` and add `fortune` to the end of `~/.zshrc`.
 
 #### Programs
 
