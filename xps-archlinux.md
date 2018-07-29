@@ -365,7 +365,6 @@ nano pw ~/.config/redshift.conf
 sudo systemctl--user enable redshift
 ```
 
-
 Now let's configured i3. Firstly, install the following packages
 
     awesome-terminal-fonts conky feh scrot gnome-control-center gnome-settings-daemon
@@ -391,6 +390,9 @@ exec --no-startup-id feh --recursive --randomize --bg-fill ~/Pictures/Wallpapers
 # Adjust screen brightness.
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+
+# Screenshot
+bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
 ```
 
 Following the guide to beautify i3wm: http://searene.me/2016/10/07/beautify-i3wm/
@@ -429,6 +431,12 @@ Install xfce4-terminal.
 sudo pacman -S xfce4-terminal
 sed -i s/i3-sensible-terminal/xfce4-terminal/g ~/.config/i3/config
 ```
+
+To allow Emacs key binding in xfce4-terminal, in
+Edit->Preference->Advanced, check the following:
+
+- Disable all menu access keys (such as Alt+f)
+- Disable help window shortcut key (F1 by default)
 
 #### HiDpi
 
@@ -836,6 +844,14 @@ from [TLP FAQ](https://linrunner.de/en/tlp/docs/tlp-faq.html):
   input device should not be autosuspended. Autosuspend USB receiver
   causes frequent freezing of the mouse.
 
+#### NVME power saving
+
+Follow
+https://wiki.archlinux.org/index.php/Solid_State_Drive/NVMe#Power_Saving_APST
+
+Basically install AUR package `nvme-cli` and run `nvme get-feature -f
+0x0c -H /dev/nvme0` for analysis.
+
 #### CPU temperature monitoring
 
 Install packages `lm_sensors` and `thermald`. Run `sudo
@@ -861,6 +877,37 @@ systemd unit file `fstrim.timer` in package `util-linux` to activate
 TRIM weekly.
 
     $ systemctl enable fstrim.timer
+
+#### Trackpad input
+
+Install libinput (in package `xf86-input-libinput`) instead of
+synaptics. To enable tapping and two finger scrolling, following
+the
+[wiki](https://wiki.archlinux.org/index.php/Dell_XPS_15_(9550)#Touchpad)
+by adding `30-touchpad.conf` to `/etc/X11/xorg.conf.d`:
+
+``` ini
+ Section "InputClass"
+     Identifier "MyTouchPad"
+     MatchIsTouchpad "on"
+     Driver "libinput"
+     Option "Tapping" "on"
+     Option "Natural Scrolling" "on"
+ EndSection
+```
+
+#### Hibernation
+
+Based on
+https://wiki.archlinux.org/index.php/Dell_XPS_15_(9550)#Suspend_.26_Hibernate
+
+Write the following to `/etc/systemd/sleep.conf`:
+
+``` ini
+[Sleep]
+HibernateState=disk
+HibernateMode=shutdown
+```
 
 #### System search
 
@@ -1021,7 +1068,7 @@ Install `fortune-mod` and add `fortune` to the end of `~/.zshrc`.
 One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
 
 File manager: `pcmanfm-gtk3` (for Android phone access, install
-`gvfs-mtp`), and console based `ranger`
+`gvfs-mtp`), and console based `ranger`.
 
 Install following packages:
 
@@ -1031,11 +1078,29 @@ Install following packages:
     gnupg htop hugin imagemagick inkscape intltool kdenlive lame lensfun maxima markdown
     nasm p7zip postgresql povray python-pip qeum qgis racket redshift sbcl sbt scala
     scala-docs scala-sources screenfetch smplayer sqlite stardict stellarium texlive-most
-    tmux unzip unrar virtualbox wget xscreensaver zip
+    tmux unzip unrar virtualbox virtualbox-host-modules-arch wget xscreensaver zip
 
 Install following AUR packages:
 
-    netease-cloud-music
+    netease-cloud-music shellcheck
+
+#### Emacs keybinding
+
+Follow https://wiki.archlinux.org/index.php/GTK%2B#Emacs_keybindings
+for GTK and XFCE.
+
+For GTK2, add `gtk-key-theme-name="Emacs"` to `~/.gtkrc-2.0`.
+
+For GTK3 add the following to `~/.config/gtk-3.0/settings.ini`:
+
+``` ini
+[Settings]
+gtk-key-theme-name=Emacs
+```
+
+Then run `gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"`
+
+For XFCE, run `xfconf-query -c xsettings -p /Gtk/KeyThemeName -n -t string -s Emacs`.
 
 ## Maintenance
 
