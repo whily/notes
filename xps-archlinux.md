@@ -1038,25 +1038,13 @@ i.e.:
 
 #### SSH key
 
-To add the SSH key to the SSH agent, run the following commands:
-
-``` shell
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-```
-
-To start SSH agent automatically, follow
+To add the SSH key to the SSH agent, install package `keychain`, follow
 the
-[SSH agent guide](https://wiki.archlinux.org/index.php/SSH_keys#ssh-agent),
+[SSH agent guide](https://wiki.archlinux.org/index.php/SSH_keys#Keychain),
 by adding the below to `~/.zshrc` (or `~/.bashrc`):
 
 ``` shell
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > ~/.ssh-agent-thing
-fi
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-    eval "$(<~/.ssh-agent-thing)" > /dev/null
-fi
+eval $(keychain --eval --quiet id_rsa)
 ```
 
 #### Just for fun
