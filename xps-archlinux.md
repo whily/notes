@@ -1131,7 +1131,18 @@ Below is a list of useful pacman commands:
 * `pacman -Fl package_name`: display files provided by remote package
 * `pacman -Qo /path/to/file_name`: dispaly which package a file in the file system belongs to
 * `pacman -Qe` : list packages installed explicitly
-* `pacman -Qdt`: list all packages no longer required as dependencies (orphans)
+* `pacman -Qdt`: list all packages no longer required as dependencies
+  (orphans)
+
+#### Troubleshooting
+
+If cannot boot to GUI, chroot and type `systemctl disable lightdm` to
+fallback to CLI.
+
+#### Analyze boot time
+
+Use either `systemd-analyze blame` for text output or `systemd-analyze
+plot > plot.svg` for graphic output.
 
 #### General upgrade guidelines
 
