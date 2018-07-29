@@ -492,6 +492,7 @@ programs in specific workspaces.
 assign [class="^Xfce4-terminal$"] → 1
 assign [class="^Emacs$"] → 2
 assign [class="^Chromium$"] → 3
+assign [class="^Pcmanfm$"] → 4
 assign [class="^Steam$"] → 10
 ```
 
@@ -1045,6 +1046,14 @@ by adding the below to `~/.zshrc` (or `~/.bashrc`):
 
 ``` shell
 eval $(keychain --eval --quiet id_rsa)
+```
+
+To make keychain environent available to Emacs (especially Magit), one
+may add the following to `.emacs`:
+
+``` lisp
+(use-package keychain-environment)
+(keychain-refresh-environment)
 ```
 
 #### Just for fun
