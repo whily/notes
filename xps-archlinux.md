@@ -542,7 +542,8 @@ between GTK+ and QT applications.
 
 Install the package `lxappearance` for GTK+ theme configuration.
 Launch `lxapperance` and select `Breeze` for Widget, Icon Theme and
-Mouse Cursor.
+Mouse Cursor (it seems that `pcmanfm` does not work well with `Breeze`
+theme, so use `Arc` instead).
 
 Edit `~/.gtkrc-2.0`, change the font as
 
@@ -1073,7 +1074,7 @@ Install following packages:
     bochs breeze-icons celestia chromium coq cmatrix curl darktable deluge
     displaycal emacs exiv2 ffmpeg frei0r-plugins gap gdb gimp gimp-help-en git
     gnupg htop hugin imagemagick inkscape intltool kdenlive lame lensfun maxima markdown
-    nasm p7zip postgresql povray python-pip qeum qgis racket redshift sbcl sbt scala
+    nasm net-tools p7zip postgresql povray python-pip qeum qgis racket redshift sbcl sbt scala
     scala-docs scala-sources screenfetch smplayer sqlite stardict stellarium texlive-most
     tmux unzip unrar virtualbox virtualbox-host-modules-arch wget xscreensaver zip
 
@@ -1126,6 +1127,8 @@ Below is a list of useful pacman commands:
 * `pacman -Si package_name`: display remote package information
 * `pacman -Ql package_name`: display files provided by local package
 * `pacman -Fl package_name`: display files provided by remote package
+* `pacman -Fs file_name`: search a package contains a specific file
+  (needs to run `pacman -Fy` to sync the database).
 * `pacman -Qo /path/to/file_name`: dispaly which package a file in the file system belongs to
 * `pacman -Qe` : list packages installed explicitly
 * `pacman -Qdt`: list all packages no longer required as dependencies
@@ -1195,4 +1198,3 @@ If using gzip, just add `z` in tar options above.
 * Full disk encryption using LUKS:
   https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Simple_partition_layout_with_LUKS
 * Make redshift work
-* Key ring.
