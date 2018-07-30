@@ -935,6 +935,15 @@ $ sudo ncdu -x /
 sudo pacman -S cuda cudnn
 ```
 
+Note that NVIDIa 390xx driver is not compabible with CUDD version 9.2
+or higher (as from
+https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
+Table 1 CUDA Toolkit and Compatible Driver Versions), therefore CUDA
+9.1
+(e.g.
+[this package](https://archive.archlinux.org/packages/c/cuda/cuda-9.1.85.3-5-x86_64.pkg.tar.xz))should
+be installed instead (and add `cuda` to IgnorePkg list in pacman.conf).
+
 The `cuda` package is installed in `/opt/cuda`. One needs to setup
 environment variables correctly, e.g. modifying `.zshrc`:
 
@@ -996,13 +1005,20 @@ Run `anaconda-navigator` to verify the installation.
 Use the mirror in Tsinghua.
 
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
     conda config --set show_channel_urls yes
 
 Test the mirror by running `conda install numpy`.
 
 3. PyTorch
 
-    conda install pytorch torchvision cuda80 -c soumith
+    conda install pytorch torchvision cuda91 -c cloud
+
+Note that we install from channel cloud from mirror tuna to get
+reasonable speed in China
+(see [this](https://github.com/pytorch/pytorch/issues/990)
+and [this](https://github.com/tuna/issues/issues/363)).
 
 And then test pytorch by running following Python code.
 
@@ -1011,6 +1027,11 @@ import torch
 print(torch.cuda.is_available())
 
 ```
+
+To update Andaconda packages, type `conda update --all`.
+
+To upgrade cuda version, uninstall related packages (e.g. pytorch,
+torchvision, cudaxx) and install the new versions.
 
 #### Mount NTFS partitions
 
@@ -1073,7 +1094,8 @@ Install following packages:
     acpi aria2 audacity autojump blender
     bochs breeze-icons celestia chromium coq cmatrix curl darktable deluge
     displaycal emacs exiv2 ffmpeg frei0r-plugins gap gdb gimp gimp-help-en git
-    gnupg htop hugin imagemagick inkscape intltool kdenlive lame lensfun maxima markdown
+    gnupg htop hugin imagemagick inkscape intltool kdenlive lame
+    lensfun maxima markdown mupdf
     nasm net-tools p7zip postgresql povray python-pip qeum qgis racket redshift sbcl sbt scala
     scala-docs scala-sources screenfetch smplayer sqlite stardict stellarium texlive-most
     tmux unzip unrar virtualbox virtualbox-host-modules-arch wget xscreensaver zip
@@ -1123,6 +1145,8 @@ Below is a list of useful pacman commands:
 * `pacman -U /path/to/package/package_name-version.pkg.tar.xz`: install local package file
 * `pacman -Rsn package_name`: remove a package, its dependencies not required by other packages, and its
    configuration file (except "dotfiles")
+* `pacman -Ss package_name`: search remote package
+* `pacman -Qs package_name`: search local package
 * `pacman -Qi package_name`': display local package information
 * `pacman -Si package_name`: display remote package information
 * `pacman -Ql package_name`: display files provided by local package
