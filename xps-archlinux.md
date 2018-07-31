@@ -1122,6 +1122,11 @@ Then run `gsettings set org.gnome.desktop.interface gtk-key-theme "Emacs"`
 
 For XFCE, run `xfconf-query -c xsettings -p /Gtk/KeyThemeName -n -t string -s Emacs`.
 
+#### Zeal
+
+Install `zeal` package. For Emacs integration, install `zeal-at-point`
+package. For IntelliJ IDEA integration, install `Dash` plugin.
+
 ## Maintenance
 
 Follow the guide
