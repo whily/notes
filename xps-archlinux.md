@@ -538,7 +538,7 @@ Refer to the guide: https://wiki.archlinux.org/index.php/GTK%2B
 Install the following packages, with breeze packages for uniform look
 between GTK+ and QT applications.
 
-    arc-gtk-theme numix-gtk-theme breeze breeze-kde4 breeze-gtk
+    arc-gtk-theme numix-gtk-theme breeze breeze-kde4 breeze-gtk breeze-icons
 
 Install the package `lxappearance` for GTK+ theme configuration.
 Launch `lxapperance` and select `Breeze` for Widget, Icon Theme and
@@ -1087,22 +1087,49 @@ Install `fortune-mod` and add `fortune` to the end of `~/.zshrc`.
 One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
 
 File manager: `pcmanfm-gtk3` (for Android phone access, install
-`gvfs-mtp`), and console based `ranger`.
+`gvfs-mtp`), and console based `ranger`. To configure `pcmanfm`,
+select `Edit | Preferences | Advanced`, and configure `Terminal
+emulator` to `xfce4-terminal` and `Archiver integration` to
+`xarchiver` (after installation of the package of course).
 
-Install following packages:
+Install following packages (with suffix [A] denoting AUR package):
 
-    acpi aria2 audacity autojump blender
-    bochs breeze-icons celestia chromium coq cmatrix curl darktable deluge
-    displaycal emacs exiv2 ffmpeg frei0r-plugins gap gdb gimp gimp-help-en git
-    gnupg htop hugin imagemagick inkscape intltool kdenlive lame
-    lensfun maxima markdown mupdf
-    nasm net-tools p7zip postgresql povray python-pip qeum qgis racket redshift sbcl sbt scala
-    scala-docs scala-sources screenfetch smplayer sqlite stardict stellarium texlive-most
-    tmux unzip unrar virtualbox virtualbox-host-modules-arch wget xscreensaver zip
-
-Install following AUR packages:
-
-    netease-cloud-music shellcheck
+- 3D modelling: `blender povray`
+- Archiver: `p7zip unzip unrar zip`
+- Astronomy: `celstia stellarium`
+- Audio converter: `lame`
+- Audio edtor: `audacity`
+- Browser: `chromium`
+- CLI: `autojump shellcheck[A]`
+- Computer algebra: `gap maxima`
+- Database: `postgresql sqlite`
+- Development: `gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Dictionary: `stardict`
+- Download tools: `aria2 curl deluge wget`
+- Encryption: `gnupg`
+- Fun: `cmatrix xscreensaver`
+- Geography: `qgis`
+- Image processing: `imagemagick`
+- Metadata: `exiv2`
+- Markdown: `markdown`
+- Monitor calibration: `dispalycal`
+- Music player: `netease-cloud-music[A]`
+- Network utility: `net-tools`
+- PDF viewer: `mupdf-gl1
+- Photo editor: `darktable hugin lensfun`
+- Proof assistant: `coq`
+- Raster graphics editor: `gimp gimp-help-en`
+- System: `acpi`
+- System information viewer: `screenfetch`
+- System monitoring: `htop`
+- Terminal multiplexer: `tmux`
+- The Editor and everything: `emacs`
+- Typesetting: `texlive-most`
+- Vector graphics editor: `inkscape`
+- Video converter: `ffmpeg frei0r-plugins`
+- Video editor: `kdenlive`
+- Video player: `smplayer`
+- Virtualization: `bochs qemu virtualbox virtualbox-host-modules-arch`
 
 #### Emacs keybinding
 
