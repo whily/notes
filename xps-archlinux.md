@@ -333,6 +333,17 @@ containing `wheel` to enable running root commands from wheel group.
 
 Now login as regular user just created.
 
+#### AUR tool: Yay
+
+The initial installation of Yay can be done by cloning the PKGBUILD
+and building with makepkg.
+
+``` shell
+# git clone https://aur.archlinux.org/yay.git
+# cd yay
+# makepkg -si
+```
+
 #### Xorg and i3
 
 i3(wm) is a flexible tilting window manager. For details, please refer
@@ -347,14 +358,22 @@ sudo pacman -S i3
 
 # After start there will be a guidance choose win as default modifier.
 
-sudo pacman -S lightdm-gtk-greeter lightdm-gtk-greeter-settings
+yay -S lightdm-webket2-greeter
 sudo systemctl enable lightdm
 sudo systemctl start lightdm
 ```
 
-For configuration of lightdm-gtk-greeter, either
-edit `/etc/lightdm/lightdm-gtk-greeter.conf`(configure
-`font-name` etc.) or use `lightdm-gtk-greeter-settings`.
+Edit `/etc/lightdm/lightdm.conf` to change the greeter:
+
+``` ini
+[Seat:*]
+...
+greeter-session=lightdm-webkit2-greeter
+```
+
+One can edit `/etc/lightdm/lightdm-webkit2-greeter.conf` for
+configuration e.g. set `webkit-theme` to another one (available themes
+in `/usr/share/lightdm-webkit/themes`).
 
 Optionally, one can install `redshift`.
 
@@ -466,9 +485,10 @@ exec $@
 where .Xresource contains the line `Xft.dpi: 200`. NOte that settings
 in `~/.Xresources` can be confirmed by checking the output of `xrdq -q`.
 
-For greeting screen, edit `/etc/lightdm/lightdm-gtk-greeter.conf` by
-adding the line `xft-dpi=200`. One may configure the variables like
-`font-name` of LightDM GTK greeter.
+For greeting screen, edit the them file. For example, suppose
+light-webkit2-greeter them is `antergos`, then edit
+`/usr/share/lightdm-webkit/themes/antergos/css/style.css`, add one line
+`html { zoom: 2.0; }`.
 
 Then restart to apply these settings:
 
@@ -597,17 +617,6 @@ Add following content to .zshrc.
 if [[ -r /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
-```
-
-#### AUR tool: Yay
-
-The initial installation of Yay can be done by cloning the PKGBUILD
-and building with makepkg.
-
-``` shell
-# git clone https://aur.archlinux.org/yay.git
-# cd yay
-# makepkg -si
 ```
 
 #### Font and configuration
