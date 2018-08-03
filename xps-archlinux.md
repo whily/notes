@@ -1143,8 +1143,9 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `autojump shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Development: `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
 - Dictionary: `stardict`
+- Documentation `cheat-git[A] tldr-git[A]`
 - Download tools: `aria2 curl deluge wget`
 - Encryption: `gnupg`
 - Fun: `cmatrix xscreensaver`
@@ -1244,6 +1245,15 @@ fallback to CLI.
 
 Check various logs e.g. `/var/log/pacman.log` (which records
 everything from the initial installation of the system).
+
+To shutdown properly from unresonsive system, one can use kernel
+keyboard shortcuts,
+i.e.
+[Magic Sysreq](https://wiki.archlinux.org/index.php/Keyboard_shortcuts#Kernel).
+To enable Magic Sysreq at boot, edit `/etc/sysctl.d/99-sysctl.conf`
+and insert the text `kernel.sysrq = 1`. The Maigc Sysreq sequence is
+`Alt+Sysreq`+`REISUB` sequence where `Sysreq` is `PrtScr` key at
+laptop (and there is no need to press `Fn` key`.
 
 #### Analyze boot time
 
