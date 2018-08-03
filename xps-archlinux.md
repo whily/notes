@@ -1255,6 +1255,12 @@ and insert the text `kernel.sysrq = 1`. The Maigc Sysreq sequence is
 `Alt+Sysreq`+`REISUB` sequence where `Sysreq` is `PrtScr` key at
 laptop (and there is no need to press `Fn` key`.
 
+To force `fsck` at boot, enter `fsck.mode=false` as GRUB kernel
+parameter. For details on `fsck`, read
+https://wiki.archlinux.org/index.php/Fsck . It seems that `fsck` does
+not automatically run on my partitions, so I have to manually enable
+it e.g. `sudo tune2fs -c 30 /dev/nvme0n1p5`.
+
 #### Analyze boot time
 
 Use either `systemd-analyze blame` for text output or `systemd-analyze
