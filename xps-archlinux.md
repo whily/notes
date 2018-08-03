@@ -457,45 +457,6 @@ Edit->Preference->Advanced, check the following:
 - Disable all menu access keys (such as Alt+f)
 - Disable help window shortcut key (F1 by default)
 
-#### HiDpi
-
-First check what wrapper LightDM uses:
-
-``` shell
-lightdm --show-config
-```
-
-Suppose it tells you:
-
-``` ini
-[Seat:*]
-A  session-wrapper=/etc/lightdm/Xsession
-```
-
-Then inject these 2 line above the end line `exec $@` of file `Xsession`, so that it looks like:
-
-``` shell
-# ...
-xrandr --dpi 200
-xrdb -merge ~/.Xresources
-# ...
-exec $@
-```
-
-where .Xresource contains the line `Xft.dpi: 200`. NOte that settings
-in `~/.Xresources` can be confirmed by checking the output of `xrdq -q`.
-
-For greeting screen, edit the them file. For example, suppose
-light-webkit2-greeter them is `antergos`, then edit
-`/usr/share/lightdm-webkit/themes/antergos/css/style.css`, add one line
-`html { zoom: 2.0; }`.
-
-Then restart to apply these settings:
-
-``` shell
-sudo systemctl restart lightdm
-```
-
 Install package `rofi`. Add the following line to `/.config/i3/config`.
 
 ``` ini
@@ -549,7 +510,56 @@ mode "$mode_system" {
 bindsym $mod+c mode "$mode_system"
 ```
 
-One reference: [correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
+One reference:
+[correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
+
+#### HiDPI
+
+First check what wrapper LightDM uses:
+
+``` shell
+lightdm --show-config
+```
+
+Suppose it tells you:
+
+``` ini
+[Seat:*]
+A  session-wrapper=/etc/lightdm/Xsession
+```
+
+Then inject these 2 line above the end line `exec $@` of file `Xsession`, so that it looks like:
+
+``` shell
+# ...
+xrandr --dpi 200
+xrdb -merge ~/.Xresources
+# ...
+exec $@
+```
+
+where .Xresource contains the line `Xft.dpi: 200`. NOte that settings
+in `~/.Xresources` can be confirmed by checking the output of `xrdq -q`.
+
+For greeting screen, edit the them file. For example, suppose
+light-webkit2-greeter them is `antergos`, then edit
+`/usr/share/lightdm-webkit/themes/antergos/css/style.css`, add one line
+`html { zoom: 2.0; }`.
+
+Then restart to apply these settings:
+
+``` shell
+sudo systemctl restart lightdm
+```
+
+For darktable, edit `~/.config/darktable/darktablerc`, set
+`panel_width=600` (original value is 350). One may also play with `screen_dpi_overwrite` and
+`screen_ppd_overwrite` but these are not needed for me. Then `cp
+/usr/share/darktable/darktable.css ~/.config/darktable`, and edit
+`~/.config/darktable/darktable.css`. For `* {}`, change `font: 8pt
+Sans;` to `font: 12pt Arimo`. For `#header_label,#darktable_label,#view_label,#view_dropdown *
+{}`, change `font-size: 15pt;` to `font-size: 20pt;` (this is slight
+increase and is optional).
 
 #### Themes
 
@@ -559,6 +569,10 @@ Install the following packages, with breeze packages for uniform look
 between GTK+ and QT applications.
 
     arc-gtk-theme numix-gtk-theme breeze breeze-kde4 breeze-gtk breeze-icons
+
+
+Below we show examples of setting font to `Source Sans Pro`. We could also
+use other sans serif fonts like `Arimo`.
 
 Install the package `lxappearance` for GTK+ theme configuration.
 Launch `lxapperance` and select `Breeze` for Widget, Icon Theme and
@@ -738,7 +752,7 @@ make it work in current session
 
 ``` shell
 # 396 driver has issues, so stay with 390 driver for now.
-$ sudo pacman -S nvidia-390xx nvidia-390xx-utils primus
+$ sudo pacman -S nvidia-390xx nvidia-390xx-utils opencl-nvidia-390xx primus
 nvidia-390xx-settings bumblebee mesa
 $ sudo gpasswd -a your-usr-name bumblebee
 $ sudo systemctl enable bumblebeed
@@ -752,6 +766,8 @@ $ optirun glxspheres64
 
 Install `bbswitch` to automatically switch off NVIDIA card as XPS 9550
 uses Optimus.
+
+To check OpenCL status, one can install package `clinfo`.
 
 #### Chinese input
 
@@ -888,6 +904,21 @@ systemd unit file `fstrim.timer` in package `util-linux` to activate
 TRIM weekly.
 
     $ systemctl enable fstrim.timer
+
+#### S.M.A.R.T for SSD
+
+Follow the [guide](https://wiki.archlinux.org/index.php/S.M.A.R.T.).
+Install package `smartmontools` first.
+
+After running `sudo smartctl -i /dev/nvme0n1 | grep 'SMART support is:',
+it is supposed to return that SMART is activated and/or enabled.
+However, this is not the case for my NVMD SSD (Intel 760p 1TB). So I
+just enable SMART by `sudo smartctl --smart=on /dev/nvme0n1`.
+
+It seems that capability (`-c`) and test (`-t`) commands do not return
+much useful information. The health check command `sudo smartctl -H
+/dev/nvme0n1` returns `PASSED` and `sudo smartctl -a /dev/nvme0n1`
+returns all SMART information.
 
 #### Trackpad input
 
@@ -1163,6 +1194,13 @@ For XFCE, run `xfconf-query -c xsettings -p /Gtk/KeyThemeName -n -t string -s Em
 Install `zeal` package. For Emacs integration, install `zeal-at-point`
 package. For IntelliJ IDEA integration, install `Dash` plugin.
 
+#### Computer Go
+
+Firstly, make sure OpenCL is correctly set up (refer to the
+installation of Graphics drivers above) and GPU is enabled. Then
+install the following AUR packages: `leela-zero-git sabaki leezie`.
+
+
 ## Maintenance
 
 Follow the guide
@@ -1203,6 +1241,9 @@ Below is a list of useful pacman commands:
 
 If cannot boot to GUI, chroot and type `systemctl disable lightdm` to
 fallback to CLI.
+
+Check various logs e.g. `/var/log/pacman.log` (which records
+everything from the initial installation of the system).
 
 #### Analyze boot time
 
