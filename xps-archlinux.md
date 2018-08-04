@@ -615,7 +615,7 @@ Install oh-my-zsh (which changes default shell to zsh as well):
 
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-To use
+Optionally, To use
 [oh-my-zsh cheatsheet](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet),
 add the following line to .zshrc
 
@@ -1140,7 +1140,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Audio converter: `lame`
 - Audio edtor: `audacity`
 - Browser: `chromium`
-- CLI: `autojump shellcheck[A]`
+- CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
 - Development: `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
@@ -1283,7 +1283,8 @@ See a related discussion in https://youtu.be/CWOELeGlwiM
   virtualbox-host-modules-lts`.
  * Avoid clearing the pacman cache, since the cache files can be used to downgrade to previous version
    with `pacman -U /var/cache/pacman/pkg/package_name-version.pkg.tar.xz`. If disk space is really critically low,
-   one may try disk usage analyzer tools e.g. `ncdu`.
+   one may try disk usage analyzer tools e.g. `ncdu`, or follow
+   the [guide for clean the package cache](https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache).
 
 #### Frequently used pacman commands
 
