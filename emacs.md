@@ -11,3 +11,7 @@ A useful link: http://ergoemacs.org/emacs/emacs_list_and_set_font.html
 * Check the character set, font etc. for the current character by typing
 
     M-x describe-char
+
+### Unicode character
+
+Type `Ctrl+x 8 Enter`, then type Unicode character name or Hex value.
