@@ -460,12 +460,28 @@ Edit->Preference->Advanced, check the following:
 Install package `rofi`. Add the following line to `/.config/i3/config`.
 
 ``` ini
-bindsym $mod+d exec "rofi -show run -font 'DejaVu Sans Mono 26'"
+bindsym $mod+d exec "rofi -show run"
 ```
 
-Press $mod+d to launch applications just like Alfred in OS X or Win key in Windows
+Install packages `qalculate-gtk` (including CLI program `qalc`). Since
+AUR package `rofi-calc` cannot be installed by `yay`, so follow
+[install from source guidelines](https://github.com/svenstaro/rofi-calc).
 
-Add following to `~/.config/i3/config` to automatically place these
+Run `rofi-theme-selector` to select theme. Edit `~/.config/rofi/confi`
+for theme, font. An example is as below:
+
+``` ini
+rofi.theme: /usr/share/rofi/themes/Arc.rasi
+rofi.font:  Cousine 26
+```
+
+There are various Rofi scripts as in
+https://github.com/miroslavvidovic/rofi-scripts, e.g.
+https://github.com/miroslavvidovic/rofi-scripts
+
+Press $mod+d to launch applications just like Alfred in OS X or Win key in Windows.
+
+Edit `~/.config/i3/config` to automatically place these
 programs in specific workspaces.
 
 ``` ini
@@ -1143,7 +1159,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Development: atom `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A] tldr-git[A]`
 - Download tools: `aria2 curl deluge wget`
