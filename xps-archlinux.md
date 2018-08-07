@@ -1165,7 +1165,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: atom `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Development: `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A] tldr-git[A]`
 - Download tools: `aria2 curl deluge wget`
@@ -1178,10 +1178,12 @@ Install following packages (with suffix [A] denoting AUR package):
 - Monitor calibration: `dispalycal`
 - Music player: `netease-cloud-music[A]`
 - Network utility: `net-tools`
-- PDF viewer: `mupdf-gl1
+- PDF viewer: `mupdf-gl1`
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en`
+- Screencast: `peek[A] screnkey[A]`
+- Spell check: `aspell-en`
 - System: `acpi`
 - System information viewer: `screenfetch`
 - System monitoring: `htop`
