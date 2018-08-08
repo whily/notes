@@ -268,10 +268,12 @@ Finally, restart the machine by typing `reboot`
 #### Grub
 
 Optionally one can change GRUB resolution by editting
-`/etc/default/grub` with following example (this doesn't work on me)
+`/etc/default/grub` with following example (note that it is preferred
+to not add the bit depth suffix like `x32` since some bit depths might
+not be supported)
 
 ``` ini
-GRUB_GFXMODE=1024x768x32
+GRUB_GFXMODE=1024x768
 ```
 
 And run `grub-mkconfig -o /boot/grub/grub.cfg` after making changes.
@@ -1116,7 +1118,9 @@ icons based on monitor size" (restart required)
 To run steam with primus, follow the approaches in https://support.steampowered.com/kb_article.php?ref=6316-GJKC-7437,
 i.e.:
 
-1. Select a game in the library, select the Properties, click the 1SET LAUNCH OPTIONS...1 button and specify `primusrun %command%` for the command line. Or
+1. Select a game in the library, select Properties, in GENERAL tab,
+   click the `SET LAUNCH OPTIONS...` button and specify `primusrun
+   %command%` for the command line. Or
 
 2. Run `primusrun steam`, which is inefficient compared with the 1st
    method.
@@ -1165,7 +1169,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `cgasm[A] gdb git intltool nasm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Development: `cgasm[A] gdb git intltool nasm npm python-pip racket sbcl sbt scala scala-docs scala-sources`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A] tldr-git[A]`
 - Download tools: `aria2 curl deluge wget`
