@@ -1165,7 +1165,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Astronomy: `celstia stellarium`
 - Audio converter: `lame`
 - Audio edtor: `audacity`
-- Browser: `chromium`
+- Browser: `chromium w3m`
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
@@ -1182,7 +1182,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Monitor calibration: `dispalycal`
 - Music player: `netease-cloud-music[A]`
 - Network utility: `net-tools`
-- PDF viewer: `mupdf-gl1`
+- PDF viewer: `mupdf-gl1 evince`
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en`
@@ -1373,3 +1373,4 @@ If using gzip, just add `z` in tar options above.
 * Full disk encryption using LUKS:
   https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Simple_partition_layout_with_LUKS
 * Make redshift work
+* primusrun does not work while optirun works.
