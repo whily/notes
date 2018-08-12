@@ -382,8 +382,8 @@ Optionally, one can install `redshift`.
 ``` shell
 sudo pacman -S redshift
 # Make adjustment
-nano pw ~/.config/redshift.conf
-sudo systemctl--user enable redshift
+nano -w ~/.config/redshift.conf
+systemctl --user --now enable redshift
 ```
 
 Now let's configured i3. Firstly, install the following packages
@@ -467,7 +467,10 @@ bindsym $mod+d exec "rofi -show run"
 
 Install packages `qalculate-gtk` (including CLI program `qalc`). Since
 AUR package `rofi-calc` cannot be installed by `yay`, so follow
-[install from source guidelines](https://github.com/svenstaro/rofi-calc).
+[install from source
+guidelines](https://github.com/svenstaro/rofi-calc). Also install
+package `surfraw` and install package `rofi-surfraw` from
+https://github.com/carnager/rofi-scripts
 
 Run `rofi-theme-selector` to select theme. Edit `~/.config/rofi/confi`
 for theme, font. An example is as below:
@@ -1171,7 +1174,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Database: `postgresql sqlite`
 - Development: `cgasm[A] gdb git intltool nasm npm python-pip racket sbcl sbt scala scala-docs scala-sources`
 - Dictionary: `stardict`
-- Documentation `cheat-git[A] tldr-git[A]`
+- Documentation `cheat-git[A]`
 - Download tools: `aria2 curl deluge wget`
 - Encryption: `gnupg`
 - Fun: `cmatrix xscreensaver`
@@ -1372,5 +1375,4 @@ If using gzip, just add `z` in tar options above.
   the bottom of the bar, might be due to some font config)
 * Full disk encryption using LUKS:
   https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Simple_partition_layout_with_LUKS
-* Make redshift work
 * primusrun does not work while optirun works.
