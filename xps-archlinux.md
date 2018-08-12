@@ -1080,7 +1080,11 @@ Test the mirror by running `conda install numpy`.
 
 3. PyTorch
 
-    conda install pytorch torchvision cuda91 -c cloud
+    conda install pytorch torchvision cuda91
+
+One may also install other packages in the virtual environment (e.g.
+`jupyter matplotlib pandas scipy` which are included in `base` environment but
+not in newly created environment).
 
 Note that we install from channel cloud from mirror tuna to get
 reasonable speed in China
