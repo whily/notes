@@ -559,7 +559,7 @@ xrdb -merge ~/.Xresources
 exec $@
 ```
 
-where .Xresource contains the line `Xft.dpi: 200`. NOte that settings
+where .Xresource contains the line `Xft.dpi: 200`. Note that settings
 in `~/.Xresources` can be confirmed by checking the output of `xrdq -q`.
 
 For greeting screen, edit the them file. For example, suppose
@@ -666,7 +666,7 @@ Install following packages:
 
 Note that programming fonts are up to one's own taste, e.g. many
 people preferred Inconsolas or Deja Vu Sans Mono. And they can be
-configured separated in terminal, Emacs, IDEA...
+configured separately in terminal, Emacs, IDEA...
 
 Font configuration in Arch Linux is described in
 https://wiki.archlinux.org/index.php/Font_configuration
@@ -1080,6 +1080,8 @@ Test the mirror by running `conda install numpy`.
 
 3. PyTorch
 
+It is preferable to install packages in virtual environment.
+
     conda install pytorch torchvision cuda91
 
 One may also install other packages in the virtual environment (e.g.
@@ -1176,7 +1178,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `cgasm[A] gdb git intltool nasm npm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Development: `cgasm[A] gdb git gource intltool nasm npm python-pip racket sbcl sbt scala scala-docs scala-sources`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 curl deluge wget`
@@ -1204,7 +1206,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
 - Video editor: `kdenlive`
-- Video player: `smplayer`
+- Video player: `mpv` (Configuration according to https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations)
 - Virtualization: `bochs qemu virtualbox virtualbox-host-modules-arch`
 
 #### Emacs keybinding
@@ -1281,6 +1283,8 @@ Below is a list of useful pacman commands:
 
 * `pacman -Syu`： update the system
 * `pacman -S package_name`: install package
+* `pacman -S --asexplicit package_name`: fake install a dependency to
+  avoid it to be removed.
 * `pacman -U /path/to/package/package_name-version.pkg.tar.xz`: install local package file
 * `pacman -Rsn package_name`: remove a package, its dependencies not required by other packages, and its
    configuration file (except "dotfiles")
