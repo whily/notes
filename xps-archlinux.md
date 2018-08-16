@@ -749,6 +749,17 @@ setting (e.g. `Atom One Dark`) and one `Color Scheme` under `Editor`
 setting (e.g. `Atom One Dark`) and
 configure the suitable `Color Scheme Font`.
 
+Sometimes when run `adb devices` command, one gets error message `no
+permissions`. To solve the problem, run the following commands:
+
+``` shell
+adb kill-server
+sudo adb start-server
+adb devices
+```
+
+Pay attention to `sudo` above to pass the permission check.
+
 #### Sound
 To easily unmute and adjust sound level, install alsa-utils:
 
