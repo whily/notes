@@ -713,7 +713,6 @@ to install and configure UFW:
 # systemctl enable ufw
 # ufw default deny
 # ufw allow from 192.168.0.0/24
-# ufw allow Deluge
 # ufw limit SSH
 ```
 
@@ -1185,14 +1184,15 @@ Install following packages (with suffix [A] denoting AUR package):
 - Astronomy: `celstia stellarium`
 - Audio converter: `lame`
 - Audio edtor: `audacity`
-- Browser: `chromium w3m`
+- Browser: `chromium w3m pepper-flash`
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `cgasm[A] gdb git gource intltool nasm npm python-pip racket sbcl sbt scala scala-docs scala-sources`
+- Development: `cgasm[A] gdb git gource intltool nasm npm python-pip
+  racket sbcl sbt scala scala-docs scala-sources visual-studio-code-bin[A]`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
-- Download tools: `aria2 curl deluge wget`
+- Download tools: `aria2 curl wget`
 - Encryption: `gnupg`
 - Fun: `cmatrix xscreensaver`
 - Geography: `qgis`
