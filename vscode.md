@@ -2,9 +2,8 @@ Notes for Visual Studio Code, which is mainly used by me for web development.
 
 ### Extensions
 
-* ESLint
-* Material Theme
-* Material Icon Theme
+* Javascript: `ESLint`
+* Themes: `Dracula Official`, and `vscode-icons`.
 
 ### Keybindings
 
