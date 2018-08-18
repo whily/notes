@@ -833,6 +833,11 @@ Append following to `~/.config/i3/config` to make it auto start:
 
 Configuration according to https://www.jianshu.com/p/2624fad33fe4
 
+In Ibus tray icon, right click and select `Preferences`,  and
+configure `Keyboard Shortcuts` for `Next input method`. I prefer to
+use `<Control><Super>space` to avoid conflict with commonly used
+shortcuts. Remember to click `Apply` after type the combination.
+
 When Chinese is enabled, press ``Ctrl+` `` for options, use arrow key to
 select `中/半/汉/`, and then select `漢字 -> 汉字` to change from
 Traditional Chinese to Simplified Chinese.
@@ -844,6 +849,9 @@ module named 'gi'", there is a conflict between `anaconda3` and
 `ibus-setup`. First in home directory, run `chmod 000 anaconda3` to
 disable anaconda. Then run `ibus-setup` for configuration. Afterwards,
 run `chmod 755 anaconda3` to enable anaconda again.
+
+For additional customization of rime, see
+https://github.com/rime/home/wiki/CustomizationGuide
 
 #### Wallpaper
 
@@ -1189,7 +1197,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
 - Development: `cgasm[A] gdb git gource intltool nasm npm python-pip
-  racket sbcl sbt scala scala-docs scala-sources visual-studio-code-bin[A]`
+  racket sbcl sbt scala scala-docs scala-sources stow visual-studio-code-bin[A]`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 curl wget`
