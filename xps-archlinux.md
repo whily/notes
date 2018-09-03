@@ -346,6 +346,8 @@ and building with makepkg.
 # makepkg -si
 ```
 
+Use `yay -Syu --aur` to update all AUR packages.
+
 #### Xorg and i3
 
 i3(wm) is a flexible tilting window manager. For details, please refer
@@ -1152,6 +1154,9 @@ i.e.:
 2. Run `primusrun steam`, which is inefficient compared with the 1st
    method.
 
+To show FPS counter, Steam -> Settings -> In-Game, select in drop-down
+menu for FPS counter.
+
 #### SSH key
 
 To add the SSH key to the SSH agent, install package `keychain`, follow
@@ -1196,8 +1201,8 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `cgasm[A] gdb git gource intltool nasm npm python-pip
-  racket sbcl sbt scala scala-docs scala-sources stow visual-studio-code-bin[A]`
+- Development: `ccl[A] cgasm[A] gdb git gource intltool nasm npm python-pip
+  racket sbcl sbt scala scala-docs scala-sources stow subversion visual-studio-code-bin[A]`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 curl wget`
@@ -1214,7 +1219,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en`
-- Screencast: `peek[A] screnkey[A]`
+- Screencast: `peek screnkey[A]`
 - Spell check: `aspell-en`
 - System: `acpi`
 - System information viewer: `screenfetch`
@@ -1250,6 +1255,15 @@ For XFCE, run `xfconf-query -c xsettings -p /Gtk/KeyThemeName -n -t string -s Em
 
 Install `zeal` package. For Emacs integration, install `zeal-at-point`
 package. For IntelliJ IDEA integration, install `Dash` plugin.
+
+#### npm
+
+To install Node.js global packages into home directory, run the
+following as a normal user:
+
+``` shell
+cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_global && npm config set prefix=$HOME/.node_modules_global
+```
 
 #### Computer Go
 
