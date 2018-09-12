@@ -11,8 +11,7 @@ Some notes:
 - Arch Linux is dual booted with Windows 10. My / and /home partitions
   are /dev/nvme0n1p5 and /dev/nvme0n1p6, respectively.
 
-I mainly
-follows
+I mainly follows
 [Arch Linux installation guide]( https://wiki.archlinux.org/index.php/Installation_Guide)
 and the [XPS 9550 specific blog post]( https://ahxxm.com/151.moew/).
 
@@ -1201,8 +1200,8 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] gdb git gource intltool nasm npm python-pip
-  racket sbcl sbt scala scala-docs scala-sources stow subversion visual-studio-code-bin[A]`
+- Development: `ccl[A] cgasm[A] clojure code gdb git gource intltool leiningen[A] nasm npm python-pip
+  racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 curl wget`
