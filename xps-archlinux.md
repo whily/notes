@@ -361,7 +361,7 @@ sudo pacman -S i3
 
 # After start there will be a guidance choose win as default modifier.
 
-yay -S lightdm-webket2-greeter
+yay -S lightdm-webkit2-greeter
 sudo systemctl enable lightdm
 sudo systemctl start lightdm
 ```
@@ -460,7 +460,7 @@ Edit->Preference->Advanced, check the following:
 - Disable all menu access keys (such as Alt+f)
 - Disable help window shortcut key (F1 by default)
 
-Install package `rofi`. Add the following line to `/.config/i3/config`.
+Install package `rofi`. Add the following line to `~/.config/i3/config`.
 
 ``` ini
 bindsym $mod+d exec "rofi -show run"
@@ -772,14 +772,17 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 ```
-#### Keyboard remap: replace caps with ctrl
+#### Keyboard remap: swap caps with ctrl
 Once you accept this setting, you won’t step back.
 
 Add following content to ~/.Xmodmap:
 
-    clear lock
-    keycode 66 = Control_L
-    add control = Control_L Control_R
+    remove Lock = Caps_Lock
+    remove Control = Control_L
+    keysym Control_L = Caps_Lock
+    keysym Caps_Lock = Control_L
+    add Lock = Caps_Lock
+    add Control = Control_L
 
 We're using lightdm, no need to source that file.
 make it work in current session
