@@ -810,6 +810,15 @@ uses Optimus.
 
 To check OpenCL status, one can install package `clinfo`.
 
+#### Bluetooth
+
+Install packages `bluez`, `bluez-utils`, and `blueman`. Make sure
+`btusb` kernel module is loaded. Then start bluetooth service by `sudo
+systemctl enable --now bluetooth`. Use command `bdaddr` to check
+Bluetooth address.
+
+Install AUR package `hidclient` to emulate a Bluetooth keyboard.
+
 #### Chinese input
 
 ``` shell
@@ -1200,10 +1209,10 @@ Install following packages (with suffix [A] denoting AUR package):
 - Audio converter: `lame`
 - Audio edtor: `audacity`
 - Browser: `chromium w3m pepper-flash`
-- CLI: `shellcheck[A]`
+- CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clojure code gdb git gource intltool leiningen[A] nasm npm python-pip
+- Development: `ccl[A] cgasm[A] clojure gdb git gource intltool leiningen[A] nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
