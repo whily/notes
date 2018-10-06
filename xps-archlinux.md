@@ -1208,11 +1208,12 @@ Install following packages (with suffix [A] denoting AUR package):
 - Astronomy: `celstia stellarium`
 - Audio converter: `lame`
 - Audio edtor: `audacity`
-- Browser: `chromium w3m pepper-flash`
+- Browser: `chromium pepper-flash`
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clojure gdb git gource intltool leiningen[A] nasm npm python-pip
+- Development: `ccl[A] cgasm[A] clojure gdb git gource gradle intltool
+  kotlin leiningen[A] nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
