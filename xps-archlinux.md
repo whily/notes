@@ -731,11 +731,11 @@ Then install following packages:
 
 ``` shell
 sudo pacman -S jdk8-openjdk intellij-idea-community-edition
-yay android-sdk
+yay -S android-sdk
 ```
 
 Setup environment variables ANDROID_HOME, PATH, and CLASSPATH
-correctly, e.g modifying `.zshrc`.
+correctly, e.g modifying `.zshrc` or `.zshenv`.
 
 ``` ini
 export ANDROID_HOME=/opt/android-sdk
@@ -759,6 +759,9 @@ adb devices
 ```
 
 Pay attention to `sudo` above to pass the permission check.
+
+Available packages for Android SDK can be checked with `sdkmanager
+--list`, and selected packages can be installed by e.g. `sudo sdkmanager --install 'build-tools;27.0.3`
 
 #### Sound
 To easily unmute and adjust sound level, install alsa-utils:
@@ -1241,7 +1244,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Typesetting: `texlive-most`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
-- Video editor: `kdenlive`
+- Video editor: `davinci-resolve[A] kdenlive`
 - Video player: `mpv` (Configuration according to https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations)
 - Virtualization: `bochs qemu virtualbox virtualbox-host-modules-arch`
 
