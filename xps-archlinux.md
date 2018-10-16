@@ -1244,7 +1244,9 @@ Install following packages (with suffix [A] denoting AUR package):
 - Typesetting: `texlive-most`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
-- Video editor: `davinci-resolve[A] kdenlive`
+- Video editor: `davinci-resolve[A] kdenlive` (note: to run Davinci
+  Resolve on HiDPI screens, one needs to run the program like
+  `QT_DEVICE_PIXEL_RATIO=3 /opt/resolve/bin/resolve`)
 - Video player: `mpv` (Configuration according to https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations)
 - Virtualization: `bochs qemu virtualbox virtualbox-host-modules-arch`
 
