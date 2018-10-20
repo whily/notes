@@ -345,7 +345,9 @@ and building with makepkg.
 # makepkg -si
 ```
 
-Use `yay -Syu --aur` to update all AUR packages.
+Use `yay -Syu --aur` to update all AUR packages. Alternatively, one
+can run `yay --save --combinedupgrade` once, and then run `yay -Syu`
+afterwards to update both official and AUR packages.
 
 #### Xorg and i3
 
