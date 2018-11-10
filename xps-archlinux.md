@@ -825,6 +825,14 @@ Bluetooth address.
 Auto power-on bluetooth adapter after reboot by adding line
 `AutoEnable=true` in file `/etc/bluetooth/main.conf`.
 
+For pairing with Bluetooth device, see
+https://wiki.archlinux.org/index.php/Bluetooth#Pairing. Basically used
+command `bluetoothctl`, in the prompt, use `devices` to see Bluetooth
+MAC addresses (and type `scan on` if no devices are shown). Then type
+`pair ADDR` where `ADDR` is the Bluetooth MAC address you want to
+connect (TAB completion works here), and then type `connect ADDR` to
+connect the device (TAB completion works too).
+
 Install AUR package `hidclient` to emulate a Bluetooth keyboard.
 
 #### Chinese input
