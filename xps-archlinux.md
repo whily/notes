@@ -822,6 +822,9 @@ Install packages `bluez`, `bluez-utils`, and `blueman`. Make sure
 systemctl enable --now bluetooth`. Use command `bdaddr` to check
 Bluetooth address.
 
+Auto power-on bluetooth adapter after reboot by adding line
+`AutoEnable=true` in file `/etc/bluetooth/main.conf`.
+
 Install AUR package `hidclient` to emulate a Bluetooth keyboard.
 
 #### Chinese input
