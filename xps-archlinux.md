@@ -1235,6 +1235,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 curl wget`
 - Encryption: `gnupg`
+- File system: `exfat-utils`
 - Fun: `cmatrix xscreensaver`
 - Geography: `qgis`
 - Image processing: `imagemagick`
