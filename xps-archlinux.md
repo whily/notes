@@ -1225,6 +1225,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Audio converter: `lame`
 - Audio edtor: `audacity`
 - Browser: `chromium pepper-flash`
+- Chess: `scid_vs_pc[A] stockfish[A]`
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
@@ -1233,7 +1234,7 @@ Install following packages (with suffix [A] denoting AUR package):
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
-- Download tools: `aria2 curl wget`
+- Download tools: `aria2 baidupcs-go-git[A] curl wget`
 - Encryption: `gnupg`
 - File system: `exfat-utils`
 - Fun: `cmatrix xscreensaver`
