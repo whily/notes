@@ -1225,7 +1225,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Audio converter: `lame`
 - Audio edtor: `audacity`
 - Browser: `chromium pepper-flash`
-- Chess: `scid_vs_pc[A] stockfish[A]`
+- Chess: `scid_vs_pc[A] stockfish-git[A] pychess`
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
@@ -1293,37 +1293,6 @@ following as a normal user:
 ``` shell
 cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_global && npm config set prefix=$HOME/.node_modules_global
 ```
-
-#### Computer Go
-
-A good guide in http://fanaro.com.br/a-guide-to-go-ais/.
-Firstly, make sure OpenCL is correctly set up (refer to the
-installation of Graphics drivers above) and GPU is enabled. Then
-install the following AUR packages: `leela-zero-git leezie`. There
-seems to be problems to install AUR (at the time of writing: 4 August
-2018), and I have to manually install npm dependencies `ajv` and
-`electron`, and then `yay -S sabaki`. Add directory `/opt/Sabaki` to $PATH.
-
-For weights of Leela Zero, the best weight according to Leela Zero
-is [here](http://zero.sjeng.org/best-network) (511034... at 4 August
-2018), and weight converted from Facebook ELF is
-[here](http://zero.sjeng.org/networks/62b5417b64c46976795d10a6741801f15f857e5029681a42d02c9852097df4b9.gz)
-(62b541...). Suppose the weights are placed in `~/go/leela-zero/`.
-
-In Sabaki, go to `Engines > Manage Engines...`, click on Add and name
-the AI you’re going to implement. There are three lines to
-configure:
-
-1. Engine's executable path: `/usr/bin/leelaz`
-2. Arguments to engine: following argument is
-   used for Leela Zero: `--gtp --gpu 0 -w /path/to/weight-file -t 2
-   --noponder --timemanage off`, where `--gpu 0` means to use GPU
-   (remember to activate the GPU is needed), and absolute path (not
-   `~/..`) should be used for `/path/to/weight-file`.
-3. Initial commands for engine: `time_settings 0 5 1` while `5` means
-   AI to think for 5 seconds.
-
-To use an engine, just select `Engines > Attach...` and click on the arrows right next to Black and White.
 
 ## Maintenance
 
