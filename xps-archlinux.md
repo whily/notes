@@ -592,8 +592,8 @@ Refer to the guide: https://wiki.archlinux.org/index.php/GTK%2B
 Install the following packages, with breeze packages for uniform look
 between GTK+ and QT applications.
 
-    arc-gtk-theme numix-gtk-theme breeze breeze-kde4 breeze-gtk breeze-icons
-
+    arc-gtk-theme numix-gtk-theme breeze breeze-kde4 breeze-gtk
+    breeze-icons oxygen oxygen-icons la-capitaine-icon-theme-git[A] plasma-theme-helium[A]
 
 Below we show examples of setting font to `Source Sans Pro`. We could also
 use other sans serif fonts like `Arimo`.
@@ -617,7 +617,7 @@ gtk-font-name=Source Sans 13
 
 For QT5, follow the guide
 https://wiki.archlinux.org/index.php/Qt#Configuration_of_Qt5_apps_under_environments_other_than_KDE_Plasma
-
+//
 First install package `qt5ct`. Then set environment variable,
 QT_QPA_PLATFORMTHEME for user session, by adding the following line to `~/.xprofile`.
 
@@ -626,7 +626,9 @@ QT_QPA_PLATFORMTHEME for user session, by adding the following line to `~/.xprof
 ```
 
 Run `qt5ct`, set Appearnce and Icon Theme to Breeze, set font to
-Source Sans Pro for General font and Source Code Pro for fixed width font.
+Arimo/Source Sans Pro/Overpass Regular for General font and Source
+Code Pro/Hack for fixed width font. One may also launch Qt5
+application with a specific theme, e.g. `QT_STYLE_OVERRIDE=fusion krita`.
 
 #### zsh
 
@@ -661,14 +663,14 @@ fi
 
 Install following packages:
 
-    ttf-dejavu ttf-inconsolata ttf-croscore
+    ttf-dejavu ttf-inconsolata ttf-croscore otf-overpass ttf-hack
     adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
     adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts adobe-source-code-pro-fonts
     wqy-microhei wqy-zenhei wqy-bitmapfont
     ttf-arphic-ukai ttf-arphic-uming
 
 Note that programming fonts are up to one's own taste, e.g. many
-people preferred Inconsolas or Deja Vu Sans Mono. And they can be
+people preferred Inconsolas or Deja Vu Sans Mono. And they can beAri
 configured separately in terminal, Emacs, IDEA...
 
 Font configuration in Arch Linux is described in
