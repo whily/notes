@@ -797,9 +797,7 @@ make it work in current session
 #### Graphics
 
 ``` shell
-# 396 driver has issues, so stay with 390 driver for now.
-$ sudo pacman -S nvidia-390xx nvidia-390xx-utils opencl-nvidia-390xx primus
-nvidia-390xx-settings bumblebee mesa
+$ sudo pacman -S nvidia nvidia-utils opencl-nvidia primus nvidia-settings bumblebee mesa
 $ sudo gpasswd -a your-usr-name bumblebee
 $ sudo systemctl enable bumblebeed
 ```
@@ -1049,15 +1047,6 @@ $ sudo ncdu -x /
 sudo pacman -S cuda cudnn
 ```
 
-Note that NVIDIa 390xx driver is not compabible with CUDD version 9.2
-or higher (as from
-https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
-Table 1 CUDA Toolkit and Compatible Driver Versions), therefore CUDA
-9.1
-(e.g.
-[this package](https://archive.archlinux.org/packages/c/cuda/cuda-9.1.85.3-5-x86_64.pkg.tar.xz))should
-be installed instead (and add `cuda` to IgnorePkg list in pacman.conf).
-
 The `cuda` package is installed in `/opt/cuda`. One needs to setup
 environment variables correctly, e.g. modifying `.zshrc`:
 
@@ -1207,6 +1196,19 @@ may add the following to `.emacs`:
 
 Install `fortune-mod` and add `fortune` to the end of `~/.zshrc`.
 
+
+#### Chess
+
+Install following programs: `scid_vs_pc[A] stockfish-git[A] pychess`
+
+Download Syzygy tablebases, e.g. 5 piece tablebase from http://tablebase.lichess.ovh/tables/standard/3-4-5/
+
+To install lc0(https://github.com/LeelaChessZero/lc0), install
+`lc0-cudnn-git[A]` (of course make sure CUDNN is correctly installed
+for Nvidia graphics card), and install dependency `protobuf`. Download
+network from http://lczero.org/networks/. Then configure lc0 as UCI
+engine in programs like SCID, with parameter `--weights=/path/to/weights_xxx.pb.gz`.
+
 #### Programs
 
 One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
@@ -1225,7 +1227,6 @@ Install following packages (with suffix [A] denoting AUR package):
 - Audio converter: `lame`
 - Audio edtor: `audacity`
 - Browser: `chromium pepper-flash`
-- Chess: `scid_vs_pc[A] stockfish-git[A] pychess`
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
@@ -1240,6 +1241,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Fun: `cmatrix xscreensaver`
 - Geography: `qgis`
 - Image processing: `imagemagick`
+- Image viewer: `gthumb`
 - Metadata: `exiv2`
 - Markdown: `markdown`
 - Monitor calibration: `dispalycal`
@@ -1248,7 +1250,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - PDF viewer: `mupdf-gl1 evince`
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
-- Raster graphics editor: `gimp gimp-help-en`
+- Raster graphics editor: `gimp gimp-help-en krita`
 - Screencast: `peek screnkey[A]`
 - Spell check: `aspell-en`
 - System: `acpi`
