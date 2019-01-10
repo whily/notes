@@ -593,7 +593,7 @@ Install the following packages, with breeze packages for uniform look
 between GTK+ and QT applications.
 
     arc-gtk-theme numix-gtk-theme breeze breeze-kde4 breeze-gtk
-    breeze-icons oxygen oxygen-icons la-capitaine-icon-theme-git[A] plasma-theme-helium[A]
+    breeze-icons oxygen oxygen-icons la-capitaine-icon-theme-git[A]
 
 Below we show examples of setting font to `Source Sans Pro`. We could also
 use other sans serif fonts like `Arimo`.
@@ -1232,8 +1232,8 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clojure gdb git gource gradle intltool
-  kotlin leiningen[A] nasm npm python-pip
+- Development: `ccl[A] cgasm[A] clojure gdb git gource gradle hexyl[A]
+  intltool kotlin lazarus-gtk2 leiningen[A] nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
