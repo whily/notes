@@ -767,6 +767,13 @@ Pay attention to `sudo` above to pass the permission check.
 Available packages for Android SDK can be checked with `sdkmanager
 --list`, and selected packages can be installed by e.g. `sudo sdkmanager --install 'build-tools;27.0.3`
 
+To remove bloatware, one can run following commands
+
+``` shell
+adb shell pm list packages
+adb shell pm uninstall -k --user 0 pkg.name
+```
+
 #### Sound
 To easily unmute and adjust sound level, install alsa-utils:
 
