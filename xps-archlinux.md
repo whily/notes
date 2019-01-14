@@ -842,6 +842,34 @@ connect the device (TAB completion works too).
 
 Install AUR package `hidclient` to emulate a Bluetooth keyboard.
 
+
+#### Wacom Tablet CTL-672
+
+Follow the guide: https://wiki.archlinux.org/index.php/Wacom_tablet
+
+Basically, install package `xf86-input-wacom` and `kcm-wacomtablet`
+(for tablet configuration). Restart X (`sudo systemctl restart lightdm`).
+
+Permanent X.org configuration in file
+`/etc/X11/xorg.conf.d/72-wacom-options.conf`
+
+``` ini
+Section "InputClass"
+	Identifier "WACOM OPTIONS pen"
+	MatchDriver "wacom"
+	MatchProduct "Pen"
+	NoMatchProduct "eraser"
+	NoMatchProduct "cursor"
+EndSection
+
+Section "InputClass"
+	Identifier "WACOM OPTIONS eraser"
+	MatchDriver "wacom"
+	MatchProduct "eraser"
+EndSection
+```
+Restart X again to make the configuration effective.
+
 #### Chinese input
 
 ``` shell
