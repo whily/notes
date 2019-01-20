@@ -1417,7 +1417,9 @@ See a related discussion in https://youtu.be/CWOELeGlwiM
  * Avoid clearing the pacman cache, since the cache files can be used to downgrade to previous version
    with `pacman -U /var/cache/pacman/pkg/package_name-version.pkg.tar.xz`. If disk space is really critically low,
    one may try disk usage analyzer tools e.g. `ncdu`, or follow
-   the [guide for clean the package cache](https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache).
+   the [guide for clean the package
+   cache](https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache).
+   Or run command `sudo paccache -r` where `paccache` is in package `pacman-contrib`.
 
 #### Frequently used pacman commands
 
