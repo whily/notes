@@ -329,6 +329,8 @@ One can edit `/etc/vconsole.conf` and set font with `FONT=ter-132n`.
 
 Change foo to your desired user name.
 
+(Tip: to add user `foo` to group `grp`, use command `gpasswd -a foo grp`).
+
 Run `visudo` to edit file `/etc/sudoers`. Uncomment the 1st line
 containing `wheel` to enable running root commands from wheel group.
 
