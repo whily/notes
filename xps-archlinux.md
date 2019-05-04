@@ -329,7 +329,8 @@ One can edit `/etc/vconsole.conf` and set font with `FONT=ter-132n`.
 
 Change foo to your desired user name.
 
-(Tip: to add user `foo` to group `grp`, use command `gpasswd -a foo grp`).
+(Tip: to add user `foo` to group `grp`, use command `useradd -aG grp
+ foo` or `gpasswd -a foo grp`).
 
 Run `visudo` to edit file `/etc/sudoers`. Uncomment the 1st line
 containing `wheel` to enable running root commands from wheel group.
@@ -1284,7 +1285,6 @@ Install following packages (with suffix [A] denoting AUR package):
 - Metadata: `exiv2`
 - Markdown: `markdown`
 - Monitor calibration: `dispalycal`
-- Music player: `netease-cloud-music[A]`
 - Network utility: `net-tools`
 - PDF viewer: `mupdf-gl1 evince`
 - Photo editor: `darktable hugin lensfun`
