@@ -1285,7 +1285,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Metadata: `exiv2`
 - Markdown: `markdown`
 - Monitor calibration: `dispalycal`
-- Network utility: `net-tools`
+- Network utility: `mtr net-tools`
 - PDF viewer: `mupdf-gl1 evince`
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
