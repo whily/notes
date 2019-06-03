@@ -1239,7 +1239,7 @@ Install `fortune-mod` and add `fortune` to the end of `~/.zshrc`.
 
 #### Chess
 
-Install following programs: `scid_vs_pc[A] stockfish-git[A] pychess`
+Install following programs: `chessx[A] scid_vs_pc[A] stockfish-git[A] pychess`
 
 Download Syzygy tablebases, e.g. 5 piece tablebase from http://tablebase.lichess.ovh/tables/standard/3-4-5/
 
