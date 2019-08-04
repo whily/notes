@@ -668,6 +668,7 @@ Install following packages:
 
     ttf-dejavu ttf-inconsolata ttf-croscore otf-overpass ttf-hack
     adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
+    adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
     adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts adobe-source-code-pro-fonts
     wqy-microhei wqy-zenhei wqy-bitmapfont
     ttf-arphic-ukai ttf-arphic-uming
@@ -1300,7 +1301,8 @@ Install following packages (with suffix [A] denoting AUR package):
 - Typesetting: `texlive-most`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
-- Video player: `mpv` (Configuration according to https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations)
+- Video player: `mpv` (Configuration according to
+  https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations)
 - Virtualization: `bochs qemu virtualbox virtualbox-host-modules-arch`
 
 #### Emacs keybinding
