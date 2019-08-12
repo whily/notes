@@ -1337,6 +1337,21 @@ following as a normal user:
 cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_global && npm config set prefix=$HOME/.node_modules_global
 ```
 
+### Davinci Resolve
+
+Mainly follow
+https://finaldie.com/blog/install-davinci-resolve-16-on-arch-sound-issue-fixed/
+
+To run Resolve on HiDPI, start resolve with `QT_DEVICE_PIXEL_RATIO=3`.
+In addition, as I'm using Bumbleebee, I needs to use `primusrun` to
+run `resolve`, otherwise, the playback screen will be blank.
+
+It seems that the free version of Resolve does not support H.264
+video. Transcoding to supported codecs like ProRes are needed.
+
+
+One may need to check logs for troubleshooting: `~/.local/share/DaVinciResolve/logs`
+
 ## Maintenance
 
 Follow the guide
