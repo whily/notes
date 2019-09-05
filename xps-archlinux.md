@@ -783,6 +783,9 @@ To easily unmute and adjust sound level, install alsa-utils:
 
 pacman -S alsa-utils
 alsamixer # arrow select mixer, M mute/unmute it.
+
+Install `pavucontrol` to configure Pulse Audio.
+
 To make sound-related Fn keys working, append following to ~/.config/i3/config:
 
 ``` ini
@@ -1342,7 +1345,7 @@ cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_
 Mainly follow
 https://finaldie.com/blog/install-davinci-resolve-16-on-arch-sound-issue-fixed/
 
-To run Resolve on HiDPI, start resolve with `QT_DEVICE_PIXEL_RATIO=3`.
+To run Resolve on HiDPI, start resolve with `QT_DEVICE_PIXEL_RATIO=2`.
 In addition, as I'm using Bumbleebee, I needs to use `primusrun` to
 run `resolve`, otherwise, the playback screen will be blank.
 
