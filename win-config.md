@@ -27,11 +27,15 @@ Then view the file.
 Install `Enhanced Steam` by following instructions in github (using
 Devloper Mode to install local unpacked extension).
 
+### Noto fonts
+
+Install OTC fonts, e.g. https://github.com/googlefonts/noto-cjk/blob/master/NotoSansCJK-Light.ttc
+
 #### Color Management
 
 I tried to change color setttings in `Windows Mobility Center` from `Splendid Color`
 to `Generic Color` but couldn't find Dell customized setting at all. Since the program
-Premier Color doen't work at all and cannot be updated (as the time of writing: 
+Premier Color doen't work at all and cannot be updated (as the time of writing:
 13 August 2017. Either udpate manually or via Dell Command | Update fails), I simply
 uninstalled the program.
 
