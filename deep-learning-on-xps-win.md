@@ -18,6 +18,10 @@ Run `Anaconda Prompt`. If behind firewall, one may set environment variable like
     # Install Keras and Tensor flow. For CPU based deep learning, install tensorflow instead.
     conda install keras tensorflow-gpu
 
+### CUDA and cuDNN
+
+Select suitable version of [CUDA](https://developer.nvidia.com/cuda-toolkit-archive) and [cuDNN](https://developer.nvidia.com/cudnn) based on the version of corresponding packages installed by Anaconda. As of September 2019, I installed CUDA 10.0 and cuDNN 7.6.0. Install CUDA, and extract cuDNN to CUDA's installation directory.
+
 ### Configuration in Visual Studio Code
 
 Install `Python` extension. Select Anaconda from list of Python interpreters by typing `Ctrl+Shift+P` then `Python: Select Interpreter`. 
