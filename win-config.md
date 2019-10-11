@@ -2,8 +2,8 @@ Software installation in Windows
 
 ### Download from corresponding websites
 
-    Adobe Reader DC, AutoHotKey, Chrome, ConEmu, DriveStore Explorer,
-    Everything, Foobar2000, HoneyView, IDM, Potplayer, SpaceSniffer,
+    Adobe Reader DC, AutoHotKey, Chrome, ConEmu, Dism++, DriveStore Explorer,
+    Everything, Foobar2000, HoneyView, IDM, Kite, Potplayer, SpaceSniffer,
     TotalCommander, uTorrent, Wox
 
 ### Download UWP apps from Windows app store:
