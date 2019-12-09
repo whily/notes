@@ -7,6 +7,7 @@ Notes for Visual Studio Code, which is mainly used by me for web development.
 * Javascript: `Debugger for Chrome`, `ESLint`, `JavaScript (ES6) code
   snippets`, `Prettier - Code formatter`, and `Quokka.js`.
 * Keybinding: `Vim`
+* Python: `Python`
 * Themes: `Dracula Official`, and `vscode-icons`.
 
 ### Keybindings

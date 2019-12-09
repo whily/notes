@@ -145,7 +145,11 @@ swapon /mnt/swapfile
 ```
 
 Edit `/etc/pacman.d/mirrorlist` to select your mirror. For me the
-fasted mirror is http://mirrors.163.com/archlinux/$repo/is/$arch
+fasted mirror is http://mirrors.163.com/archlinux/$repo/is/$arch. One
+can use [mirror generator](https://www.archlinux.org/mirrorlist/) to
+generate a mirror, use `rankmirrors mirrorfile > mirror.fast` to rank
+the mirror according to connection speed, and then copy the generated
+file to `/etc/pacman.d/mirrorlist`.
 
 Install the base package with
 
@@ -263,6 +267,12 @@ umount -R /mnt
 Finally, restart the machine by typing `reboot`
 
 ## Configuration
+
+#### Pacman.conf
+
+To allow download resuming for pacman, edit `/etc/pacman.conf`,
+uncomment line with `XferCommand = /usr/bin/wget --passive-ftp -c -O
+%o %u'. It is not recommended to ` add line `DisableDownloadTimeout'.
 
 #### Grub
 
