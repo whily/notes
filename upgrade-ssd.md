@@ -52,7 +52,7 @@ upon prompt.
 
 For both save and restore, one may choose to check the image for reliability (peace of mind).
 
-## Task donw with GParted.
+## Task done with GParted.
 
 Reboot to use GParted to move and resize the partions as you like.
 
@@ -61,9 +61,11 @@ Reboot to use GParted to move and resize the partions as you like.
 Clonezilla copies the UUIDs of partitions correctly, therefore no need
 to update /etc/fstab.
 
-1) When dropped into "normal" Grub shell as in [Archlinux Grub
-guide](https://wiki.archlinux.org/title/GRUB#Using_the_command_shell),
-don't panic. Just type the following to boot correctly into Grub menu:
+### When dropped into "normal" Grub shell as in [Archlinux Grub guide](https://wiki.archlinux.org/title/GRUB#Using_the_command_shell)
+
+Don't panic. Just type the following to boot correctly into Grub menu
+(assuming boot partition is (hd0,gpt1) which can be checked by typing
+command 'ls' in Grub shell):
 
     insmod fat
     set root=(hd0,gpt1)
@@ -75,7 +77,16 @@ Then in Arch linux, re-install Grub:
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
     grub-mkconfig -o /boot/grub/grub.cfg
 
-2) Windows may do some fancy stuff to mess up the dual booting.
+### Windows runs into endless loop
+
+You meet this issue when first seeing "Preparing Automatic Repair" and
+you will be eventually presented an option for "Troubleshoot". Select
+it and then select "Advanced Options", and "Start-up Settings", and
+click "Restart". After restart, when presented with startup options,
+press "F4" key to boot into safe mode. After running into safe mode
+and restart again, Windows seems to work fine.
+
+### Windows may do some fancy stuff to mess up the dual booting.
 
 Firstly, turn off fast startup again. In Windows, Use `Win + S` to search *Power Options*,
 select *Choose what the power buttons do* in the left panel. In the right panel, for
@@ -83,8 +94,8 @@ select *Choose what the power buttons do* in the left panel. In the right panel,
 
 If during boot, the GRUB boot menu is not shown, one can first check the UEFI booting status
 by running efibootmgr in Ubuntu Live CD, e.g. to make sure the GRUB entry is still there (if
-one can see ubuntu as the output of running `efibootmgr`. Then in Windows, run `Command Prompt`
+one can see grub as the output of running `efibootmgr`). Then in Windows, run `Command Prompt`
 as administrator, and run the following command,
 with details in [this guide](https://itsfoss.com/no-grub-windows-linux/)
 
-    bcdedit /set {bootmgr} path \EFI\ubuntu\grubx64.efi
+    bcdedit /set {bootmgr} path \EFI\grub\grubx64.efi
