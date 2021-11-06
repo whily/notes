@@ -1276,7 +1276,7 @@ emulator` to `xfce4-terminal` and `Archiver integration` to
 Install following packages (with suffix [A] denoting AUR package):
 
 - 3D modelling: `blender povray`
-- Archiver: `p7zip unzip unrar zip`
+- Archiver: `lzip p7zip unzip unrar zip`
 - Astronomy: `celstia stellarium`
 - Audio converter: `lame`
 - Audio edtor: `audacity`
@@ -1284,7 +1284,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clojure code gdb git gource gradle hexyl[A]
+- Development: `ccl[A] cgasm[A] clojure code gdb git go go-tools gource gradle hexyl[A]
   intltool kotlin lazarus-gtk2 leiningen[A] nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
@@ -1311,11 +1311,12 @@ Install following packages (with suffix [A] denoting AUR package):
 - System monitoring: `htop`
 - Terminal multiplexer: `tmux`
 - The Editor and everything: `emacs`
-- Typesetting: `texlive-most`
+- Typesetting: `texlive-most texlive-langchinese`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
 - Video player: `mpv` (Configuration according to
-  https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations)
+  https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations),
+  celluloid (mpv frontend).
 - Virtualization: `bochs qemu virtualbox virtualbox-host-modules-arch`
 
 #### Emacs keybinding
