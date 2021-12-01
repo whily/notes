@@ -1290,7 +1290,7 @@ Install following packages (with suffix [A] denoting AUR package):
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
-- Download tools: `aria2 baidupcs-go-git[A] curl wget`
+- Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
 - File system: `exfat-utils`
 - Fun: `cmatrix xscreensaver`
