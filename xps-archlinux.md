@@ -502,7 +502,7 @@ https://github.com/miroslavvidovic/rofi-scripts
 
 Press $mod+d to launch applications just like Alfred in OS X or Win key in Windows.
 
-Edit `~/.config/i3/config` to automatically place these
+Edit `~/.config/i3/cnfig` to automatically place these
 programs in specific workspaces.
 
 ``` ini
@@ -1268,10 +1268,11 @@ engine in programs like SCID, with parameter `--weights=/path/to/weights_xxx.pb.
 One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
 
 File manager: `pcmanfm-gtk3` (for Android phone access, install
-`gvfs-mtp`), and console based `ranger`. To configure `pcmanfm`,
-select `Edit | Preferences | Advanced`, and configure `Terminal
-emulator` to `xfce4-terminal` and `Archiver integration` to
-`xarchiver` (after installation of the package of course).
+`gvfs-mtp`, for Samba access, install `gvfs-smb'), and console based
+`ranger`. To configure `pcmanfm`, select `Edit | Preferences |
+Advanced`, and configure `Terminal emulator` to `xfce4-terminal` and
+`Archiver integration` to `xarchiver` (after installation of the
+package of course).
 
 Install following packages (with suffix [A] denoting AUR package):
 
@@ -1284,7 +1285,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clojure code gdb git go go-tools gource gradle hexyl[A]
+- Development: `ccl[A] cgasm[A] clang clojure code gdb git go go-tools gource gradle hexyl[A]
   intltool kotlin lazarus-gtk2 leiningen[A] nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion`
 - Dictionary: `stardict`
