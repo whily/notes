@@ -1280,7 +1280,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Archiver: `lzip p7zip unzip unrar zip`
 - Astronomy: `celstia stellarium`
 - Audio converter: `lame`
-- Audio edtor: `audacity`
+- Audio edtor: `audacity ardour`
 - Browser: `chromium pepper-flash`
 - CLI: `ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
@@ -1293,6 +1293,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
 - File system: `exfat-utils`
+- FPGA: `iverilog gtkwave`
 - Fun: `cmatrix xscreensaver`
 - Geography: `qgis`
 - Image processing: `imagemagick`
