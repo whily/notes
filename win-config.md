@@ -13,6 +13,10 @@ Software installation in Windows
 
 ### Miscellaneous
 
+#### Command installer `Scoop`
+
+Install Scoop from: https://scoop.sh/
+
 #### Check battery status
 
 Run `Command Prompt (Admin)`, and then type the following:
