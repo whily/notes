@@ -1429,6 +1429,9 @@ https://wiki.archlinux.org/index.php/Fsck . It seems that `fsck` does
 not automatically run on my partitions, so I have to manually enable
 it e.g. `sudo tune2fs -c 30 /dev/nvme0n1p5`.
 
+If sometimes meeting errors of "signatures from xxx is unknown trust",
+one can install latest keyring first by `pacman -S --asdeps archlinux-keyring`.
+
 #### Analyze boot time
 
 Use either `systemd-analyze blame` for text output or `systemd-analyze
