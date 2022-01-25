@@ -15,7 +15,14 @@ Software installation in Windows
 
 #### Command installer `Scoop`
 
-Install Scoop from: https://scoop.sh/
+Install Scoop according to: https://zhuanlan.zhihu.com/p/128955118
+
+    iwr -useb https://gitee.com/glsnames/scoop-installer/raw/master/bin/install.ps1 | iex
+    scoop config SCOOP_REPO 'https://gitee.com/glsnames/Scoop-Core'
+    scoop update
+    scoop bucket add extras
+    scoop update
+    scoop install aria2 git ffmpeg ghostscript 
 
 #### Check battery status
 
