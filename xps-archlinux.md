@@ -258,7 +258,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 Exit the chroot environment by typing `exit` or pressing Ctrl+D.
 
-Optionally manually unmount all the partitions with 
+Optionally manually unmount all the partitions with
 
 ``` shell
 umount -R /mnt
@@ -1082,7 +1082,7 @@ HibernateMode=shutdown
 Follow the guide: https://wiki.archlinux.org/index.php/Core_utilities#locate
 
 ``` shell
-$ sudo pacman -S mlocate
+$ sudo pacman -S plocate
 # Create the database. Seems not possible to use systemctl to enable updatedb.timer.
 $ sudo updatedb
 ```
@@ -1447,6 +1447,8 @@ See a related discussion in https://youtu.be/CWOELeGlwiM
 * If there is manul intervention update, then update immediately to avoid handling multiple
   interventions.
 * Never perform partial upgrade (i.e. always perform `pacman -Syu`).
+* When encountering package corruption message like "signature is from
+  unknown trust", try `sudo pacman -S archlinux-keyring` first.
 * If one want to avoid frequent updates of critical packages, one may edit `/etc/pacman.conf`
   and enable the line `IgnorePkg = ...`. For example, one may add following packages (depending
   on which are actually installed and/or which are preferred not to be upgraded frequently) `linux
@@ -1454,7 +1456,8 @@ See a related discussion in https://youtu.be/CWOELeGlwiM
   virtualbox-host-modules-lts`.
  * Avoid clearing the pacman cache, since the cache files can be used to downgrade to previous version
    with `pacman -U /var/cache/pacman/pkg/package_name-version.pkg.tar.xz`. If disk space is really critically low,
-   one may try disk usage analyzer tools e.g. `ncdu`, or follow
+   one may try disk usage analyzer tools e.g. `ncdu`, cleanup packeage
+   `bleachbit`, or follow
    the [guide for clean the package
    cache](https://wiki.archlinux.org/index.php/Pacman#Cleaning_the_package_cache).
    Or run command `sudo paccache -r` where `paccache` is in package `pacman-contrib`.
