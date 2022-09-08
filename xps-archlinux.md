@@ -376,22 +376,20 @@ sudo pacman -S i3
 
 # After start there will be a guidance choose win as default modifier.
 
-yay -S lightdm-webkit2-greeter
-sudo systemctl enable lightdm
-sudo systemctl start lightdm
+sudo pacman -S sddm sddm-kcm
+sudo systemctl enable sddm
+sudo systemctl start sddm
 ```
 
-Edit `/etc/lightdm/lightdm.conf` to change the greeter:
+Create file `/etc/sddm.conf.d/hidpi.conf` with the following content
 
 ``` ini
-[Seat:*]
-...
-greeter-session=lightdm-webkit2-greeter
-```
+[Wayland]
+EnableHiDPI=true
 
-One can edit `/etc/lightdm/lightdm-webkit2-greeter.conf` for
-configuration e.g. set `webkit-theme` to another one (available themes
-in `/usr/share/lightdm-webkit/themes`).
+[X11]
+EnableHiDPI=true
+```
 
 Optionally, one can install `redshift`.
 
@@ -550,44 +548,14 @@ bindsym $mod+c mode "$mode_system"
 One reference:
 [correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
 
+#### KDE
+
+Install package `plasma-desktop' for KDE and following KDE
+applications `konsole dolphin okular'.
+
+Install following PLASMA themes:
+
 #### HiDPI
-
-First check what wrapper LightDM uses:
-
-``` shell
-lightdm --show-config
-```
-
-Suppose it tells you:
-
-``` ini
-[Seat:*]
-A  session-wrapper=/etc/lightdm/Xsession
-```
-
-Then inject these 2 line above the end line `exec $@` of file `Xsession`, so that it looks like:
-
-``` shell
-# ...
-xrandr --dpi 200
-xrdb -merge ~/.Xresources
-# ...
-exec $@
-```
-
-where .Xresource contains the line `Xft.dpi: 200`. Note that settings
-in `~/.Xresources` can be confirmed by checking the output of `xrdq -q`.
-
-For greeting screen, edit the them file. For example, suppose
-light-webkit2-greeter them is `antergos`, then edit
-`/usr/share/lightdm-webkit/themes/antergos/css/style.css`, add one line
-`html { zoom: 2.0; }`.
-
-Then restart to apply these settings:
-
-``` shell
-sudo systemctl restart lightdm
-```
 
 For darktable, edit `~/.config/darktable/darktablerc`, set
 `panel_width=600` (original value is 350). One may also play with `screen_dpi_overwrite` and
@@ -815,8 +783,7 @@ Add following content to ~/.Xmodmap:
     add Lock = Caps_Lock
     add Control = Control_L
 
-We're using lightdm, no need to source that file.
-make it work in current session
+Make it work in current session
 
     xmodmap ~/.Xmodmap
 
@@ -865,7 +832,7 @@ Install AUR package `hidclient` to emulate a Bluetooth keyboard.
 Follow the guide: https://wiki.archlinux.org/index.php/Wacom_tablet
 
 Basically, install package `xf86-input-wacom` and `kcm-wacomtablet`
-(for tablet configuration). Restart X (`sudo systemctl restart lightdm`).
+(for tablet configuration). Restart X (`sudo systemctl restart sddm`).
 
 Permanent X.org configuration in file
 `/etc/X11/xorg.conf.d/72-wacom-options.conf`
@@ -937,12 +904,6 @@ https://github.com/rime/home/wiki/CustomizationGuide
 #### Wallpaper
 
 Install package `archlinux-wallpaper`.
-
-For lightdm background, modify `/etc/lightdm/lightdm-gtk-greeter.conf`
-and add the wallpaper file name (e.g. /usr/share/archlinux/wallpaper/archlinux-poolclouds.jpg
-) for the `background` line.
-
-#### Theme
 
 ## Additional configuration
 
