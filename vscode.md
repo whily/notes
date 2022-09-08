@@ -2,7 +2,9 @@ Notes for Visual Studio Code, which is mainly used by me for web development.
 
 ### Extensions
 
-* General programming: `Bracket Pair Colorizer 2`
+* FPGA: `Verilog-HDL/SystemVerilog/Bluespec SystemVerilog support for VS Code`
+* General programming: `Bracket Pair Colorizer 2` (No need for
+  extension. Can be enabled by user setting "bracket pairs").
 * HTML/CSS: `Auto Rename Tag`, `HTML CSS Support`
 * Javascript: `Debugger for Chrome`, `ESLint`, `JavaScript (ES6) code
   snippets`, `Prettier - Code formatter`, and `Quokka.js`.
