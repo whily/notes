@@ -358,6 +358,9 @@ and building with makepkg.
 # makepkg -si
 ```
 
+In China, one may use `GOPROXY=https://goproxy.cn makepkg -si` for the
+last command.
+
 Use `yay -Syu --aur` to update all AUR packages. Alternatively, one
 can run `yay --save --combinedupgrade` once, and then run `yay -Syu`
 afterwards to update both official and AUR packages.
@@ -500,7 +503,7 @@ https://github.com/miroslavvidovic/rofi-scripts
 
 Press $mod+d to launch applications just like Alfred in OS X or Win key in Windows.
 
-Edit `~/.config/i3/cnfig` to automatically place these
+Edit `~/.config/i3/config` to automatically place these
 programs in specific workspaces.
 
 ``` ini
@@ -508,7 +511,7 @@ programs in specific workspaces.
 assign [class="^Xfce4-terminal$"] → 1
 assign [class="^Emacs$"] → 2
 assign [class="^Chromium$"] → 3
-assign [class="^Pcmanfm$"] → 4
+assign [class="^Dolphin$"] → 4
 assign [class="^Steam$"] → 10
 ```
 
@@ -553,7 +556,27 @@ One reference:
 Install package `plasma-desktop' for KDE and following KDE
 applications `konsole dolphin okular'.
 
-Install following PLASMA themes:
+Install following PLASMA themes: `ant-dracula-kde-theme[A] arc-kde[A]
+mondrian-kde-git[A] numix-kde-theme-git[A]`.
+
+Use package `kvantum` for appearance configuration, when "Configure
+Active Theme", check Transparent
+Dolphin view / Blur explicitly translucent windows / Transparent
+KTitle label / Transparent menu title / Respect dark themes, uncheck
+Disable translucency with non-integer scaling.
+
+Install `latte-dock` and add it to `System Settings | Startup and
+Shutdown | Autostart`.
+
+Install `plama5-applets-simplemenu-git`, right click "Application
+Launcher", select "Show Alternatives", then switch to "Simple Menu".
+
+Move Panel to the top. Right click on the Panel, select "Enter Edit
+Mode". Then clock "Drag to move" and drag the Panel to the top.
+
+#### Wayland
+
+Install packages `plasma-wayland-session xorg-xwayland`.
 
 #### HiDPI
 
@@ -581,8 +604,7 @@ use other sans serif fonts like `Arimo`.
 
 Install the package `lxappearance` for GTK+ theme configuration.
 Launch `lxapperance` and select `Breeze` for Widget, Icon Theme and
-Mouse Cursor (it seems that `pcmanfm` does not work well with `Breeze`
-theme, so use `Arc` instead).
+Mouse Cursor.
 
 Edit `~/.gtkrc-2.0`, change the font as
 
@@ -613,7 +635,8 @@ application with a specific theme, e.g. `QT_STYLE_OVERRIDE=fusion krita`.
 
 #### zsh
 
-Install package zsh and zsh-completitons.
+Install package zsh, zsh-completitons, zsh-autosuggestions,
+zsh-syntax-highlighting.
 
 To list all installed shells, run `chsh -l`. To set one as default for
 your user, run `chsh -s /bin/zsh`.
@@ -622,6 +645,11 @@ Install oh-my-zsh (which changes default shell to zsh as well):
 
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+Add soft link as below:
+
+    ln -s /usr/share/zsh/plugins/zsh-autosuggestions ~/.oh-my-zsh/plugins
+    ln -s /usr/share/zsh/plugins/zsh-syntax-highlighting ~/.oh-my-zsh/plugins
+
 Optionally, To use
 [oh-my-zsh cheatsheet](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet),
 add the following line to .zshrc
@@ -629,6 +657,8 @@ add the following line to .zshrc
 ``` shell
 source  ~/.oh-my-zsh/templates/zshrc.zsh-template
 ```
+
+Update plugins section in `.zshrc`.
 
 Install packages powerline powerline-fonts.
 
@@ -1228,13 +1258,6 @@ engine in programs like SCID, with parameter `--weights=/path/to/weights_xxx.pb.
 
 One may refer to the [Arch Linux's list of applications](https://wiki.archlinux.org/index.php/List_of_Applications).
 
-File manager: `pcmanfm-gtk3` (for Android phone access, install
-`gvfs-mtp`, for Samba access, install `gvfs-smb'), and console based
-`ranger`. To configure `pcmanfm`, select `Edit | Preferences |
-Advanced`, and configure `Terminal emulator` to `xfce4-terminal` and
-`Archiver integration` to `xarchiver` (after installation of the
-package of course).
-
 Install following packages (with suffix [A] denoting AUR package):
 
 - 3D modelling: `blender povray`
@@ -1270,7 +1293,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Screencast: `peek screnkey[A]`
 - Spell check: `aspell-en`
 - System: `acpi`
-- System information viewer: `screenfetch`
+- System information viewer: `neofetch`
 - System monitoring: `htop`
 - Terminal multiplexer: `tmux`
 - The Editor and everything: `emacs`
