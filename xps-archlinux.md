@@ -543,6 +543,9 @@ One reference:
 Install package `plasma-desktop kdeplasma-addons ' for KDE and following KDE
 applications `konsole dolphin okular yakuake'.
 
+Chane to double-click behavior by setting `Workspace Behavior |
+General Behavior | Clicking file or folders` to "Select them".
+
 To set the Meta key as a shortcut to open KRunner, run
 
     kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,toggleDisplay"
@@ -580,11 +583,22 @@ Mode". Then clock "Drag to move" and drag the Panel to the top.
 Widgets for Panel (from left to right):
 - Application launcher (built in)
 - Pager (built in)
+- Window AppMenu (`plasma5-applets-window-appmenu[A]`)
 - Taskbar (built in)
+- Disk Usage (built in)
+- Network Usage (`plasma5-applets-netspeed[A]`)
 - Color Picker (built in)
+- Awesome Widgets (`plasma5-applet-awesome-widgets[A]`)
 - Translator (`plasma5-applets-translator[A]`)
+- Weather Widget 2 (`plasma5-applet-weather-widget-2[A]`)
 - System Tray (built in)
 - Event Calendar (`plasma5-applets-eventcalendar[A]`)
+
+Note that when building Plasma applets from AUR, one may meet errors
+like "runtime library [libQt5Xml.so.5] in /usr/lib may be hidden by
+files in: /home/whily/anaconda3/lib" and/or "Unknown option
+'output-dep-file'". This is due to that Anaconda shadows the system
+binary / library. Remove Anaconda binary path from $PATH.
 
 #### Wayland
 
