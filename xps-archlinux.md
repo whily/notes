@@ -463,19 +463,6 @@ exec --no-startup-id xset dpms 300 300 300
 
 Install AUR package `archlinux-artwork`.
 
-Install xfce4-terminal.
-
-``` shell
-sudo pacman -S xfce4-terminal
-sed -i s/i3-sensible-terminal/xfce4-terminal/g ~/.config/i3/config
-```
-
-To allow Emacs key binding in xfce4-terminal, in
-Edit->Preference->Advanced, check the following:
-
-- Disable all menu access keys (such as Alt+f)
-- Disable help window shortcut key (F1 by default)
-
 Install package `rofi`. Add the following line to `~/.config/i3/config`.
 
 ``` ini
@@ -508,7 +495,7 @@ programs in specific workspaces.
 
 ``` ini
 ## Assign clients to workspace
-assign [class="^Xfce4-terminal$"] → 1
+assign [class="^Konsole$"] → 1
 assign [class="^Emacs$"] → 2
 assign [class="^Chromium$"] → 3
 assign [class="^Dolphin$"] → 4
@@ -553,20 +540,36 @@ One reference:
 
 #### KDE
 
-Install package `plasma-desktop' for KDE and following KDE
-applications `konsole dolphin okular'.
+Install package `plasma-desktop kdeplasma-addons ' for KDE and following KDE
+applications `konsole dolphin okular yakuake'.
+
+To set the Meta key as a shortcut to open KRunner, run
+
+    kwriteconfig5 --file kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.krunner,/App,,toggleDisplay"
 
 Install following PLASMA themes: `ant-dracula-kde-theme[A] arc-kde[A]
-mondrian-kde-git[A] numix-kde-theme-git[A]`.
+numix-kde-theme-git[A]`.
 
 Use package `kvantum` for appearance configuration, when "Configure
-Active Theme", check Transparent
-Dolphin view / Blur explicitly translucent windows / Transparent
+Active Theme",
+
+1. In "Hacks" tab,
+check Transparent Dolphin view / Blur explicitly translucent windows / Transparent
 KTitle label / Transparent menu title / Respect dark themes, uncheck
 Disable translucency with non-integer scaling.
 
-Install `latte-dock` and add it to `System Settings | Startup and
-Shutdown | Autostart`.
+2. In "Compositing & General Look" tab,
+check Blurring for menus and tooltips / Translucent windows / Blurring
+for translucent windows / Animation for state change under mouse /
+Ignore inactive state / Transient scrollbars, set "Reduce window
+opacity by" to 20%, set "Reduce menu opacity by" to 35%.
+
+Install `latte-dock plasma5-applets-altte-separator[A]` and add it to `System Settings | Startup and
+Shutdown | Autostart`. Add two separators, `Application Dashboard`
+before the left separator, and `Pager` after the right separator (use
+"Configure Virtual Desktops" to set the rows of pager). Latte dock
+size can be changed by right click, "Edit Dock | Apperance | Items |
+Absolute size".
 
 Install `plama5-applets-simplemenu-git`, right click "Application
 Launcher", select "Show Alternatives", then switch to "Simple Menu".
@@ -574,11 +577,29 @@ Launcher", select "Show Alternatives", then switch to "Simple Menu".
 Move Panel to the top. Right click on the Panel, select "Enter Edit
 Mode". Then clock "Drag to move" and drag the Panel to the top.
 
+Widgets for Panel (from left to right):
+- Application launcher (built in)
+- Pager (built in)
+- Taskbar (built in)
+- Color Picker (built in)
+- Translator (`plasma5-applets-translator[A]`)
+- System Tray (built in)
+- Event Calendar (`plasma5-applets-eventcalendar[A]`)
+
 #### Wayland
 
 Install packages `plasma-wayland-session xorg-xwayland`.
 
 #### HiDPI
+
+For i3, add `Xft.dpi: 192` in `~/.Xresources`.
+
+For KDE, "System Settings | Display and Monitor | Display
+Configuration", change "Global Scaling" to 200%.
+
+For Chromium, add the following line to `~/config/chromium-flags.conf`:
+
+    --force-device-scale-factor=2
 
 For darktable, edit `~/.config/darktable/darktablerc`, set
 `panel_width=600` (original value is 350). One may also play with `screen_dpi_overwrite` and
