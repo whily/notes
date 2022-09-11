@@ -540,8 +540,14 @@ One reference:
 
 #### KDE
 
-Install package `plasma-desktop kdeplasma-addons ' for KDE and following KDE
-applications `konsole dolphin okular yakuake'.
+Install package `plasma-desktop kdeplasma-addons kscreen' for KDE and following KDE
+applications `konsole dolphin okular yakuake kdeconnect'.
+
+For KDE Connect, run the following to update ufw rules:
+
+    sudo ufw allow 1714:1764/udp
+    sudo ufw allow 1714:1764/tcp
+    sudo ufw reload
 
 Chane to double-click behavior by setting `Workspace Behavior |
 General Behavior | Clicking file or folders` to "Select them".
@@ -591,10 +597,13 @@ Widgets for Panel (from left to right):
 - Awesome Widgets (`plasma5-applet-awesome-widgets[A]`)
 - Translator (`plasma5-applets-translator[A]`)
 - Weather Widget 2 (`plasma5-applet-weather-widget-2[A]`)
+- Battery and Brightness (built in)
+- KDE Connect
+- Input Method Panel (build in)
 - System Tray (built in)
 - Event Calendar (`plasma5-applets-eventcalendar[A]`)
 
-Note that when building Plasma applets from AUR, one may meet errors
+Note that when installing Plasma applets from AUR, one may meet errors
 like "runtime library [libQt5Xml.so.5] in /usr/lib may be hidden by
 files in: /home/whily/anaconda3/lib" and/or "Unknown option
 'output-dep-file'". This is due to that Anaconda shadows the system
@@ -695,15 +704,21 @@ source  ~/.oh-my-zsh/templates/zshrc.zsh-template
 
 Update plugins section in `.zshrc`.
 
-Install packages powerline powerline-fonts.
+Follow the Getting Started in
+https://github.com/romkatv/powerlevel10k:
 
-Add following content to .zshrc.
+1. Install Meslo Nerd Font patched for Powerlevel10k. In Konsole, Open
+   `Settings → Edit Current Profile → Appearance`, click "Select
+   Font" and select MesloLGS NF Regular.
 
-``` shell
-if [[ -r /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-    source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
-fi
-```
+2. Install `powerlevel10k` as below:
+
+    yay -S --noconfirm zsh-theme-powerlevel10k-git
+    echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+
+3. Restart zsh with `exec zsh`.
+
+4. Type `p10k configure` if the configuration wizard doesn't start automatically.
 
 #### Font and configuration
 
@@ -1427,7 +1442,7 @@ Below is a list of useful pacman commands:
 
 #### Troubleshooting
 
-If cannot boot to GUI, chroot and type `systemctl disable lightdm` to
+If cannot boot to GUI, chroot and type `systemctl disable sddm` to
 fallback to CLI.
 
 Check various logs e.g. `/var/log/pacman.log` (which records
@@ -1511,6 +1526,10 @@ If using gzip, just add `z` in tar options above.
 
 ## TODO
 
+* HiDPI for Wayland and SDDM
+* Sway for Wayland
+* Sly for Emacs
+* Fix IBus in KDE
 * Resolve the issue the i3 status bar is too high (lots of padding in
   the bottom of the bar, might be due to some font config)
 * Full disk encryption using LUKS:
