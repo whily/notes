@@ -549,6 +549,9 @@ For KDE Connect, run the following to update ufw rules:
     sudo ufw allow 1714:1764/tcp
     sudo ufw reload
 
+For phone to receive files, one needs to select a destination folder
+and grant access in KDE Connect app on the phone.
+
 Chane to double-click behavior by setting `Workspace Behavior |
 General Behavior | Clicking file or folders` to "Select them".
 
@@ -558,6 +561,8 @@ To set the Meta key as a shortcut to open KRunner, run
 
 Install following PLASMA themes: `ant-dracula-kde-theme[A] arc-kde[A]
 numix-kde-theme-git[A]`.
+
+Install `plasma5-wallpapers-video-git`.
 
 Use package `kvantum` for appearance configuration, when "Configure
 Active Theme",
@@ -612,6 +617,19 @@ binary / library. Remove Anaconda binary path from $PATH.
 #### Wayland
 
 Install packages `plasma-wayland-session xorg-xwayland`.
+
+
+#### Sway
+
+Install package `sway swaylock swayidle wofi`.
+
+Copy i3 config or sway config template `/etc/sway/config` to `~/.config/sway/config`.
+
+##### HiDPI
+
+Find display name with the command `swaymsg -t get_outputs`, change
+`~/.config/sway/config` with the following line `output <name> scale 2`.
+
 
 #### HiDPI
 
@@ -1326,6 +1344,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
+- File manager: `lf`
 - File system: `exfat-utils`
 - FPGA: `iverilog gtkwave`
 - Fun: `cmatrix xscreensaver`
@@ -1526,8 +1545,15 @@ If using gzip, just add `z` in tar options above.
 
 ## TODO
 
-* HiDPI for Wayland and SDDM
+* HiDPI SDDM
+* Video wallpaper for KDE
 * Sway for Wayland
+** Launcher: wofi, or bemenu?
+** Status bar
+** Emacs font rendering.
+** Chromium not working (maybe the compatibility with wayland)
+** How to swap Ctrl and CapsLock?
+** https://a2zfacts.net/articles/an-x11-apologist-tries-wayland/
 * Sly for Emacs
 * Fix IBus in KDE
 * Resolve the issue the i3 status bar is too high (lots of padding in
