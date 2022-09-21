@@ -365,7 +365,7 @@ Use `yay -Syu --aur` to update all AUR packages. Alternatively, one
 can run `yay --save --combinedupgrade` once, and then run `yay -Syu`
 afterwards to update both official and AUR packages.
 
-#### Xorg and i3
+#### Xorg
 
 i3(wm) is a flexible tilting window manager. For details, please refer
 to the excellent [guide](https://i3wm.org/docs/userguide.html)
@@ -375,7 +375,6 @@ and [reference card](https://i3wm.org/docs/refcard.html).
 # Choose nvidia-340xx-utils and evdev.
 sudo pacman-S xorg xorg-xinit xterm xorg-xeyes xorg-xclock
 sudo pacman -S xorg-xrandr
-sudo pacman -S i3
 
 # After start there will be a guidance choose win as default modifier.
 
@@ -402,141 +401,6 @@ sudo pacman -S redshift
 nano -w ~/.config/redshift.conf
 systemctl --user --now enable redshift
 ```
-
-Now let's configured i3. Firstly, install the following packages
-
-    awesome-terminal-fonts conky feh scrot gnome-control-center gnome-settings-daemon
-    network-manager-applet polkit ttf-font-awesome volumeicon
-
-Install AUR package `light`.
-
-Modify ~/.config/i3/config for customization
-
-```ini
-# Launch Network Manager applet
-exec --no-startup-id nm-applet
-
-# Initialize sound card
-exec --no-startup-id alsactl init
-
-# Volume icon applet
-exec --no-startup-id volumeicon
-
-# Randomly choose Wallpaper
-exec --no-startup-id feh --recursive --randomize --bg-fill ~/Pictures/Wallpapers
-
-# Adjust screen brightness.
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
-
-# Screenshot
-bindsym Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
-```
-
-Following the guide to beautify i3wm: http://searene.me/2016/10/07/beautify-i3wm/
-Note that we set the config file of conky to be the default location,
-i.e. `~/.config/conky/conky.conf`.
-Also need to replace `wlp3s0` to my wireless interface `wlp2s0`.
-
-Change the font size of window title and status bar by change
-`~/.config/i3/config` ,e.g
-
-    font pango:DejaVu Sans Mono 11
-
-For screen lock and
-[DPMS](https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling),
-install package `xautolock`
-configure the following in `~/.config/i3/config`.
-
-``` ini
-# Lock the screen in 3 minutes.
-# Note -i argument for i3lock only loads PNG.
-exec --no-startup-id xautolock -time 3 -locker "i3lock -c 000000"
-
-# Lock the screen immediately.
-bindsym $mod+Shift+o exec "i3lock -c 000000"
-
-# Set DPMS standby/suspend/off to 5 minutes (there seems not
-# difference among standby/suspend/off for LCD.
-exec --no-startup-id xset dpms 300 300 300
-```
-
-Install AUR package `archlinux-artwork`.
-
-Install package `rofi`. Add the following line to `~/.config/i3/config`.
-
-``` ini
-bindsym $mod+d exec "rofi -show run"
-```
-
-Install packages `qalculate-gtk` (including CLI program `qalc`). Since
-AUR package `rofi-calc` cannot be installed by `yay`, so follow
-[install from source
-guidelines](https://github.com/svenstaro/rofi-calc). Also install
-package `surfraw` and install package `rofi-surfraw` from
-https://github.com/carnager/rofi-scripts
-
-Run `rofi-theme-selector` to select theme. Edit `~/.config/rofi/confi`
-for theme, font. An example is as below:
-
-``` ini
-rofi.theme: /usr/share/rofi/themes/Arc.rasi
-rofi.font:  Cousine 26
-```
-
-There are various Rofi scripts as in
-https://github.com/miroslavvidovic/rofi-scripts, e.g.
-https://github.com/miroslavvidovic/rofi-scripts
-
-Press $mod+d to launch applications just like Alfred in OS X or Win key in Windows.
-
-Edit `~/.config/i3/config` to automatically place these
-programs in specific workspaces.
-
-``` ini
-## Assign clients to workspace
-assign [class="^Konsole$"] → 1
-assign [class="^Emacs$"] → 2
-assign [class="^Chromium$"] → 3
-assign [class="^Dolphin$"] → 4
-assign [class="^Steam$"] → 10
-```
-
-To find out a window class, following
-the [i3 user guide](https://i3wm.org/docs/userguide.html). In
-particular, use `xprop`. After clicking on the window, you will see
-the following output for urxvt (as an example):
-
-    WM_CLASS(STRING) = "irssi", "URxvt"
-
-The first part of the WM_CLASS is the instance ("irssi" in this
-example), the second part is the class ("URxvt" in this example).
-
-Add shutdown, reboot, lock screen as
-https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
-
-``` ini
-set $Locker i3lock -c 000000 && sleep 1
-
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+c mode "$mode_system"
-```
-
-One reference:
-[correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
 
 #### KDE
 
@@ -621,12 +485,18 @@ Install packages `plasma-wayland-session xorg-xwayland`.
 
 #### Sway
 
-Install package `sway swaylock swayidle swaybg waybar mpvpaper[A]`.
+Install package `sway swaylock swayidle swaybg waybar mpvpaper[A] ttf-font-awesome`.
+
+Some packages related to i3 and might be useful to Sway:
+
+    awesome-terminal-fonts gnome-control-center gnome-settings-daemon
+    network-manager-applet polkit ttf-font-awesome olumeicon
+
 
 Copy i3 config or sway config template `/etc/sway/config` to `~/.config/sway/config`.
 
 Modify sway config:
-* Modify font by:
+* Modify font  of window title by:
 
     font pango:Noto Sans 12
 
@@ -640,6 +510,62 @@ For waybar, copy config and style.css from `/etc/xdg/waybar` to
 `~/.config/waybar`, and make necessary modifications (example
 configurations in https://github.com/Alexays/Waybar/wiki/Examples).
 Reload waybar configuration with command `killall -SIGUSR2 waybar`.
+
+##### Configuration inherited from i3
+
+Install AUR package `light`.
+
+Install AUR package `archlinux-artwork`.
+
+
+Edit `~/.config/i3/config` to automatically place these
+programs in specific workspaces.
+
+``` ini
+## Assign clients to workspace
+assign [class="^Konsole$"] → 1
+assign [class="^Emacs$"] → 2
+assign [class="^Chromium$"] → 3
+assign [class="^Dolphin$"] → 4
+assign [class="^Steam$"] → 10
+```
+
+To find out a window class, following
+the [i3 user guide](https://i3wm.org/docs/userguide.html). In
+particular, use `xprop`. After clicking on the window, you will see
+the following output for urxvt (as an example):
+
+    WM_CLASS(STRING) = "irssi", "URxvt"
+
+The first part of the WM_CLASS is the instance ("irssi" in this
+example), the second part is the class ("URxvt" in this example).
+
+Add shutdown, reboot, lock screen as
+https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
+
+``` ini
+set $Locker i3lock -c 000000 && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "$mode_system"
+```
+
+One reference:
+[correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
+
 
 ##### HiDPI
 
