@@ -621,15 +621,41 @@ Install packages `plasma-wayland-session xorg-xwayland`.
 
 #### Sway
 
-Install package `sway swaylock swayidle wofi`.
+Install package `sway swaylock swayidle swaybg waybar mpvpaper[A]`.
 
 Copy i3 config or sway config template `/etc/sway/config` to `~/.config/sway/config`.
+
+Modify sway config:
+* Modify font by:
+
+    font pango:Noto Sans 12
+
+* Swap CapsLock and Ctrl key:
+
+    input "type:keyboard" xkb_options "ctrl:nocaps,ctrl:swapcaps"
+
+* Config monitors and clamshell mode according to: https://github.com/swaywm/sway/wiki#clamshell-mode
+
+For waybar, copy config and style.css from `/etc/xdg/waybar` to
+`~/.config/waybar`, and make necessary modifications (example
+configurations in https://github.com/Alexays/Waybar/wiki/Examples).
+Reload waybar configuration with command `killall -SIGUSR2 waybar`.
 
 ##### HiDPI
 
 Find display name with the command `swaymsg -t get_outputs`, change
 `~/.config/sway/config` with the following line `output <name> scale 2`.
 
+For GTK, add the following to `~/.config/sway/config`:
+
+    set $gnome-schema org.gnome.desktop.interface
+    set $cursor_size 24
+    exec_always {
+        gsettings set $gnome-schema gtk-theme 'breeze'
+        gsettings set $gnome-schema icon-theme 'Numix-Square'
+        gsettings set org.gnome.desktop.interface text-scaling-factor 2
+        gsettings set org.gnome.desktop.interface cursor-size $cursor_size
+    }
 
 #### HiDPI
 
@@ -1344,13 +1370,13 @@ Install following packages (with suffix [A] denoting AUR package):
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
-- File manager: `lf`
+- File manager: `lf[A]`
 - File system: `exfat-utils`
 - FPGA: `iverilog gtkwave`
 - Fun: `cmatrix xscreensaver`
 - Geography: `qgis`
 - Image processing: `imagemagick`
-- Image viewer: `gthumb`
+- Image viewer: `gthumb imv`
 - Metadata: `exiv2`
 - Markdown: `markdown`
 - Monitor calibration: `dispalycal`
@@ -1359,13 +1385,15 @@ Install following packages (with suffix [A] denoting AUR package):
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en krita`
+- Screen capture: `grim slurp`
 - Screencast: `peek screnkey[A]`
 - Spell check: `aspell-en`
 - System: `acpi`
 - System information viewer: `neofetch`
 - System monitoring: `htop`
 - Terminal multiplexer: `tmux`
-- The Editor and everything: `emacs`
+- The Editor and everything: `emacs` (use
+  `emacs-pgtk-native-comp-git[A]` for Wayland)
 - Typesetting: `texlive-most texlive-langchinese`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
@@ -1548,11 +1576,10 @@ If using gzip, just add `z` in tar options above.
 * HiDPI SDDM
 * Video wallpaper for KDE
 * Sway for Wayland
-** Launcher: wofi, or bemenu?
 ** Status bar
-** Emacs font rendering.
+** Wallpaper
+** Emacs scaling (maybe GTK scaling or environment variables in Sway).
 ** Chromium not working (maybe the compatibility with wayland)
-** How to swap Ctrl and CapsLock?
 ** https://a2zfacts.net/articles/an-x11-apologist-tries-wayland/
 * Sly for Emacs
 * Fix IBus in KDE
