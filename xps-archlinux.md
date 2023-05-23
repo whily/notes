@@ -268,12 +268,6 @@ Finally, restart the machine by typing `reboot`
 
 ## Configuration
 
-#### Pacman.conf
-
-To allow download resuming for pacman, edit `/etc/pacman.conf`,
-uncomment line with `XferCommand = /usr/bin/wget --passive-ftp -c -O
-%o %u'. It is not recommended to ` add line `DisableDownloadTimeout'.
-
 #### Grub
 
 Optionally one can change GRUB resolution by editting
@@ -485,7 +479,8 @@ Install packages `plasma-wayland-session xorg-xwayland`.
 
 #### Sway
 
-Install package `sway swaylock swayidle swaybg waybar mpvpaper[A] ttf-font-awesome`.
+Install package `sway swaylock swayidle swaybg waybar mpvpaper[A]
+ttf-font-awesome sway-launcher-desktop[A] alacritty`.
 
 Some packages related to i3 and might be useful to Sway:
 
@@ -504,7 +499,13 @@ Modify sway config:
 
     input "type:keyboard" xkb_options "ctrl:nocaps,ctrl:swapcaps"
 
-* Config monitors and clamshell mode according to: https://github.com/swaywm/sway/wiki#clamshell-mode
+* Config monitors and clamshell mode according to:
+  https://github.com/swaywm/sway/wiki#clamshell-mode
+
+* Config sway-launcher-desktop:
+
+    for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+    set $menu exec alacritty --class launcher -e /usr/bin/sway-launcher-desktop
 
 For waybar, copy config and style.css from `/etc/xdg/waybar` to
 `~/.config/waybar`, and make necessary modifications (example
@@ -582,6 +583,10 @@ For GTK, add the following to `~/.config/sway/config`:
         gsettings set org.gnome.desktop.interface text-scaling-factor 2
         gsettings set org.gnome.desktop.interface cursor-size $cursor_size
     }
+
+For Chromium, to enable native Wayland, add
+`--ozone-platform-hint=auto` in `~/.config/chromium-flags.conf`. To
+have larger scaling, use the flag `--force-device-scale-factor=2`.
 
 #### HiDPI
 
@@ -1312,7 +1317,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en krita`
 - Screen capture: `grim slurp`
-- Screencast: `peek screnkey[A]`
+- Screencast: `peek screnkey[A] wf-recorder`
 - Spell check: `aspell-en`
 - System: `acpi`
 - System information viewer: `neofetch`
@@ -1501,12 +1506,6 @@ If using gzip, just add `z` in tar options above.
 
 * HiDPI SDDM
 * Video wallpaper for KDE
-* Sway for Wayland
-** Status bar
-** Wallpaper
-** Emacs scaling (maybe GTK scaling or environment variables in Sway).
-** Chromium not working (maybe the compatibility with wayland)
-** https://a2zfacts.net/articles/an-x11-apologist-tries-wayland/
 * Sly for Emacs
 * Fix IBus in KDE
 * Resolve the issue the i3 status bar is too high (lots of padding in
