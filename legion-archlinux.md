@@ -386,8 +386,8 @@ Widgets for Panel (from left to right):
 Note that when installing Plasma applets from AUR, one may meet errors
 like "runtime library [libQt5Xml.so.5] in /usr/lib may be hidden by
 files in: /home/whily/anaconda3/lib" and/or "Unknown option
-'output-dep-file'". This is due to that Anaconda shadows the system
-binary / library. Remove Anaconda binary path from $PATH.
+'output-dep-file'". This is due to that Miniconda shadows the system
+binary / library. Remove Miniconda binary path from $PATH.
 
 #### Wayland
 
@@ -1069,37 +1069,55 @@ Mainly based on the guide from
 https://docs.anaconda.com/anaconda/install/linux
 
 In China, use the mirror in
-https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+https://mirrors.bfsu.edu.cn/help/anaconda/
 
 1. Installation
 
-Download Anaconda https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.0.0-Linux-x86_64.sh
+Download Miniconda https://mirrors.bfsu.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 Install by typing
 
-    bash ~/Downloads/Anaconda3-5.0.0-Linux-x86_64.sh
+    bash ~/Downloads/Miniconda3-latest-Linux-x86_64.sh
 
 Accept the license and default location.
 
 Do not accept the PATH variable update (as it is for .bashrc). Update
-~/.zshrc by adding the following line (replacing `usr` with your user name):
+~/.zshenv by adding the following line (replacing `usr` with your user name):
 
-    export PATH=/home/usr/anaconda3/bin:$PATH
-
-Run `anaconda-navigator` to verify the installation.
+    export PATH=/home/usr/miniconda3/bin:$PATH
 
 2. Post installation
 
-Use the mirror in Tsinghua.
+Replace ~/.condarc with the following content for mirror in BFSU:
 
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
-    conda config --set show_channel_urls yes
+``` shell
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/r
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  msys2: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  menpo: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.bfsu.edu.cn/anaconda/cloud
+```
 
 Test the mirror by running `conda install numpy`.
 
 3. PyTorch
+
+Create Python 3.10 environment and activate it:
+
+``` shell
+$ conda create -n py3.10 python=3.10
+$ conda activate py3.10 
+```
 
 It is preferable to install packages in virtual environment.
 
@@ -1108,11 +1126,6 @@ It is preferable to install packages in virtual environment.
 One may also install other packages in the virtual environment (e.g.
 `jupyter matplotlib pandas scipy` which are included in `base` environment but
 not in newly created environment).
-
-Note that we install from channel cloud from mirror tuna to get
-reasonable speed in China
-(see [this](https://github.com/pytorch/pytorch/issues/990)
-and [this](https://github.com/tuna/issues/issues/363)).
 
 And then test pytorch by running following Python code.
 
