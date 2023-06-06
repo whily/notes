@@ -302,7 +302,7 @@ sudo systemctl start sddm
 ```
 
 For the configuration of SDDM, choose "Apply Plasma Settings" for font
-etc. 
+etc.
 
 Optionally, one can install `redshift`.
 
@@ -884,7 +884,7 @@ TLP for actually power management. To enable TLP:
 
 ``` shell
 $ sudo systemctl enable tlp
-$ sudo systemctl start tlp 
+$ sudo systemctl start tlp
 $ sudo systemctl mask systemd-rfkill systemd-rfkill.socket
 ```
 
@@ -1116,7 +1116,7 @@ Create Python 3.10 environment and activate it:
 
 ``` shell
 $ conda create -n py3.10 python=3.10
-$ conda activate py3.10 
+$ conda activate py3.10
 ```
 
 It is preferable to install packages in virtual environment.
@@ -1433,6 +1433,29 @@ If using gzip, just add `z` in tar options above.
 To restore home directory to a new computer, use the following command (assuming user name is usr). The trailing slash / at the end of source directory is needed to make the home directory exactly the same (otherwise the source home directory will be just put under the target, e.g. like /home/usr/usr).
 
     rsync -a --delete --quite -e ssh /home/usr/ usr@remotehost:/home/usr
+
+## Replace SSD
+
+Assume old SSD is /dev/nvme0n1, and new SSD is /dev/nvme1n1. All the
+actions below are performed in Live USB environment (to avoid changes
+when performing cloning or extending partition).
+
+Now clone the old SSD using `dd`
+(https://wiki.archlinux.org/title/Dd#Disk_cloning_and_restore).
+
+    # dd if=/dev/nvme0n1 of=/dev/nvme1n1 bs=64K conv=noerror,sync status=progress
+
+For the new SSD, grow the partition /dev/nvme1n2 (assuming the partition number is
+2. Detailed guide in https://wiki.archlinux.org/title/Parted#Growing_partitions).
+
+    # parted
+    (parted) resizepart 2 100%
+    # resize2fs /dev/nvme1n2
+
+If encountering prompt to fix GPT table for whole space when running
+parted, select "Fix". If prompted to run e2fsck when running
+resize2fs, do so.
+
 ## TODO
 
 * Video wallpaper for KDE
