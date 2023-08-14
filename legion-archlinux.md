@@ -318,6 +318,9 @@ systemctl --user --now enable redshift
 Install package `plasma-desktop kdeplasma-addons kscreen' for KDE and following KDE
 applications `konsole dolphin okular yakuake kdeconnect'.
 
+Configure KDE mainly based on Youtube video "How To Make Your KDE
+Plasma DEsktop Look Aesthetic" by Linuxscoope.
+
 For KDE Connect, run the following to update ufw rules:
 
     sudo ufw allow 1714:1764/udp
@@ -615,7 +618,7 @@ https://github.com/romkatv/powerlevel10k:
 
 Install following packages:
 
-    ttf-dejavu ttf-inconsolata ttf-croscore otf-overpass ttf-hack
+    ttf-dejavu ttf-inconsolata ttf-croscore otf-overpass ttf-hack ttf-roboto
     adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts
     adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts
     adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts adobe-source-code-pro-fonts
