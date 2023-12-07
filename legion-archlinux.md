@@ -1227,7 +1227,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Database: `postgresql sqlite`
 - Development: `ccl[A] cgasm[A] clang clojure cmake code gdb git git-lfs go go-tools gource gradle hexyl[A]
   intltool kotlin lazarus-gtk2 leiningen[A] libxcrypt-compt nasm npm python-pip
-  racket sbcl sbt scala scala-docs scala-sources stow subversion`
+  racket sbcl sbt scala scala-docs scala-sources stow subversion tree-sitter`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
@@ -1239,6 +1239,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Geography: `qgis`
 - Image processing: `imagemagick`
 - Image viewer: `gthumb imv`
+- Math: `elan-lean[A]
 - Metadata: `exiv2`
 - Markdown: `markdown`
 - Monitor calibration: `dispalycal`
