@@ -3,7 +3,7 @@ Notes for installing Arch Linux alongside Windows 11 for Legion Y9000P
 
 Some notes:
 - Windows and Linux are one separate disks. My / and /home partitions
-  are /dev/nvme0n1p5 and /dev/nvme0n1p6, respectively.
+  are /dev/nvme0n1p1 and /dev/nvme0n1p2, respectively.
 
 I mainly follows
 [Arch Linux installation guide](https://wiki.archlinux.org/index.php/Installation_Guide).
@@ -1239,6 +1239,9 @@ Install following packages (with suffix [A] denoting AUR package):
 - Geography: `qgis`
 - Image processing: `imagemagick`
 - Image viewer: `gthumb imv`
+- Kernel: `linux-lts linux-lts-headers` (One may add packages `linux
+  linux-headers` in IgnorePkg of /etc/pacman.conf if encountering
+  kernel update problem.)
 - Math: `elan-lean[A]
 - Metadata: `exiv2`
 - Markdown: `markdown`
