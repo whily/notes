@@ -1239,7 +1239,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Geography: `qgis`
 - Image processing: `imagemagick`
 - Image viewer: `gthumb imv`
-- Kernel: `linux-lts linux-lts-headers` (One may add packages `linux
+- Kernel: `linux-lts linux-lts-headers nvidia-lts` (One may add packages `linux
   linux-headers` in IgnorePkg of /etc/pacman.conf if encountering
   kernel update problem.)
 - Math: `elan-lean[A]
