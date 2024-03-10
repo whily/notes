@@ -243,6 +243,14 @@ $ sudo nano -w /etc/default/grub
 $ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+```shell
+# Disable grub submenu and configure grub to use the last booted kernel enty and use it as default entry.
+$ sudo nano 0w /etc/default/grub
+# Add the following lines
+GRUB_DISABLE_SUBMENU=y
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+$ sudo grub-mkconfig -o /boot/grub/grub.cfg
 #### Install Intel Microcode
 
 ``` shell
@@ -284,6 +292,8 @@ last command.
 Use `yay -Syu --aur` to update all AUR packages. Alternatively, one
 can run `yay --save --combinedupgrade` once, and then run `yay -Syu`
 afterwards to update both official and AUR packages.
+
+To fine tune PKGBUILD, add option "--editmenu" for yay.
 
 #### Xorg
 
@@ -748,18 +758,24 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 #### Keyboard remap: swap caps with ctrl
 Once you accept this setting, you won’t step back.
 
-Add following content to ~/.Xmodmap:
+Install package `keyd`, and start it with `sudo systemctl enable
+keyd`.
 
-    remove Lock = Caps_Lock
-    remove Control = Control_L
-    keysym Control_L = Caps_Lock
-    keysym Caps_Lock = Control_L
-    add Lock = Caps_Lock
-    add Control = Control_L
+Put the following in `/etc/keyd/default.conf`:
 
-Make it work in current session
+    [ids]
 
-    xmodmap ~/.Xmodmap
+    *
+
+    [main]
+
+    # Maps capslock to escape when pressed and control when held.
+    capslock = overload(control, esc)
+
+    # Remaps the ctrl key to capslock
+    ctrl = capslock
+
+Run `sudo keyd reload` to reload the config.
 
 #### Graphics
 
@@ -1239,9 +1255,8 @@ Install following packages (with suffix [A] denoting AUR package):
 - Geography: `qgis`
 - Image processing: `imagemagick`
 - Image viewer: `gthumb imv`
-- Kernel: `linux-lts linux-lts-headers nvidia-lts` (One may add packages `linux
-  linux-headers` in IgnorePkg of /etc/pacman.conf if encountering
-  kernel update problem.)
+- Kernel: One may add packages `linux linux-headers` in IgnorePkg of
+  /etc/pacman.conf if encountering kernel update problem.)
 - Math: `elan-lean[A]
 - Metadata: `exiv2`
 - Markdown: `markdown`
@@ -1263,7 +1278,6 @@ Install following packages (with suffix [A] denoting AUR package):
 - Typesetting: `texlive-most texlive-langchinese`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
-- Video editor: `shotcut`
 - Video player: `mpv` (Configuration according to
   https://wiki.archlinux.org/index.php/Mpv#High_quality_configurations),
   celluloid (mpv frontend).
@@ -1306,8 +1320,16 @@ cd ~ && mkdir .node_modules_global && npm config set prefix=$HOME/.node_modules_
 Mainly follow
 https://finaldie.com/blog/install-davinci-resolve-16-on-arch-sound-issue-fixed/
 
+Install `opencl-nvidia'.
+
+To install, first download `DaVinci_Resolve_Studio_18.6.5_Linux.zip`
+manually, and put it in `~/.cache/yay/davinci-resolve-studio`,
+and run `yay --editmanual -S davince-resolve-studio`, add
+`_pkgver=$pkgver` after _pkgver definition to bypass version check
+(serer returned HTTP code 301), and then install the package.
+
 To run Resolve on HiDPI, start resolve with `QT_DEVICE_PIXEL_RATIO=2`.
-In addition, as I'm using Bumbleebee, I needs to use `primusrun` to
+In addition, as I'm using Bumbleebee, I needs to use `prime-run` to
 run `resolve`, otherwise, the playback screen will be blank.
 
 It seems that the free version of Resolve does not support H.264
@@ -1380,6 +1402,9 @@ it e.g. `sudo tune2fs -c 30 /dev/nvme0n1p5`.
 If sometimes meeting errors of "signatures from xxx is unknown trust",
 one can install latest keyring first by `pacman -S --asdeps archlinux-keyring`.
 
+It seems that KDE is not usable after upgrading to Plasma 6. To avoid error messages for non-compatible applets,
+comment out the sections in `~/.config/plasma-org.kde.plasma.desktop-appletrc' or delete the file directly.
+
 #### Analyze boot time
 
 Use either `systemd-analyze blame` for text output or `systemd-analyze
@@ -1400,8 +1425,7 @@ See a related discussion in https://youtu.be/CWOELeGlwiM
 * If one want to avoid frequent updates of critical packages, one may edit `/etc/pacman.conf`
   and enable the line `IgnorePkg = ...`. For example, one may add following packages (depending
   on which are actually installed and/or which are preferred not to be upgraded frequently) `linux
-  linux-headers linux-lts llinux-lts-headers virtualbox virtualbox-guest-iso virtualbox-host-modules
-  virtualbox-host-modules-lts`.
+  linux-headers virtualbox virtualbox-guest-iso virtualbox-host-modules virtualbox-host-modules-lts`.
  * Avoid clearing the pacman cache, since the cache files can be used to downgrade to previous version
    with `pacman -U /var/cache/pacman/pkg/package_name-version.pkg.tar.xz`. If disk space is really critically low,
    one may try disk usage analyzer tools e.g. `ncdu`, cleanup packeage
