@@ -634,6 +634,7 @@ Install following packages:
     adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts adobe-source-code-pro-fonts
     wqy-microhei wqy-zenhei wqy-bitmapfont
     ttf-arphic-ukai ttf-arphic-uming
+    inter-font[A]
 
 Note that programming fonts are up to one's own taste, e.g. many
 people preferred Inconsolas or Deja Vu Sans Mono. And they can beAri
@@ -1367,16 +1368,20 @@ Install following clients:
 * ellama for Emacs
 * twinny for VSCode, use deepseek-coder:6.7b-instruct-q5_K_M for Chat,
   and deepsee-coder:6.7b-base-q5_K_M for Fill-in-middle.
-* chatbot-ollama:
+* Open WebUI (https://github.com/open-webui/open-webui), do not user
+  docker, follow deb build path as from https://docs.openwebui.com/getting-started/
 
-    git clone https://github.com/ivanfioravanti/chatbot-ollama
-    cd chatbot-ollama
-    npm ci
-    npm run dev
-
-  Set environment variable NEXT_TELEMETRY_DISABLED=1 to opt-out
-  Next.js telemetry.
-
+    git clone https://github.com/open-webui/open-webui.git
+    cd open-webui/
+    # Copying required .env file
+    cp -RPp .env.example .env
+    # Building Frontend Using Node
+    npm i
+    npm run build
+    # Serving Frontend with the Backend
+    cd ./backend
+    pip install -r requirements.txt -U
+    bash start.sh
 
 ## Maintenance
 
