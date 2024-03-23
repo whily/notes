@@ -746,7 +746,8 @@ To easily unmute and adjust sound level, install alsa-utils:
 pacman -S alsa-utils
 alsamixer # arrow select mixer, M mute/unmute it.
 
-Install `pavucontrol` to configure Pulse Audio.
+Install packages `pulseaudio pulseaudio-alsa pavucontrol` and KDE volume control application `kmix`,
+which includes system appliet.
 
 To make sound-related Fn keys working, append following to ~/.config/i3/config:
 
@@ -786,9 +787,13 @@ Intel/NVIDIA GPU setup.
 $ sudo pacman -S nvidia nvidia-utils nvidia-prime nvidia-settings opencl-nvidia mesa-utils
 ```
 
-Use `prime-run` to run a program with NVIDIA GPU, like `prime-run glxinfo | grep "OpenGL renderer"`.
+Use `prime-run` to run a program with NVIDIA GPU, like `prime-run
+glxinfo | grep "OpenGL renderer"`. Alternatively, one can select
+"Discrete Graphics" in BIOS to always use NVIDIA GPU. This can avoid
+the problem that some applications cannot find the GPU, at the cost of
+additional power consumption.
 
-To check OpenCL status, one can install package `clinfo`. For
+To check NVIDIA GPU status, run `nvidia-smi`. To check OpenCL status, one can install package `clinfo`. For
 benchmark, package `vkmark` can be used to test Vulkan.
 
 #### Bluetooth
@@ -1328,15 +1333,50 @@ and run `yay --editmanual -S davince-resolve-studio`, add
 `_pkgver=$pkgver` after _pkgver definition to bypass version check
 (serer returned HTTP code 301), and then install the package.
 
+Needs to run `sudo /opt/resolve/bin/resolve` for activation first, and then
+run it as normal user.
+
 To run Resolve on HiDPI, start resolve with `QT_DEVICE_PIXEL_RATIO=2`.
 In addition, as I'm using Bumbleebee, I needs to use `prime-run` to
 run `resolve`, otherwise, the playback screen will be blank.
 
+The following combinations seem to make Resolve run somehow smoothly
+(as of 16 March 2024):
+* Resolve version 18.5.1 (instead of 18.6.5)
+* X11 instead of Wayland
+* Run resolve with the following `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME /opt/resolve/bin/resolve'.
+
 It seems that the free version of Resolve does not support H.264
 video. Transcoding to supported codecs like ProRes are needed.
 
-
 One may need to check logs for troubleshooting: `~/.local/share/DaVinciResolve/logs`
+
+
+### LLM
+
+Install package `ollama-cuda`. Then use `ollama pull` to install
+models e.g.
+
+* For programming: deepseek-coder:33b, deepseek-coder:6.7b-base-q5_K_M, deepseek-coder:6.7b-instruct-q5_K_M
+* For fast query: mistral:7b-instruct-v0.2-q5_K_M,
+  mistral:7b-text-q5_K_M, gemma:7b-instruct-q5_K_M, gemma:7b-text-q5_K_M
+* For image query: llava:34b
+* Large models: mixtral:latest, qwen:14b, qwen:72b, yi:34b
+
+Install following clients:
+* ellama for Emacs
+* twinny for VSCode, use deepseek-coder:6.7b-instruct-q5_K_M for Chat,
+  and deepsee-coder:6.7b-base-q5_K_M for Fill-in-middle.
+* chatbot-ollama:
+
+    git clone https://github.com/ivanfioravanti/chatbot-ollama
+    cd chatbot-ollama
+    npm ci
+    npm run dev
+
+  Set environment variable NEXT_TELEMETRY_DISABLED=1 to opt-out
+  Next.js telemetry.
+
 
 ## Maintenance
 
