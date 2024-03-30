@@ -914,6 +914,19 @@ run `chmod 755 anaconda3` to enable anaconda again.
 For additional customization of rime, see
 https://github.com/rime/home/wiki/CustomizationGuide
 
+Following is based on guide: https://wiki.archlinux.org/title/IBus
+
+Add the following environment variables to `/etc/environment`:
+
+    GTK_IM_MODULE=ibus
+    QT_IM_MODULE=ibus
+    XMODIFIERS=@im=ibus
+
+Add Autostart (System Settings > Startup and Shutdown > Autostart) for the following:
+
+    ibus-daemon -rxRd --panel=/usr/lib/kimpanel-ibus-panel
+
+
 #### Wallpaper
 
 Install package `archlinux-wallpaper`.
