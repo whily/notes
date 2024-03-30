@@ -741,6 +741,28 @@ adb shell pm list packages
 adb shell pm uninstall -k --user 0 pkg.name
 ```
 
+#### Rust
+
+Follow the guide: https://wiki.archlinux.org/title/Rust
+
+Install rust with command `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`.
+
+Add the following to `~/.cargo/config`:
+
+    # Optimize for native CPU platform.
+    [target.x86_64-unknown-linux-gnu]
+    rustflags = ["-C", "target-cpu=native"]
+
+    # Use sccache to speed up compilation.
+    [build]
+    rustc-wrapper = "sccache"
+
+Install IDE support tools:
+
+    rustup component add rust-analyzer rust-src
+
+In VSCode, install matklad.rust-analyzer.
+
 #### Sound
 To easily unmute and adjust sound level, install alsa-utils:
 
@@ -1449,6 +1471,9 @@ one can install latest keyring first by `pacman -S --asdeps archlinux-keyring`.
 
 It seems that KDE is not usable after upgrading to Plasma 6. To avoid error messages for non-compatible applets,
 comment out the sections in `~/.config/plasma-org.kde.plasma.desktop-appletrc' or delete the file directly.
+
+If keyboard does not work in Chromium but still work in other programs
+(e.g. Konsole, Emacs), then type the following in terminal: `ibus exit`.
 
 #### Analyze boot time
 
