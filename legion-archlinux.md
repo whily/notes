@@ -199,9 +199,15 @@ Editing `/etc/grub.d/40_custom` The entries in this file will be automatically
 
 ``` ini
 "Shutdown" menu entry
-menuentry "System shutdown" {echo "System shutting down..."halt}
+menuentry "System shutdown" {
+	echo "System shutting down..."
+	halti
+}
 "Restart" menu entry
-menuentry "System restart" {echo "System rebooting..."reboot}
+menuentry "System restart" {
+	echo "System rebooting..."
+	reboot
+}
 ```
 
 Install `os-prober` to detect Windows 11 `mount /dev/nvme1n1p1
@@ -701,8 +707,8 @@ Include = /etc/pacman.d/mirrorlist
 Then install following packages:
 
 ``` shell
-sudo pacman -S jdk8-openjdk intellij-idea-community-edition
-yay -S android-sdk
+sudo pacman -S jdk8-openjdk 
+yay -S android-sdk-cmdline-tools-latest android-sdk-build-tools android-sdk-platform-tools android-platform android-studio
 ```
 
 Setup environment variables ANDROID_HOME, PATH, and CLASSPATH
@@ -1284,7 +1290,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Database: `postgresql sqlite`
 - Development: `ccl[A] cgasm[A] clang clojure cmake code gdb git git-lfs go go-tools gource gradle hexyl[A]
   intltool kotlin lazarus-gtk2 leiningen[A] libxcrypt-compt nasm npm python-pip
-  racket sbcl sbt scala scala-docs scala-sources stow subversion tree-sitter`
+  racket sbcl sbt scala scala-docs scala-sources stow subversion tree-sitter zed`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
@@ -1312,6 +1318,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Spell check: `aspell-en`
 - System: `acpi`
 - System information viewer: `neofetch`
+- System management: `ansible sshpass`
 - System monitoring: `htop`
 - Terminal multiplexer: `tmux`
 - The Editor and everything: `emacs` (use
@@ -1377,8 +1384,8 @@ In addition, as I'm using Bumbleebee, I needs to use `prime-run` to
 run `resolve`, otherwise, the playback screen will be blank.
 
 The following combinations seem to make Resolve run somehow smoothly
-(as of 16 March 2024):
-* Resolve version 18.5.1 (instead of 18.6.5)
+(as of 6 April 2024):
+* Resolve version 18.6.5
 * X11 instead of Wayland
 * Run resolve with the following `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME /opt/resolve/bin/resolve'.
 
@@ -1446,6 +1453,7 @@ Below is a list of useful pacman commands:
 * `pacman -Ss package_name`: search remote package
 * `pacman -Qs package_name`: search local package
 * `pacman -Qi package_name`': display local package information
+* `pacman -Qdt`': list outdated, unused packages
 * `pacman -Si package_name`: display remote package information
 * `pacman -Ql package_name`: display files provided by local package
 * `pacman -Fl package_name`: display files provided by remote package
