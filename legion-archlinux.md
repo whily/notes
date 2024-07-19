@@ -1313,7 +1313,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Photo editor: `darktable hugin lensfun`
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en krita`
-- Screen capture: `grim slurp`
+- Screen capture: `grim slurp vhs`
 - Screencast: `peek screnkey[A] wf-recorder`
 - Spell check: `aspell-en`
 - System: `acpi`
