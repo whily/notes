@@ -1295,7 +1295,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
-- File manager: `lf[A]`
+- File manager: `yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide`
 - File system: `exfat-utils`
 - FPGA: `iverilog gtkwave`
 - Fun: `cmatrix xscreensaver`
