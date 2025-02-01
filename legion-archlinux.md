@@ -599,10 +599,13 @@ Install oh-my-zsh (which changes default shell to zsh as well):
 
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+Install plugins: autojump[A], zsh-autocomplete
+
 Add soft link as below:
 
     ln -s /usr/share/zsh/plugins/zsh-autosuggestions ~/.oh-my-zsh/plugins
     ln -s /usr/share/zsh/plugins/zsh-syntax-highlighting ~/.oh-my-zsh/plugins
+    ln -s /usr/share/zsh/plugins/zsh-autocomplete ~/.oh-my-zsh/plugins
 
 Optionally, To use
 [oh-my-zsh cheatsheet](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet),
@@ -1263,7 +1266,7 @@ Install `fortune-mod` and add `fortune` to the end of `~/.zshrc`.
 
 #### Chess
 
-Install following programs: `chessx[A] scid_vs_pc[A] stockfish-git[A] pychess`
+Install following programs: `chessx[A] scid_vs_pc[A] stockfish-git[A] pychess en-croissant-bin[A]`
 
 Download Syzygy tablebases, e.g. 5 piece tablebase from http://tablebase.lichess.ovh/tables/standard/3-4-5/
 
