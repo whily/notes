@@ -1317,6 +1317,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Proof assistant: `coq`
 - Raster graphics editor: `gimp gimp-help-en krita`
 - Screen capture: `grim slurp vhs`
+- Recovery: `testdisk
 - Screencast: `peek screnkey[A] wf-recorder`
 - Spell check: `aspell-en`
 - System: `acpi`
