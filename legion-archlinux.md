@@ -1467,6 +1467,7 @@ Below is a list of useful pacman commands:
 * `pacman -Qe` : list packages installed explicitly
 * `pacman -Qdt`: list all packages no longer required as dependencies
   (orphans)
+* `pacman -Qdtq | pacman -Rns -`: remove unused (orphan) packages 
 
 #### Troubleshooting
 
