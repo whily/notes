@@ -1288,7 +1288,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Audio converter: `lame`
 - Audio edtor: `audacity ardour`
 - Browser: `chromium pepper-flash`
-- CLI: `ripgrep shellcheck[A]`
+- CLI: `bat hexyl hyperfine ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
 - Development: `ccl[A] cgasm[A] clang clojure cmake code gdb git git-lfs go go-tools gource gradle hexyl[A]
@@ -1298,7 +1298,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
-- File manager: `yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide`
+- File manager: `yazi ffmpegthumbnailer unarchiver jq poppler fd fzf zoxide`
 - File system: `exfat-utils`
 - FPGA: `iverilog gtkwave`
 - Fun: `cmatrix xscreensaver`
