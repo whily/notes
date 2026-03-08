@@ -106,6 +106,13 @@ generate a mirror, use `rankmirrors mirrorfile > mirror.fast` to rank
 the mirror according to connection speed, and then copy the generated
 file to `/etc/pacman.d/mirrorlist`.
 
+One can also install package `reflector' and use the following command to 
+generate the mirror list
+
+````
+sudo reflector --country US --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+````
+
 Install the base package with
 
 ``` shell
@@ -528,7 +535,8 @@ have larger scaling, use the flag `--force-device-scale-factor=2`.
 For i3, add `Xft.dpi: 192` in `~/.Xresources`.
 
 For KDE, "System Settings | Display and Monitor | Display
-Configuration", change "Global Scaling" to 150%.
+Configuration", change "Global Scaling" to 150%. 
+For "Legacy applications (X11)", select "Apply scalings themselves". This can solve the blur problem of Davinci Resolve. 
 
 For Chromium, add the following line to `~/config/chromium-flags.conf`:
 
@@ -710,7 +718,7 @@ Include = /etc/pacman.d/mirrorlist
 Then install following packages:
 
 ``` shell
-sudo pacman -S jdk8-openjdk 
+sudo pacman -S jdk8-openjdk
 yay -S android-sdk-cmdline-tools-latest android-sdk-build-tools android-sdk-platform-tools android-platform android-studio
 ```
 
@@ -927,6 +935,7 @@ Following is based on guide: https://wiki.archlinux.org/title/IBus
 
 Add the following environment variables to `/etc/environment`:
 
+    INPUT_METHOD=ibus
     GTK_IM_MODULE=ibus
     QT_IM_MODULE=ibus
     XMODIFIERS=@im=ibus
@@ -935,6 +944,8 @@ Add Autostart (System Settings > Startup and Shutdown > Autostart) for the follo
 
     ibus-daemon -rxRd --panel=/usr/lib/kimpanel-ibus-panel
 
+In KDE Plasma System Settings | Input & Output | Keyboard | Virtual Keyboard, select "IBus Wayland" to enable
+IBus for GUI applications like Chrome.
 
 #### Wallpaper
 
@@ -1094,6 +1105,20 @@ $ sudo pacman -S ncdu
 # Scan a particular directory (root directory in example below)
 $ sudo ncdu -x /
 ```
+
+#### Connection to iOS devices
+
+Install packages libimobiledevice, usbmuxd, gvfs-gphoto2, and gvfs-afc.
+
+Connect iOS device and verify that usbmuxd.service is started with command 
+`systemctl status usbmuxd.service`, one shoud see "Active: active (running) since ...".
+
+When presented with a "Trust This Computer" popup on ths iOS device screen, tap "Trust". 
+If not presented with the popup, unlock the screen and run `idevicepair pair`.
+
+Then graphical file manager (e.g. Dolphin) can be used to access the files on iOS device, 
+e.g. photos in directory `DCIM`, while application specific files in `Apps`.
+
 
 #### Deep learning
 
@@ -1286,13 +1311,13 @@ Install following packages (with suffix [A] denoting AUR package):
 - Archiver: `lzip p7zip unzip unrar zip`
 - Astronomy: `celstia stellarium`
 - Audio converter: `lame`
-- Audio edtor: `audacity ardour`
+- Audio edtor: `ardour`
 - Browser: `chromium pepper-flash`
 - CLI: `bat hexyl hyperfine ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clang clojure cmake code gdb git git-lfs go go-tools gource gradle hexyl[A]
-  intltool kotlin lazarus-gtk2 leiningen[A] libxcrypt-compt nasm npm python-pip
+- Development: `ccl[A] cgasm[A] clang clojure cmake code gdb ghostty git git-lfs go go-tools gource gradle hexyl[A]
+  intltool kotlin lazarus-gtk2 lazygit leiningen[A] libqalculate libxcrypt-compt nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion tree-sitter zed`
 - Dictionary: `stardict`
 - Documentation `cheat-git[A]`
@@ -1327,7 +1352,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Terminal multiplexer: `tmux`
 - The Editor and everything: `emacs` (use
   `emacs-pgtk-native-comp-git[A]` for Wayland)
-- Typesetting: `texlive-most texlive-langchinese`
+- Typesetting: `typst`
 - Vector graphics editor: `inkscape`
 - Video converter: `ffmpeg frei0r-plugins`
 - Video player: `mpv` (Configuration according to
@@ -1401,33 +1426,135 @@ One may need to check logs for troubleshooting: `~/.local/share/DaVinciResolve/l
 
 ### LLM
 
-Install package `ollama-cuda`. Then use `ollama pull` to install
-models e.g.
+Install AUR package `llama.cpp-cuda-git`. 
 
-* For programming: deepseek-coder:33b, deepseek-coder:6.7b-base-q5_K_M, deepseek-coder:6.7b-instruct-q5_K_M
-* For fast query: mistral:7b-instruct-v0.2-q5_K_M,
-  mistral:7b-text-q5_K_M, gemma:7b-instruct-q5_K_M, gemma:7b-text-q5_K_M
-* For image query: llava:34b
-* Large models: mixtral:latest, qwen:14b, qwen:72b, yi:34b
+Automatically upgrade the package with the following:
 
+    sudo pacman -S devtools nvchecker
+    git clone https://aur.archlinux.org/llama.cpp-cuda.git && cd llama.cpp-cuda
+    vim .nvchecer.toml
+        ["llama.cpp-cuda"]
+        source = "github"
+        github = "ggerganov/llama.cpp"
+        use_latest_release = true
+    pkgctl version upgrade
+    makepkg -srci
+
+To use modelscope in China, add the following to environment variable: MODEL_ENDPOINT=https://www.modelscope.cn/
+
+Typical usage of llama.cpp:
+* Download model and run it: llama-cli -hf org/model[:quantization]
+* Run a already downloaded model: llama-cli -m model.GGUF
+* Serve a model with WebUI: llama-server -m model.GGUF --port 8080
+* Server GPT OSS model with WebUI and recommended settings: llama-server -hf ggml-org/gpt-oss-20b-GGUF --ctx-size 0 --jinja -ub 2048 -b 2048 --port 8080
+
+* For programming: unsloth/Qwen3-Coder-Next-GGUF:UD-Q4_K_XL (guide: https://unsloth.ai/docs/models/qwen3-coder-next)
+* For general query: 
+** unsloth/Qwen3.5-35B-A3B-GGUF:UD-Q4_K_XL (guide: https://unsloth.ai/docs/models/qwen3.5#non-thinking-mode) 
+** ggml-org/gpt-oss-20b-GGUF
+** unsloth/GLM-4.7-Flash-GGUF:GLM-4.7-Flash-UD-Q4_K_XL.gguf 
+* Embedding: embeddinggemma
+google/gemma-3-27b-it-qat-q4_0-gguf
 Install following clients:
 * ellama for Emacs
 * twinny for VSCode, use deepseek-coder:6.7b-instruct-q5_K_M for Chat,
   and deepsee-coder:6.7b-base-q5_K_M for Fill-in-middle.
-* Open WebUI (https://github.com/open-webui/open-webui), do not user
-  docker, follow deb build path as from https://docs.openwebui.com/getting-started/
 
-    git clone https://github.com/open-webui/open-webui.git
-    cd open-webui/
-    # Copying required .env file
-    cp -RPp .env.example .env
-    # Building Frontend Using Node
-    npm i
-    npm run build
-    # Serving Frontend with the Backend
-    cd ./backend
-    pip install -r requirements.txt -U
-    bash start.sh
+Follow the note in https://github.com/ggml-org/llama.cpp/discussions/14758,
+install claude-code[A] and use bubblewrap as sandbox:
+
+    sudo pacman -S bubblewrap
+
+Follow https://kaveh.page/blog/claude-code-sandbox to run Claude code with bubblewrap.
+Add the followin line to the script for the directory with installed Claude code binary.
+
+    --ro-bind /opt/claude-code/bin /opt/claude-code/bin
+
+To use GLM-4.7 API, add the following to ~/.claude/settings.json
+
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_zhipu_api_key",
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1
+  }
+}
+
+Add the following to ~/.claude.json:
+
+{
+  "hasCompletedOnboarding": true
+}
+
+Add the following sandbox settings to ~/.srt-settings.json:
+
+{
+  "network": {
+    "allowedDomains": [
+      "github.com",
+      "*.github.com",
+      "lfs.github.com",
+      "api.github.com",
+      "npmjs.org",
+      "*.npmjs.org",
+      "open.bigmodel.cn"
+    ],
+    "deniedDomains": ["malicious.com"],
+    "allowUnixSockets": ["/var/run/docker.sock"],
+    "allowLocalBinding": false
+  },
+  "filesystem": {
+    "denyRead": ["~/.ssh"],
+    "allowWrite": [".", "src/", "test/", "/tmp"],
+    "denyWrite": [".env", "config/production.json"]
+  },
+  "ignoreViolations": {
+    "*": ["/usr/bin", "/System"],
+    "git push": ["/usr/bin/nc"],
+    "npm": ["/private/tmp"]
+  },
+  "enableWeakerNestedSandbox": false
+}
+
+
+Install Clause code router to use Llama.cpp:
+
+    npm install -g @musistudio/claude-code-router
+
+Then create ~/.claude-code-router/config.json with following content:
+
+    {
+      "LOG":false,
+      "Providers": [
+        {
+            "name": "llamacpp",
+            "api_base_url": "http://127.0.0.1:8080/v1/chat/completions",
+            "api_key": "llamacpp",
+            "models": ["Qwen3-Coder"]
+        }
+      ],
+      "Router": {
+        "default": "llamacpp,Qwen3-Coder",
+        "background": "llamacpp,Qwen3-Coder",
+        "think": "llamacpp,Qwen3-Coder",
+        "longContext": "llamacpp,Qwen3-Coder"
+      }
+    }
+
+
+Install vLLM for models not supported by Llama.cpp. First install package `uv',
+then run the following:
+
+    uv venv --python 3.12 --seed
+    source .venv/bin/activate
+    export UV_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple/"
+    uv pip install vllm --torch-backend=auto
+    export VLLM_USE_MODELSCOPE=True
+    uv run --with vllm vllm serve unsloth/Qwen3-Next-80B-A3B-Instruct-bnb-4bit
+
+Now use browser to go to http://localhost:8000
+
 
 ## Maintenance
 
@@ -1467,7 +1594,7 @@ Below is a list of useful pacman commands:
 * `pacman -Qe` : list packages installed explicitly
 * `pacman -Qdt`: list all packages no longer required as dependencies
   (orphans)
-* `pacman -Qdtq | pacman -Rns -`: remove unused (orphan) packages 
+* `pacman -Qdtq | pacman -Rns -`: remove unused (orphan) packages
 
 #### Troubleshooting
 
@@ -1500,6 +1627,21 @@ comment out the sections in `~/.config/plasma-org.kde.plasma.desktop-appletrc' o
 
 If keyboard does not work in Chromium but still work in other programs
 (e.g. Konsole, Emacs), then type the following in terminal: `ibus exit`.
+
+If cannot boot, use USB disk with Arch ISO to boot then:
+    # Check partitions
+    fdisk -l
+    (Optional) fsck partitions before mounting
+    mount /rootpartition /mnt
+    mount /bootpartition /mnt/boot
+    arch-chroot /mnt
+    pacman -S linux
+    grub-mkconfig -o /boot/grub/grub.cfg
+    pacman -S linux
+    exit
+    umount /mnt/boot /mnt
+    shutdown -h now
+    # Remove USB disk and reboot
 
 #### Analyze boot time
 
@@ -1561,6 +1703,8 @@ If using gzip, just add `z` in tar options above.
 To restore home directory to a new computer, use the following command (assuming user name is usr). The trailing slash / at the end of source directory is needed to make the home directory exactly the same (otherwise the source home directory will be just put under the target, e.g. like /home/usr/usr).
 
     rsync -a --delete --quite -e ssh /home/usr/ usr@remotehost:/home/usr
+
+Another approach is to use [Restic](https://wiki.archlinux.org/title/Restic) and restic-browser[A].
 
 ## Replace SSD
 
