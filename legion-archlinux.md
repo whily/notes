@@ -417,8 +417,17 @@ binary / library. Remove Miniconda binary path from $PATH.
 
 #### Wayland
 
-Install packages `plasma-wayland-session xorg-xwayland`.
+Install packages `plasma-wayland-session xorg-xwayland plasma-x11-session`, with package
+plasma-x11-session to provide options of selecting Plasma X11 Session (if KDE is installed). 
 
+For Electron app, based on https://wiki.archlinux.org/title/Electron, add the following to 
+~/.config/electron-flags.conf:
+
+    --enable-features=WaylandWindowDecorations,AllowQt
+    # --ozone-platform-hint=wayland (removed in Electron 38)
+    --ozone-platform=wayland
+    # GTK4 works better on Wayland.
+    --gtk-version=4
 
 #### Sway
 
@@ -510,7 +519,6 @@ bindsym $mod+c mode "$mode_system"
 One reference:
 [correct handling of floating dialogs](https://wiki.archlinux.org/index.php/i3#Correct_handling_of_floating_dialogs).
 
-
 ##### HiDPI
 
 Find display name with the command `swaymsg -t get_outputs`, change
@@ -523,7 +531,7 @@ For GTK, add the following to `~/.config/sway/config`:
     exec_always {
         gsettings set $gnome-schema gtk-theme 'breeze'
         gsettings set $gnome-schema icon-theme 'Numix-Square'
-        gsettings set org.gnome.desktop.interface text-scaling-factor 2
+        gsettings set org.gnome.desktop.interface text-scaling-factor 1
         gsettings set org.gnome.desktop.interface cursor-size $cursor_size
     }
 
@@ -550,6 +558,48 @@ For darktable, edit `~/.config/darktable/darktablerc`, set
 Sans;` to `font: 12pt Arimo`. For `#header_label,#darktable_label,#view_label,#view_dropdown *
 {}`, change `font-size: 15pt;` to `font-size: 20pt;` (this is slight
 increase and is optional).
+
+#### Niri
+
+Install packages `niri fuzzel mako waybar xwayland-satellite udiskie` and reuse packages
+`swaybg swayidle swaylock` from Sway.
+
+Run programs along with Niri based on https://highorderlogic.github.io/niri-docs/example-systemd-setup.html
+
+    mkdir -p ~/.config/systemd/user/niri.service.wants
+    ln -s /usr/lib/systemd/user/mako.service ~/.config/systemd/user/niri.service.wants/
+    ln -s /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
+
+Add the following to ~/.config/systemd/user/swaybg.service:
+
+    [Unit]
+    PartOf=graphical-session.target
+    After=graphical-session.target
+    Requisite=graphical-session.target
+
+    [Service]
+    ExecStart=/usr/bin/swaybg -m fill -i "%h/wallpaper.png"
+    Restart=on-failure
+
+Run the following commands:
+    systemctl --user daemon-reload
+    ln -s ~/.config/systemd/user/swaybg.service ~/.config/systemd/user/niri.service.wants/    
+
+Add the following to ~/.config/systemd/user/swayidle.service:
+    [Unit]
+    PartOf=graphical-session.target
+    After=graphical-session.target
+    Requisite=graphical-session.target
+
+    [Service]
+    ExecStart=/usr/bin/swayidle -w timeout 601 'niri msg action power-off-monitors' timeout 600 'swaylock -f' before-sleep 'swaylock -f'
+    Restart=on-failure
+
+Run the following commands:
+    systemctl --user daemon-reload
+    ln -s ~/.config/systemd/user/swayidle.service ~/.config/systemd/user/niri.service.wants/
+
+
 
 #### Themes
 
@@ -886,66 +936,78 @@ Restart X again to make the configuration effective.
 
 #### Chinese input
 
-``` shell
-$ sudo pacman -S ibus-rime
-$ mkdir ~/.config/ibus/rime
-$ nano -w ~/.config/ibus/rime/default.custom.yaml
-```
+Reference: https://manateelazycat.github.io/2026/01/06/fcitx-best-config/
 
+``` shell
+$ sudo pacman -S fcitx5-im fcitx5-rime
+$ mkdir -p ~/.local/share/fcitx5/rime
+$ nano -w ~/.local/share/fcitx5/rime/default.custom.yaml
+```
 In the file, choose the input schema, an example is shown below. Note indentation
 level is important.
 
     patch:
-        "menu/page_size": 7
+        "menu/page_size": 10
         schema_list:
             - schema: luna_pinyin
 
-Redeploy ibus either by click Deploy (部署) menu itme in ibus gui, or run the
+Run `fcitx5-configtool` and add input method "Rime". Use "Ctrl+Space" to switch between
+English and Chinese input method.
+
+Redeploy Fcitx5 either by click Deploy menu itme in gui, or run the
 following command
 
-    $ rm ~/.config/ibus/rime/default.yaml && ibus-daemon -drx
-
-Append following to `~/.config/i3/config` to make it auto start:
-
-    exec_always ibus-daemon -drx
-
-Configuration according to https://www.jianshu.com/p/2624fad33fe4
-
-In Ibus tray icon, right click and select `Preferences`,  and
-configure `Keyboard Shortcuts` for `Next input method`. I prefer to
-use `<Control><Super>space` to avoid conflict with commonly used
-shortcuts. Remember to click `Apply` after type the combination.
+    $ rm ~/.local/share/fcitx5/rime/default.yaml && fcitx5-remote -r
 
 When Chinese is enabled, press ``Ctrl+` `` for options, use arrow key to
 select `中/半/汉/`, and then select `漢字 -> 汉字` to change from
 Traditional Chinese to Simplified Chinese.
 
-Run `ibus-setup` to configure the font and size (in my case, `Source
-Han Sans CN regular 16`) as well as the candidate orientation.
-(horizontal vs vertical). If you get an error "ModuleNotFoundError: No
-module named 'gi'", there is a conflict between `anaconda3` and
-`ibus-setup`. First in home directory, run `chmod 000 anaconda3` to
-disable anaconda. Then run `ibus-setup` for configuration. Afterwards,
-run `chmod 755 anaconda3` to enable anaconda again.
-
 For additional customization of rime, see
 https://github.com/rime/home/wiki/CustomizationGuide
 
-Following is based on guide: https://wiki.archlinux.org/title/IBus
+For Wayland, follow https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma
 
-Add the following environment variables to `/etc/environment`:
+Add the following to ~/.config/plasma-workspace/env/ime.sh
 
-    INPUT_METHOD=ibus
-    GTK_IM_MODULE=ibus
-    QT_IM_MODULE=ibus
-    XMODIFIERS=@im=ibus
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS="@im=fcitx"
 
-Add Autostart (System Settings > Startup and Shutdown > Autostart) for the following:
+Add the following to ~/.xprofile:
 
-    ibus-daemon -rxRd --panel=/usr/lib/kimpanel-ibus-panel
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS="@im=fcitx"
 
-In KDE Plasma System Settings | Input & Output | Keyboard | Virtual Keyboard, select "IBus Wayland" to enable
+In KDE Plasma System Settings | Input & Output | Keyboard | Virtual Keyboard, select "Fcitx5" to enable
 IBus for GUI applications like Chrome.
+
+Add skin by install package fcitx5-material-color, or fcitx5-skin-adwaita-dark [A]. Edit ~/.config/fcitx5/conf/classicui.conf:
+
+    # 横向候选列表
+    VerticalCandidateList=False
+
+    # 禁止字体随着 DPI 缩放， 避免界面太大
+    PerScreenDPI=False
+
+    # 字体和大小， 可以用 fc-list 命令来查看使用
+    Font="Noto Sans Mono 15" # Or "Noto Sans CJK SC 15"
+
+    # Gnome3 风格的主题
+    Theme=adwaita-dark    # Or Material-Color-Blue, Material-Color-Teal
+
+Install rime-wanxiang-updater [A], run rime-wanxiang-updater, and select automatic update.
+
+Disable right Shift by editting ~/.local/share/fcitx5/rime/default.yaml, 
+and remove line Shift_R: commit_code.
+
+Use command and period for paging by editting ~/.local/share/fcitx5/rime/default.yaml, 
+under bindings, add the following:
+
+    - { when: has_menu, accept: comma, send: Page_Up }
+    - { when: has_menu, accept: period, send: Page_Down }
+
 
 #### Wallpaper
 
@@ -1323,7 +1385,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - Documentation `cheat-git[A]`
 - Download tools: `aria2 baidupcs-go-git[A] curl filezilla wget`
 - Encryption: `gnupg`
-- File manager: `yazi ffmpegthumbnailer unarchiver jq poppler fd fzf zoxide`
+- File manager: `yazi ffmpegthumbnailer unarchiver jq nushell poppler fd fzf zoxide`
 - File system: `exfat-utils`
 - FPGA: `iverilog gtkwave`
 - Fun: `cmatrix xscreensaver`
@@ -1349,7 +1411,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - System information viewer: `neofetch`
 - System management: `ansible sshpass`
 - System monitoring: `htop`
-- Terminal multiplexer: `tmux`
+- Terminal multiplexer: `tmux zellij`
 - The Editor and everything: `emacs` (use
   `emacs-pgtk-native-comp-git[A]` for Wayland)
 - Typesetting: `typst`
@@ -1426,9 +1488,9 @@ One may need to check logs for troubleshooting: `~/.local/share/DaVinciResolve/l
 
 ### LLM
 
-Install AUR package `llama.cpp-cuda-git`. 
+Install AUR package `llama.cpp-cuda` (alternatively `llama.cpp-vulkan' if CUDA version is not up-to-date. 
 
-Automatically upgrade the package with the following:
+[Below is only needed for llama.cpp-cuda, not for llama.cpp-vulkan] Automatically upgrade the package with the following:
 
     sudo pacman -S devtools nvchecker
     git clone https://aur.archlinux.org/llama.cpp-cuda.git && cd llama.cpp-cuda
@@ -1448,13 +1510,9 @@ Typical usage of llama.cpp:
 * Serve a model with WebUI: llama-server -m model.GGUF --port 8080
 * Server GPT OSS model with WebUI and recommended settings: llama-server -hf ggml-org/gpt-oss-20b-GGUF --ctx-size 0 --jinja -ub 2048 -b 2048 --port 8080
 
-* For programming: unsloth/Qwen3-Coder-Next-GGUF:UD-Q4_K_XL (guide: https://unsloth.ai/docs/models/qwen3-coder-next)
-* For general query: 
-** unsloth/Qwen3.5-35B-A3B-GGUF:UD-Q4_K_XL (guide: https://unsloth.ai/docs/models/qwen3.5#non-thinking-mode) 
-** ggml-org/gpt-oss-20b-GGUF
-** unsloth/GLM-4.7-Flash-GGUF:GLM-4.7-Flash-UD-Q4_K_XL.gguf 
+** unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL (guide: https://unsloth.ai/docs/models/qwen3.6#non-thinking-mode) 
+** unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_XL
 * Embedding: embeddinggemma
-google/gemma-3-27b-it-qat-q4_0-gguf
 Install following clients:
 * ellama for Emacs
 * twinny for VSCode, use deepseek-coder:6.7b-instruct-q5_K_M for Chat,
@@ -1643,6 +1701,8 @@ If cannot boot, use USB disk with Arch ISO to boot then:
     shutdown -h now
     # Remove USB disk and reboot
 
+If meeting "invalid cluster 0" error, one may disable Windows "fast startup", and run above steps.
+
 #### Analyze boot time
 
 Use either `systemd-analyze blame` for text output or `systemd-analyze
@@ -1704,7 +1764,7 @@ To restore home directory to a new computer, use the following command (assuming
 
     rsync -a --delete --quite -e ssh /home/usr/ usr@remotehost:/home/usr
 
-Another approach is to use [Restic](https://wiki.archlinux.org/title/Restic) and restic-browser[A].
+Another approach is to use [Restic](https://wiki.archlinux.org/title/Restic).
 
 ## Replace SSD
 
