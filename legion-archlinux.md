@@ -110,7 +110,7 @@ One can also install package `reflector' and use the following command to
 generate the mirror list
 
 ````
-sudo reflector --country US --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --country China --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 ````
 
 Install the base package with
@@ -1411,7 +1411,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - System information viewer: `neofetch`
 - System management: `ansible sshpass`
 - System monitoring: `htop`
-- Terminal multiplexer: `tmux zellij`
+- Terminal multiplexer: `tmux zmx`
 - The Editor and everything: `emacs` (use
   `emacs-pgtk-native-comp-git[A]` for Wayland)
 - Typesetting: `typst`
@@ -1488,7 +1488,7 @@ One may need to check logs for troubleshooting: `~/.local/share/DaVinciResolve/l
 
 ### LLM
 
-Install AUR package `llama.cpp-cuda` (alternatively `llama.cpp-vulkan' if CUDA version is not up-to-date. 
+Install `llama-cpp ggml-cuda`.
 
 [Below is only needed for llama.cpp-cuda, not for llama.cpp-vulkan] Automatically upgrade the package with the following:
 
@@ -1523,14 +1523,14 @@ install claude-code[A] and use bubblewrap as sandbox:
 
     sudo pacman -S bubblewrap
 
+If connection error, can download manually from https://github.com/nancheung/cc-releases/releases.
+
 Follow https://kaveh.page/blog/claude-code-sandbox to run Claude code with bubblewrap.
 Add the followin line to the script for the directory with installed Claude code binary.
 
     --ro-bind /opt/claude-code/bin /opt/claude-code/bin
 
 To use GLM-4.7 API, add the following to ~/.claude/settings.json
-
-{
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "your_zhipu_api_key",
     "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
@@ -1576,7 +1576,7 @@ Add the following sandbox settings to ~/.srt-settings.json:
 }
 
 
-Install Clause code router to use Llama.cpp:
+Install Claude code router to use Llama.cpp:
 
     npm install -g @musistudio/claude-code-router
 
@@ -1613,7 +1613,12 @@ then run the following:
 
 Now use browser to go to http://localhost:8000
 
+As alternative to Claude code, install pi [AUR].
+Using GLM coding plan for pi: https://docs.bigmodel.cn/cn/coding-plan/tool/pi
 
+Another alternaive is to install package openai-codex.
+
+Install glow and run `llama-cli | glow -" to get markdown rendered (FIXME: does not work yet).
 ## Maintenance
 
 Follow the guide
@@ -1633,6 +1638,7 @@ provide comprehensive information regarding the usage of pacman.
 Below is a list of useful pacman commands:
 
 * `pacman -Syu`： update the system
+# `pacman -Syu --ignore pkgname`: update the system and ignoring pkgname which has dependency issues
 * `pacman -S package_name`: install package
 * `pacman -S --asexplicit package_name`: fake install a dependency to
   avoid it to be removed.
@@ -1642,7 +1648,6 @@ Below is a list of useful pacman commands:
 * `pacman -Ss package_name`: search remote package
 * `pacman -Qs package_name`: search local package
 * `pacman -Qi package_name`': display local package information
-* `pacman -Qdt`': list outdated, unused packages
 * `pacman -Si package_name`: display remote package information
 * `pacman -Ql package_name`: display files provided by local package
 * `pacman -Fl package_name`: display files provided by remote package
@@ -1650,8 +1655,6 @@ Below is a list of useful pacman commands:
   (needs to run `pacman -Fy` to sync the database).
 * `pacman -Qo /path/to/file_name`: dispaly which package a file in the file system belongs to
 * `pacman -Qe` : list packages installed explicitly
-* `pacman -Qdt`: list all packages no longer required as dependencies
-  (orphans)
 * `pacman -Qdtq | pacman -Rns -`: remove unused (orphan) packages
 
 #### Troubleshooting
