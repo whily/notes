@@ -1378,7 +1378,7 @@ Install following packages (with suffix [A] denoting AUR package):
 - CLI: `bat hexyl hyperfine ripgrep shellcheck[A]`
 - Computer algebra: `gap maxima`
 - Database: `postgresql sqlite`
-- Development: `ccl[A] cgasm[A] clang clojure cmake code gdb ghostty git git-lfs go go-tools gource gradle hexyl[A]
+- Development: `ccl[A] cgasm[A] clang clojure cmake code gdb ghostty git git-lfs github-cli go go-tools gource gradle hexyl[A]
   intltool kotlin lazarus-gtk2 lazygit leiningen[A] libqalculate libxcrypt-compt nasm npm python-pip
   racket sbcl sbt scala scala-docs scala-sources stow subversion tree-sitter zed`
 - Dictionary: `stardict`
